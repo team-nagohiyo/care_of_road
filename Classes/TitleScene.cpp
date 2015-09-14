@@ -29,9 +29,17 @@ bool TitleScene::init()
     
     auto titleSprite = Sprite::create("str/logo_care_of_way.png");
     // position the sprite on the center of the screen
-    titleSprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    titleSprite->setPosition(Vec2(visibleSize.width/2 + origin.x,
+                                  visibleSize.height/2 + origin.y + 300.0f));
     
-    this->addChild(titleSprite, 0);
+    this->addChild(titleSprite, 10);
 
+    this->m_roll = RollBackgroundLayer::create();
+    this->addChild(this->m_roll,2);
+    this->m_roll->setPosition(Vec2::ZERO);
+    
+    //メニュー
+
+    
     return true;
 }

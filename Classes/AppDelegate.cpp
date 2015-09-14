@@ -31,6 +31,54 @@ bool AppDelegate::applicationDidFinishLaunching() {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
     }
+    
+    //プラットフォーム別の設定
+    Application::Platform platform = Application::getInstance()->getTargetPlatform();
+    switch (platform) {
+        case cocos2d::Application::Platform::OS_IPAD:
+            if(glview->getFrameSize().width < glview->getFrameSize().height)
+            {
+                glview->setDesignResolutionSize(640, 960, ResolutionPolicy::SHOW_ALL);
+            }
+            else
+            {
+                glview->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
+            }
+            break;
+            
+        case cocos2d::Application::Platform::OS_ANDROID:
+        case cocos2d::Application::Platform::OS_IPHONE:
+        {
+            bool isLong = this->isLongScreen(glview->getFrameSize().width,glview->getFrameSize().height);
+            if(glview->getFrameSize().width < glview->getFrameSize().height)
+            {
+                
+                if(isLong)
+                {
+                    glview->setDesignResolutionSize(640, 1136, ResolutionPolicy::SHOW_ALL);
+                }
+                else
+                {
+                    glview->setDesignResolutionSize(640, 960, ResolutionPolicy::SHOW_ALL);
+                }
+            }
+            else
+            {
+                if(isLong)
+                {
+                    glview->setDesignResolutionSize(960, 640, ResolutionPolicy::SHOW_ALL);
+                }
+                else
+                {
+                    glview->setDesignResolutionSize(1136, 640, ResolutionPolicy::SHOW_ALL);
+                }
+            }
+        }
+        default:
+            glview->setDesignResolutionSize(640, 960, ResolutionPolicy::SHOW_ALL);
+            break;
+    }
+    
 
     // turn on display FPS
     director->setDisplayStats(true);
@@ -61,4 +109,22 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+}
+
+bool AppDelegate::isLongScreen(float w , float h)
+{
+    float longSize;
+    float shortSize;
+    if(w < h)
+    {
+        longSize = h;
+        shortSize = w;
+    }
+    else
+    {
+        longSize = w;
+        shortSize = h;
+    }
+    
+    return (longSize / shortSize) > 1.6f;
 }

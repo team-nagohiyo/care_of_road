@@ -10,10 +10,12 @@
 #define __care_of_road__TitleScene__
 
 #include "cocos2d.h"
-
+#include "RollBackgroundLayer.h"
 
 class TitleScene : public cocos2d::Layer
 {
+protected:
+    RollBackgroundLayer * m_roll;
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
