@@ -59,6 +59,8 @@
 		521A8E6519F0C34300D177D7 /* Default-736h@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 521A8E6319F0C34300D177D7 /* Default-736h@3x.png */; };
 		521A8EA919F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
 		521A8EAA19F11F5000D177D7 /* fonts in Resources */ = {isa = PBXBuildFile; fileRef = 521A8EA819F11F5000D177D7 /* fonts */; };
+		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
+		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57AF35571BA5E4D0005F65A4 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AF35551BA5E4D0005F65A4 /* TitleScene.cpp */; };
 		57AF35581BA5E4D0005F65A4 /* TitleScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AF35551BA5E4D0005F65A4 /* TitleScene.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
@@ -157,6 +159,8 @@
 		521A8E6219F0C34300D177D7 /* Default-667h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-667h@2x.png"; sourceTree = "<group>"; };
 		521A8E6319F0C34300D177D7 /* Default-736h@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-736h@3x.png"; sourceTree = "<group>"; };
 		521A8EA819F11F5000D177D7 /* fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = fonts; sourceTree = "<group>"; };
+		57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RollBackgroundLayer.cpp; sourceTree = "<group>"; };
+		57955E591BA6E10600C765BB /* RollBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollBackgroundLayer.h; sourceTree = "<group>"; };
 		57AF35551BA5E4D0005F65A4 /* TitleScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TitleScene.cpp; sourceTree = "<group>"; };
 		57AF35561BA5E4D0005F65A4 /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -305,6 +309,8 @@
 				46880B8719C43A87006E1F66 /* HelloWorldScene.h */,
 				57AF35551BA5E4D0005F65A4 /* TitleScene.cpp */,
 				57AF35561BA5E4D0005F65A4 /* TitleScene.h */,
+				57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */,
+				57955E591BA6E10600C765BB /* RollBackgroundLayer.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -513,6 +519,7 @@
 				46880B8A19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
+				57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				57AF35571BA5E4D0005F65A4 /* TitleScene.cpp in Sources */,
 			);
@@ -523,6 +530,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				46880B8B19C43A87006E1F66 /* HelloWorldScene.cpp in Sources */,
 				57AF35581BA5E4D0005F65A4 /* TitleScene.cpp in Sources */,
