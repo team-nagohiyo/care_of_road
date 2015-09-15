@@ -12,6 +12,7 @@
 #include "cocos2d.h"
 #include "RollBackgroundLayer.h"
 
+
 class TitleScene : public cocos2d::Layer
 {
 protected:
@@ -21,6 +22,19 @@ public:
     virtual bool init();
     
     CREATE_FUNC(TitleScene);
+
+    /**
+     * ゲーム画面に移動
+     */
+    void moveToGame(cocos2d::Ref * sender);
+    /**
+     * パワーアップ画面に移動
+     */
+    void moveToPowrUp(cocos2d::Ref * sender);
+    /**
+     * ランキング画面に移動
+     */
+    void moveToRanking(cocos2d::Ref * sender);
 };
 
 

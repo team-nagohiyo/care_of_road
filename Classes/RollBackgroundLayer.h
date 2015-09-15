@@ -29,6 +29,8 @@ public:
     bool init();
     
     virtual void update(float dt);
+    
+    virtual void updatePosition();
 };
 
 #endif /* defined(__care_of_road__RollBackgroundLayer__) */

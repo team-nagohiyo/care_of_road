@@ -7,6 +7,7 @@
 //
 
 #include "RollBackgroundLayer.h"
+#include "GameData.h"
 
 USING_NS_CC;
 
@@ -44,8 +45,11 @@ bool RollBackgroundLayer::init()
     
     this->setContentSize(Size(width,height));
     
-    this->m_ScrollHeight = 0;
+    this->m_ScrollHeight = GameData::getInstance()->getGroundHeightMove();
     this->m_MaxScrollHeight = height / 3.0f;
+
+    //初回更新
+    this->updatePosition();
 
     this->scheduleUpdate();
     
@@ -57,6 +61,14 @@ void RollBackgroundLayer::update(float dt)
     this->m_ScrollHeight -= m_Speed * dt;//1秒間に進む
     if(this->m_ScrollHeight < -this->m_MaxScrollHeight)this->m_ScrollHeight += this->m_MaxScrollHeight;
     
+    //現在の移動地データを入れる
+    GameData::getInstance()->setGroundHeightMove(this->m_ScrollHeight);
+    
+    this->updatePosition();
+}
+
+void RollBackgroundLayer::updatePosition()
+{
     float height = 0;
     for(int index = 0; index < 3 ;index++)
     {
@@ -65,3 +77,6 @@ void RollBackgroundLayer::update(float dt)
         height += work->getContentSize().height;
     }
 }
+
+
+
