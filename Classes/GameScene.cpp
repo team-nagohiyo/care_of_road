@@ -38,7 +38,5 @@ bool GameScene::init()
     
     //メニュー
     
-    SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3");
-    
     return true;
 }

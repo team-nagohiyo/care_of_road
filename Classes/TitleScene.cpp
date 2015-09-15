@@ -67,8 +67,11 @@ bool TitleScene::init()
     this->addChild(menu, 1);
 
     
-    //タイトルでは音楽を鳴らさない
-    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
+    //音楽は常に流しっぱなし
+    if(false == SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying())
+    {
+        SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3");
+    }
 
     
     return true;
