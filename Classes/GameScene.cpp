@@ -9,7 +9,10 @@
 #include "GameScene.h"
 #include "GameData.h"
 
+#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Scene* GameScene::createScene()
 {
@@ -35,6 +38,7 @@ bool GameScene::init()
     
     //メニュー
     
+    SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3");
     
     return true;
 }

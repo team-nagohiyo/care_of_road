@@ -12,7 +12,10 @@
 #include "PowerUpScene.h"
 #include "RankingScene.h"
 
+#include "SimpleAudioEngine.h"
+
 USING_NS_CC;
+using namespace CocosDenshion;
 
 Scene* TitleScene::createScene()
 {
@@ -63,6 +66,9 @@ bool TitleScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
+    
+    //タイトルでは音楽を鳴らさない
+    SimpleAudioEngine::getInstance()->stopBackgroundMusic();
 
     
     return true;
@@ -72,6 +78,7 @@ bool TitleScene::init()
  */
 void TitleScene::moveToGame(Ref * sender)
 {
+    SimpleAudioEngine::getInstance()->playEffect("sound/cow_jingle_start.mp3");
     Director::getInstance()->replaceScene(GameScene::createScene());
 }
 /**
