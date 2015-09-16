@@ -14,6 +14,7 @@
 
 #include "BulletObject.h"
 #include "EnemyObject.h"
+#include "TouchControlLayer.h"
 
 class GameScene : public cocos2d::Layer
 {
@@ -25,6 +26,7 @@ protected:
     
     cocos2d::Layer* m_EnemyLayer;
     cocos2d::Layer* m_BulletLayer;
+    TouchControlLayer * m_TouchControl;
     
 public:
     static cocos2d::Scene* createScene();
@@ -36,6 +38,21 @@ public:
      * 更新
      */
     virtual void update(float dt);
+    
+    /**
+     * ヒットチェック
+     */
+    virtual void hitCheck();
+    
+    /**
+     * 行動
+     */
+    virtual void updateAction();
+    
+    /**
+     * 魂状態の人を削除
+     */
+    virtual void removeObjectWithSoul();
     
     /**
      * 敵オブジェクトの追加

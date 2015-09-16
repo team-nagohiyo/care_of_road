@@ -40,17 +40,21 @@ bool GameScene::init()
     
     this->m_EnemyLayer = Layer::create();
     this->m_EnemyLayer->setPosition(Vec2::ZERO);
-    this->addChild(this->m_EnemyLayer,1);
+    this->addChild(this->m_EnemyLayer,10);
 
     this->m_BulletLayer = Layer::create();
     this->m_BulletLayer->setPosition(Vec2::ZERO);
-    this->addChild(this->m_BulletLayer,2);
+    this->addChild(this->m_BulletLayer,20);
     
     
     GameData::getInstance()->setGameScore(0);
     
     //更新の開始
     this->scheduleUpdate();
+    
+    this->m_TouchControl = TouchControlLayer::create();
+    this->m_TouchControl->setPosition(origin);
+    this->addChild(this->m_TouchControl,1);
     
     return true;
 }
@@ -60,12 +64,70 @@ bool GameScene::init()
 void GameScene::update(float dt)
 {
     //ヒットチェック
-    
+    this->hitCheck();
     
     //オブジェクト行動
-    
+    this->updateAction();
     
     //オブジェクトデリートチェック
+    this->removeObjectWithSoul();
+    
+}
+/**
+ * ヒットチェック
+ */
+void GameScene::hitCheck()
+{
+    
+}
+
+/**
+ * 行動
+ */
+void GameScene::updateAction()
+{
+    
+}
+
+/**
+ * 魂状態の人を削除
+ */
+void GameScene::removeObjectWithSoul()
+{
+
+    //弾のデリートチェック
+    cocos2d::Vector<BulletObject*> deleteList;
+    for(auto work : this->m_BulletList)
+    {
+        if(work->getAttack() <= 0)
+        {
+            this->m_BulletLayer->removeChild(work);
+            deleteList.pushBack(work);
+        }
+    }
+    for(auto work : deleteList)
+    {
+        this->m_BulletList.eraseObject(work);
+    }
+    deleteList.clear();
+    
+    //敵のデリートチェック
+    cocos2d::Vector<EnemyObject*> deleteList2;
+    for(auto work : this->m_EnemyList)
+    {
+        if(work->getState() == EnemyObject::EnemyState::SOUL)
+        {
+            this->m_EnemyLayer->removeChild(work);
+            deleteList2.pushBack(work);
+        }
+    }
+    for(auto work : deleteList2)
+    {
+        this->m_EnemyList.eraseObject(work);
+    }
+    deleteList2.clear();
+    
+    
 }
 
 /**

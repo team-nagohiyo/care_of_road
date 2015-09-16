@@ -28,6 +28,7 @@ public:
     CC_SYNTHESIZE(int, m_Type, Type);
     CC_SYNTHESIZE(int, m_Score, Score);
     CC_SYNTHESIZE(int, m_Life, Life);
+    CC_SYNTHESIZE(EnemyState, State, State);
 protected:
     
 public:

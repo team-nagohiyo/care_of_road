@@ -19,7 +19,7 @@ class BulletObject : public cocos2d::Node
     CC_SYNTHESIZE(int, m_Id, Id);
     CC_SYNTHESIZE(int, m_Type, Type);
     CC_SYNTHESIZE(int, m_Score, Score);
-    CC_SYNTHESIZE(int, m_Life, Life);
+    CC_SYNTHESIZE(int, m_Attack, Attack);
 public:
     BulletObject();
     virtual ~BulletObject();
