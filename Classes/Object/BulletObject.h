@@ -10,16 +10,19 @@
 #define __care_of_road__BulletObject__
 
 #include "cocos2d.h"
+#include "HitObject.h"
 
 /**
  * 敵のオブジェクト
  */
-class BulletObject : public cocos2d::Node
+class BulletObject : public HitObject
 {
     CC_SYNTHESIZE(int, m_Id, Id);
     CC_SYNTHESIZE(int, m_Type, Type);
     CC_SYNTHESIZE(int, m_Score, Score);
     CC_SYNTHESIZE(int, m_Attack, Attack);
+protected:
+    cocos2d::Sprite * m_mainSprite;
 public:
     BulletObject();
     virtual ~BulletObject();

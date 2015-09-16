@@ -10,11 +10,12 @@
 #define __care_of_road__EnemyObject__
 
 #include "cocos2d.h"
+#include "HitObject.h"
 
 /**
  * 敵のオブジェクト
  */
-class EnemyObject : public cocos2d::Node
+class EnemyObject : public HitObject
 {
 public:
     enum struct EnemyState:int
@@ -37,6 +38,7 @@ public:
     virtual ~EnemyObject();
     static EnemyObject* create(int charaId);
     bool init(int charaId);
+    
 };
 
 #endif /* defined(__care_of_road__EnemyObject__) */

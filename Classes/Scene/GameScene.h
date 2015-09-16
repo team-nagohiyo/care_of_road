@@ -14,6 +14,7 @@
 
 #include "BulletObject.h"
 #include "EnemyObject.h"
+#include "PlayerObject.h"
 #include "TouchControlLayer.h"
 
 class GameScene : public cocos2d::Layer
@@ -28,14 +29,6 @@ public:
         GameOver,
     };
 
-    //プレイヤーのステート
-    enum struct PlayState:int
-    {
-        Wait = 0,
-        Shot,
-        Delay,
-        Charge,
-    };
 protected:
     RollBackgroundLayer * m_roll;
     
@@ -45,6 +38,8 @@ protected:
     cocos2d::Layer* m_EnemyLayer;
     cocos2d::Layer* m_BulletLayer;
     TouchControlLayer * m_TouchControl;
+    
+    PlayerObject * m_PlayerObject;
     
     float m_createDelay;
     

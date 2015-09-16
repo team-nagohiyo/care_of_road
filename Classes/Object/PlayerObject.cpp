@@ -1,28 +1,28 @@
 //
-//  EnemyObject.cpp
+//  PlayerObject.cpp
 //  care_of_road
 //
 //  Created by ooharayukio on 2015/09/16.
 //
 //
 
-#include "EnemyObject.h"
+#include "PlayerObject.h"
 
 USING_NS_CC;
 
-EnemyObject::EnemyObject()
+PlayerObject::PlayerObject()
 {
     
 }
-EnemyObject::~EnemyObject()
+PlayerObject::~PlayerObject()
 {
     
 }
-EnemyObject* EnemyObject::create(int charaId)
+PlayerObject* PlayerObject::create()
 {
-    EnemyObject * ret = nullptr;
-    ret = new EnemyObject();
-    if(ret && ret->init(charaId))
+    PlayerObject * ret = nullptr;
+    ret = new PlayerObject();
+    if(ret && ret->init())
     {
         ret->autorelease();
         return ret;
@@ -34,20 +34,14 @@ EnemyObject* EnemyObject::create(int charaId)
     }
     return ret;
 }
-bool EnemyObject::init(int charaId)
+bool PlayerObject::init()
 {
     if(!HitObject::init())
     {
         return false;
     }
-    this->m_mainSprite = nullptr;
-    switch (charaId) {
-        default:
-        case 0:
-            m_mainSprite = Sprite::create("game/enemy.png");
-            break;
-    }
-
+    this->m_mainSprite = Sprite::create("game/turtle.png");
+    
     
     this->addChild(this->m_mainSprite);
     this->setContentSize(this->m_mainSprite->getContentSize());

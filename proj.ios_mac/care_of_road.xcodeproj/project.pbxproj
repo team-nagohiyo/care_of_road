@@ -75,6 +75,10 @@
 		5710F0B41BA9012A0036D30A /* EnemyObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F09B1BA901010036D30A /* EnemyObject.cpp */; };
 		5710F0B71BA9118D0036D30A /* TouchControlLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0B51BA9118D0036D30A /* TouchControlLayer.cpp */; };
 		5710F0B81BA9118D0036D30A /* TouchControlLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0B51BA9118D0036D30A /* TouchControlLayer.cpp */; };
+		5710F0BD1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
+		5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
+		5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
+		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
@@ -189,6 +193,10 @@
 		5710F0A81BA9010D0036D30A /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		5710F0B51BA9118D0036D30A /* TouchControlLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TouchControlLayer.cpp; sourceTree = "<group>"; };
 		5710F0B61BA9118D0036D30A /* TouchControlLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchControlLayer.h; sourceTree = "<group>"; };
+		5710F0BB1BA9AD620036D30A /* HitObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HitObject.cpp; sourceTree = "<group>"; };
+		5710F0BC1BA9AD620036D30A /* HitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitObject.h; sourceTree = "<group>"; };
+		5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerObject.cpp; sourceTree = "<group>"; };
+		5710F0C01BA9B7530036D30A /* PlayerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerObject.h; sourceTree = "<group>"; };
 		57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RollBackgroundLayer.cpp; sourceTree = "<group>"; };
 		57955E591BA6E10600C765BB /* RollBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollBackgroundLayer.h; sourceTree = "<group>"; };
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -417,6 +425,10 @@
 				5710F09A1BA901010036D30A /* BulletObject.h */,
 				5710F09B1BA901010036D30A /* EnemyObject.cpp */,
 				5710F09C1BA901010036D30A /* EnemyObject.h */,
+				5710F0BB1BA9AD620036D30A /* HitObject.cpp */,
+				5710F0BC1BA9AD620036D30A /* HitObject.h */,
+				5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */,
+				5710F0C01BA9B7530036D30A /* PlayerObject.h */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -578,10 +590,12 @@
 				5710F0B11BA9010D0036D30A /* TitleScene.cpp in Sources */,
 				570E02E51BA887F400F2116F /* GameData.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */,
 				5710F0B71BA9118D0036D30A /* TouchControlLayer.cpp in Sources */,
 				5710F09D1BA901010036D30A /* BulletObject.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5710F09E1BA901010036D30A /* EnemyObject.cpp in Sources */,
+				5710F0BD1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5710F0AB1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
 				5710F0AF1BA9010D0036D30A /* RankingScene.cpp in Sources */,
@@ -599,7 +613,9 @@
 				5710F0B41BA9012A0036D30A /* EnemyObject.cpp in Sources */,
 				5710F0B01BA9010D0036D30A /* RankingScene.cpp in Sources */,
 				5710F0B21BA9010D0036D30A /* TitleScene.cpp in Sources */,
+				5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5710F0AC1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				5710F0AE1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				570E02E61BA887F400F2116F /* GameData.cpp in Sources */,

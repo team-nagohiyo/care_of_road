@@ -56,12 +56,12 @@ bool TouchControlLayer::onTouchBegan(Touch *touch, Event *unused_event)
     
 
     TapType type = TapType::None;
-    if(this-m_NormalRect.containsPoint(touch->getLocation()))
+    if(this->m_NormalRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Normal");
         type = TapType::Normal;
     }
-    else if(this-m_ChargeRect.containsPoint(touch->getLocation()))
+    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Charge");
         type = TapType::Charge;
@@ -74,19 +74,19 @@ bool TouchControlLayer::onTouchBegan(Touch *touch, Event *unused_event)
 void TouchControlLayer::onTouchMoved(Touch *touch, Event *unused_event)
 {
     Vec2 world = this->m_normal->getParent()->convertToWorldSpace(this->m_normal->getPosition());
-    this->m_NormalRect = Rect(world.x,world.y,this->m_normal->getContentSize().width,this->m_charge->getContentSize().height);
+    this->m_NormalRect = Rect(world.x,world.y,this->m_normal->getContentSize().width,this->m_normal->getContentSize().height);
     
     world = this->m_charge->getParent()->convertToWorldSpace(this->m_charge->getPosition());
     this->m_ChargeRect = Rect(world.x,world.y,this->m_charge->getContentSize().width,this->m_charge->getContentSize().height);
     
     
     TapType type = TapType::None;
-    if(this-m_NormalRect.containsPoint(touch->getLocation()))
+    if(this->m_NormalRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Normal");
         type = TapType::Normal;
     }
-    else if(this-m_ChargeRect.containsPoint(touch->getLocation()))
+    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Charge");
         type = TapType::Charge;
@@ -97,8 +97,6 @@ void TouchControlLayer::onTouchMoved(Touch *touch, Event *unused_event)
 
 void TouchControlLayer::onTouchEnded(Touch *touch, Event *unused_event)
 {
-    CCLOG("%s : %s(%d)", "BattleScene", __FUNCTION__, __LINE__);
-    
     Vec2 world = this->m_normal->getParent()->convertToWorldSpace(this->m_normal->getPosition());
     this->m_NormalRect = Rect(world.x,world.y,this->m_normal->getContentSize().width,this->m_charge->getContentSize().height);
     
@@ -107,12 +105,12 @@ void TouchControlLayer::onTouchEnded(Touch *touch, Event *unused_event)
     
     
     TapType type = TapType::None;
-    if(this-m_NormalRect.containsPoint(touch->getLocation()))
+    if(this->m_NormalRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Normal");
         type = TapType::Normal;
     }
-    else if(this-m_ChargeRect.containsPoint(touch->getLocation()))
+    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
     {
         CCLOG("Charge");
         type = TapType::Charge;

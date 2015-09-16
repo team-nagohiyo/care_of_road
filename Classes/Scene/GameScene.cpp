@@ -46,6 +46,9 @@ bool GameScene::init()
     this->m_BulletLayer->setPosition(Vec2::ZERO);
     this->addChild(this->m_BulletLayer,20);
     
+    this->m_PlayerObject = PlayerObject::create();
+    this->m_PlayerObject->setPosition(Vec2(visibleSize.width * 0.5f,200.0f));
+    this->addChild(this->m_PlayerObject,30);
     
     GameData::getInstance()->setGameScore(0);
     
@@ -54,6 +57,9 @@ bool GameScene::init()
     
     this->m_TouchControl = TouchControlLayer::create();
     this->m_TouchControl->setPosition(origin);
+    this->m_TouchControl->setBeganCallback(CC_CALLBACK_2(GameScene::OnControlTapBegan,this));
+    this->m_TouchControl->setMovedCallback(CC_CALLBACK_2(GameScene::OnControlTapMoved,this));
+    this->m_TouchControl->setEndedCallback(CC_CALLBACK_2(GameScene::OnControlTapEnded,this));
     this->addChild(this->m_TouchControl,1);
     
     this->m_createDelay = 0.0f;
@@ -175,20 +181,20 @@ void GameScene::entryBulletObject(BulletObject* obj)
  */
 void GameScene::OnControlTapBegan(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
-    
+    this->m_PlayerObject->setPosition(pos);
 }
 /**
  * コントローラのタップ移動
  */
 void GameScene::OnControlTapMoved(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
-    
+    this->m_PlayerObject->setPosition(pos);
 }
 /**
  * コントローラのタップ終了
  */
 void GameScene::OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
-    
+    this->m_PlayerObject->setPosition(pos);
 }
 
