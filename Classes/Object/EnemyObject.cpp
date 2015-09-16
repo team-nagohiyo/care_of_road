@@ -40,8 +40,19 @@ bool EnemyObject::init(int charaId)
     {
         return false;
     }
+    this->m_mainSprite = nullptr;
+    switch (charaId) {
+        default:
+        case 0:
+            m_mainSprite = Sprite::create("game/enemy.png");
+            break;
+    }
+
     
+    this->addChild(this->m_mainSprite);
+    this->setContentSize(this->m_mainSprite->getContentSize());
+    this->setAnchorPoint(Vec2::ONE * 0.5f);
     
-    
+    this->m_mainSprite->setPosition(this->getContentSize()/2.0f);
     return true;
 }

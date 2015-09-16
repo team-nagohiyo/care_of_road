@@ -18,6 +18,24 @@
 
 class GameScene : public cocos2d::Layer
 {
+public:
+    //ゲームの進行ステート
+    enum struct GameState:int
+    {
+        StartWait = 0,
+        Stating,
+        GamePlay,
+        GameOver,
+    };
+
+    //プレイヤーのステート
+    enum struct PlayState:int
+    {
+        Wait = 0,
+        Shot,
+        Delay,
+        Charge,
+    };
 protected:
     RollBackgroundLayer * m_roll;
     
@@ -27,6 +45,8 @@ protected:
     cocos2d::Layer* m_EnemyLayer;
     cocos2d::Layer* m_BulletLayer;
     TouchControlLayer * m_TouchControl;
+    
+    float m_createDelay;
     
 public:
     static cocos2d::Scene* createScene();
@@ -47,7 +67,7 @@ public:
     /**
      * 行動
      */
-    virtual void updateAction();
+    virtual void updateAction(float dt);
     
     /**
      * 魂状態の人を削除
@@ -57,12 +77,26 @@ public:
     /**
      * 敵オブジェクトの追加
      */
-    virtual void entryEnemyObject(cocos2d::Vec2 position, EnemyObject* obj);
+    virtual void entryEnemyObject(EnemyObject* obj);
 
     /**
      * 弾オブジェクトの追加
      */
-    virtual void entryBulletObject(cocos2d::Vec2 position, BulletObject* obj);
+    virtual void entryBulletObject(BulletObject* obj);
+    
+    
+    /**
+     * コントローラのタップ開始
+     */
+    virtual void OnControlTapBegan(cocos2d::Vec2 pos,TouchControlLayer::TapType type);
+    /**
+     * コントローラのタップ移動
+     */
+    virtual void OnControlTapMoved(cocos2d::Vec2 pos,TouchControlLayer::TapType type);
+    /**
+     * コントローラのタップ終了
+     */
+    virtual void OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType type);
 };
 
 #endif /* defined(__care_of_road__GameScene__) */

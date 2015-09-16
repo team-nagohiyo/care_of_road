@@ -56,6 +56,8 @@ bool GameScene::init()
     this->m_TouchControl->setPosition(origin);
     this->addChild(this->m_TouchControl,1);
     
+    this->m_createDelay = 0.0f;
+    
     return true;
 }
 /**
@@ -67,7 +69,7 @@ void GameScene::update(float dt)
     this->hitCheck();
     
     //オブジェクト行動
-    this->updateAction();
+    this->updateAction(dt);
     
     //オブジェクトデリートチェック
     this->removeObjectWithSoul();
@@ -84,9 +86,28 @@ void GameScene::hitCheck()
 /**
  * 行動
  */
-void GameScene::updateAction()
+void GameScene::updateAction(float dt)
 {
+    this->m_createDelay -= dt;
+
+    //敵の行動
+    for(auto work : this->m_EnemyList)
+    {
+        work->setPositionY(work->getPositionY() - this->m_roll->getSpeed() * dt);
+    }
+
     
+    //敵の生成
+    if(this->m_createDelay < 0.0f)
+    {
+        this->m_createDelay = 1.0f;
+        auto enemy = EnemyObject::create(0);
+        float workX = this->getContentSize().width - enemy->getContentSize().width;
+        workX = random(0.0f, workX) + (enemy->getContentSize().width / 2.0f);
+        float workY = 1500.0f;
+        enemy->setPosition(Vec2(workX,workY));
+        this->entryEnemyObject(enemy);
+    }
 }
 
 /**
@@ -115,7 +136,8 @@ void GameScene::removeObjectWithSoul()
     cocos2d::Vector<EnemyObject*> deleteList2;
     for(auto work : this->m_EnemyList)
     {
-        if(work->getState() == EnemyObject::EnemyState::SOUL)
+        if(work->getState() == EnemyObject::EnemyState::SOUL ||
+           work->getPositionY() < -work->getContentSize().height)
         {
             this->m_EnemyLayer->removeChild(work);
             deleteList2.pushBack(work);
@@ -133,7 +155,7 @@ void GameScene::removeObjectWithSoul()
 /**
  * 敵オブジェクトの追加
  */
-void GameScene::entryEnemyObject(cocos2d::Vec2 position, EnemyObject* obj)
+void GameScene::entryEnemyObject(EnemyObject* obj)
 {
     this->m_EnemyList.pushBack(obj);
     this->m_EnemyLayer->addChild(obj);
@@ -142,8 +164,31 @@ void GameScene::entryEnemyObject(cocos2d::Vec2 position, EnemyObject* obj)
 /**
  * 弾オブジェクトの追加
  */
-void GameScene::entryBulletObject(cocos2d::Vec2 position, BulletObject* obj)
+void GameScene::entryBulletObject(BulletObject* obj)
 {
     this->m_BulletList.pushBack(obj);
     this->m_EnemyLayer->addChild(obj);
 }
+
+/**
+ * コントローラのタップ開始
+ */
+void GameScene::OnControlTapBegan(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
+{
+    
+}
+/**
+ * コントローラのタップ移動
+ */
+void GameScene::OnControlTapMoved(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
+{
+    
+}
+/**
+ * コントローラのタップ終了
+ */
+void GameScene::OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
+{
+    
+}
+

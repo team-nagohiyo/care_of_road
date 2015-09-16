@@ -30,7 +30,8 @@ public:
     CC_SYNTHESIZE(int, m_Life, Life);
     CC_SYNTHESIZE(EnemyState, State, State);
 protected:
-    
+    cocos2d::Sprite * m_mainSprite;
+
 public:
     EnemyObject();
     virtual ~EnemyObject();
