@@ -135,7 +135,7 @@ void GameScene::updateAction(float dt)
     }
     
     //プレイヤーの行動
-    this->m_PlayerObject->update(dt);
+    this->m_PlayerObject->updateAction(dt);
 
     
     //敵の生成
