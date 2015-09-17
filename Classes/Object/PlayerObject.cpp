@@ -8,10 +8,13 @@
 
 #include "PlayerObject.h"
 #include "GameData.h"
+#include "GameMediator.h"
 
 USING_NS_CC;
 
 PlayerObject::PlayerObject()
+:m_CatchBullet(nullptr)
+,m_State(PlayerState::Wait)
 {
     
 }
@@ -50,7 +53,7 @@ bool PlayerObject::init()
     
     this->m_mainSprite->setPosition(this->getContentSize()/2.0f);
     
-    this->setChargeMaxPower(5);
+    this->setChargeMaxPower(2.5f);
     this->setChargeAdd(1);
     this->m_ChagePower = 0;
     this->m_Delay = 0;
@@ -60,44 +63,89 @@ bool PlayerObject::init()
 /**
  * 行動の更新
  */
-void PlayerObject::update(float dt)
+void PlayerObject::updateAction(float dt)
 {
+    //ダメージ反映処理
     if(!this->getHitObjectList().empty())
     {
         this->setState(PlayerState::Hit);
         this->m_ChagePower = 0;
+        this->getHitObjectList().clear();
     }
 
-    if(this->m_Delay < 0)
+    //待ち時間状態に入ったなら
+    if(this->getState() == PlayerState::Delay || this->getState() == PlayerState::Wait)
     {
-        //charge中ステートの処理
-        if(this->m_Mode == ShotMode::ChageShot)
+        if(this->m_Delay < 0)
         {
-            if(this->getState() == PlayerState::Charge)
+            //弾が生成タイミングなら
+            this->m_CatchBullet = this->createBullet();
+            GameMediator::getInstance()->entryBulletObjectToField(this->m_CatchBullet);
+            this->m_CatchBullet->setPosition(this->getPosition());
+            
+            //charge中ステートの処理
+            if(this->m_Mode == ShotMode::ChageShot)
             {
+                //[状態切替]charge
                 this->setState(PlayerState::Charge);
                 
-                if(this->m_ChagePower > this->getChargeMaxPower())
-                {
-                    this->m_ChagePower = 0;
-                    
-                    this->createBullet();
-                }
-                else
-                {
-                    this->m_ChagePower += this->getChargeAdd() * dt;
-                }
+                this->m_CatchBullet->catchBody(this);
             }
+            else
+            {
+                //[状態切替]ショット
+                this->setState(PlayerState::Shot);
+            }
+            
+            //待ち時間の初期化
+            this->m_Delay += 0.2f;
         }
         else
         {
-            this->createBullet();
+            this->setState(PlayerState::Delay);
+            this->m_Delay -= dt;
         }
     }
-    else
+    
+    //チャージ中の処理
+    if(this->getState() == PlayerState::Charge)
     {
+        float rate = (this->m_ChagePower / this->getChargeMaxPower());
+        float rote = (15.0f*360.0f/60) * rate;
+        if(this->m_CatchBullet)
+        {
+            this->m_CatchBullet->setChageScale(0.5f * rate);
+            this->m_CatchBullet->setRotateSpeed((5.0f*360.0f/60) + rote);
+        }
+        
+        //チャージ中にモードが変更されたら
+        if(this->m_Mode == ShotMode::MachineGun)
+        {
+            //[状態切替]ショット
+            this->setState(PlayerState::Shot);
+        }
+        else if(this->m_ChagePower > this->getChargeMaxPower())
+        {
+            //[状態切替]ショット
+            this->setState(PlayerState::Shot);
+        }
+        else
+        {
+            this->m_ChagePower += this->getChargeAdd() * dt;
+        }
+    }
+    
+    //ショットの処理
+    if(this->getState() == PlayerState::Shot)
+    {
+        this->m_ChagePower = 0;
+        this->m_CatchBullet->shot();
+        this->m_CatchBullet = nullptr;
+        
+        //[状態切替]待ち時間の設定
         this->setState(PlayerState::Delay);
     }
+    
 }
 
 /**
@@ -121,6 +169,8 @@ void PlayerObject::OnChage()
  */
 BulletObject * PlayerObject::createBullet()
 {
-    
+    BulletObject * ret = nullptr;
+    ret = BulletObject::create(0);
+    return ret;
 }
 

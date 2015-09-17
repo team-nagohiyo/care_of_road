@@ -7,10 +7,17 @@
 //
 
 #include "BulletObject.h"
+#include "EnemyObject.h"
 
 USING_NS_CC;
 
+#define SHOT_MOVE_VEC (cocos2d::Vec2(0,30.0f))
+
 BulletObject::BulletObject()
+:m_ChachParent(nullptr)
+,m_RotateSpeed(5.0f*360.0f/60)
+,m_ChageScale(1.0f)
+,m_Attack(1)
 {
     
 }
@@ -59,3 +66,68 @@ bool BulletObject::init(int charaId)
     
     return true;
 }
+/**
+ * 行動の更新
+ */
+void BulletObject::updateAction(float dt)
+{
+    //ダメージ判定
+    for(auto work : this->getHitObjectList() )
+    {
+        EnemyObject * enemy = dynamic_cast<EnemyObject*>(work);
+        if(enemy)
+        {
+            if(this->getAttack() > enemy->getMaxLife())
+            {
+                this->setAttack(this->getAttack() - enemy->getMaxLife());
+            }
+            else
+            {
+                this->setAttack(0);
+            }
+        }
+    }
+    this->getHitObjectList().clear();
+    
+    if(this->m_ChachParent)
+    {
+        this->setPosition(this->m_ChachParent->getPosition() + Vec2(0,50));
+    }
+    else
+    {
+        this->setPosition(this->getPosition() + SHOT_MOVE_VEC);
+    }
+    
+    //回転処理
+    this->m_mainSprite->setRotation(this->m_mainSprite->getRotation() + this->getRotateSpeed());
+    //charge変形処理
+    if(this->getChageScale() < 0.5f)
+    {
+        this->setChageScale(0.5f);
+    }
+    this->m_mainSprite->setScaleY(this->getChageScale());
+}
+
+/**
+ * 球を捕まえる(溜めている最中)
+ */
+void BulletObject::catchBody(cocos2d::Node * target)
+{
+    this->m_ChachParent = target;
+}
+/**
+ * 行動が自由になる
+ */
+void BulletObject::freeBody()
+{
+    this->m_ChachParent = nullptr;
+}
+/**
+ * 放たれる
+ */
+void BulletObject::shot()
+{
+    this->freeBody();
+    this->m_ChachParent = nullptr;
+}
+

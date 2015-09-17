@@ -48,7 +48,9 @@ public:
     virtual bool init();
     
     CREATE_FUNC(GameScene);
-
+    
+    GameScene();
+    virtual ~GameScene();
     /**
      * 更新
      */

@@ -29,6 +29,7 @@ public:
     CC_SYNTHESIZE(int, m_Type, Type);
     CC_SYNTHESIZE(int, m_Score, Score);
     CC_SYNTHESIZE(int, m_Life, Life);
+    CC_SYNTHESIZE(int, m_MaxLife, MaxLife);
     CC_SYNTHESIZE(EnemyState, State, State);
 protected:
     cocos2d::Sprite * m_mainSprite;
@@ -39,6 +40,10 @@ public:
     static EnemyObject* create(int charaId);
     bool init(int charaId);
     
+    /**
+     * 行動の更新
+     */
+    virtual void updateAction(float dt);
 };
 
 #endif /* defined(__care_of_road__EnemyObject__) */

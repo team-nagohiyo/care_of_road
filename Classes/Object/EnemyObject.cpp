@@ -1,3 +1,4 @@
+
 //
 //  EnemyObject.cpp
 //  care_of_road
@@ -7,10 +8,13 @@
 //
 
 #include "EnemyObject.h"
+#include "BulletObject.h"
 
 USING_NS_CC;
 
 EnemyObject::EnemyObject()
+:m_MaxLife(1)
+,m_Life(1)
 {
     
 }
@@ -55,4 +59,44 @@ bool EnemyObject::init(int charaId)
     
     this->m_mainSprite->setPosition(this->getContentSize()/2.0f);
     return true;
+}
+
+/**
+ * 行動の更新
+ */
+void EnemyObject::updateAction(float dt)
+{
+    //ダメージ反映処理
+    if(this->getState() == EnemyState::WAIT)
+    {
+        for(auto work : this->getHitObjectList() )
+        {
+            BulletObject * bullet = dynamic_cast<BulletObject*>(work);
+            if(bullet)
+            {
+                this->setLife(this->getLife() - bullet->getAttack());
+            }
+        }
+    }
+    this->getHitObjectList().clear();
+    
+    //死亡判定
+    if(this->getLife() < 0)
+    {
+        this->setState(EnemyState::DEAD);
+    }
+    
+    //死亡アニメーション
+    if(this->getState() == EnemyState::DEAD)
+    {
+        if(this->m_mainSprite->getScale() > 2.0f)
+        {
+            this->setState(EnemyState::SOUL);
+        }
+        else
+        {
+            float rate = this->m_mainSprite->getScale() + 1.0f * dt;
+            this->m_mainSprite->setScale(rate);
+        }
+    }
 }

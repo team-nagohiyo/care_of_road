@@ -8,11 +8,20 @@
 
 #include "GameScene.h"
 #include "GameData.h"
+#include "GameMediator.h"
 
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
+GameScene::GameScene()
+{
+    GameMediator::getInstance()->setMediateGameScene(this);
+}
+GameScene::~GameScene()
+{
+    GameMediator::getInstance()->setMediateGameScene(nullptr);
+}
 
 Scene* GameScene::createScene()
 {
@@ -86,7 +95,25 @@ void GameScene::update(float dt)
  */
 void GameScene::hitCheck()
 {
-    
+    for(auto target : this->m_EnemyList)
+    {
+        for(auto work : this->m_BulletList)
+        {
+            float range = work->getHitLength() + target->getHitLength();
+            if((work->getPosition() - target->getPosition()).length() < range)
+            {
+                target->entryHitObject(work);
+                work->entryHitObject(target);
+            }
+        }
+        
+        float range = this->m_PlayerObject->getHitLength() + target->getHitLength();
+        if((this->m_PlayerObject->getPosition() - target->getPosition()).length() < range)
+        {
+            target->entryHitObject(this->m_PlayerObject);
+            this->m_PlayerObject->entryHitObject(target);
+        }
+    }
 }
 
 /**
@@ -101,6 +128,14 @@ void GameScene::updateAction(float dt)
     {
         work->setPositionY(work->getPositionY() - this->m_roll->getSpeed() * dt);
     }
+    //弾の行動
+    for(auto work : this->m_BulletList)
+    {
+        work->updateAction(dt);
+    }
+    
+    //プレイヤーの行動
+    this->m_PlayerObject->update(dt);
 
     
     //敵の生成
@@ -112,7 +147,7 @@ void GameScene::updateAction(float dt)
         workX = random(0.0f, workX) + (enemy->getContentSize().width / 2.0f);
         float workY = 1500.0f;
         enemy->setPosition(Vec2(workX,workY));
-        this->entryEnemyObject(enemy);
+        GameMediator::getInstance()->entryEnemyObjectToField(enemy);
     }
 }
 
@@ -126,7 +161,8 @@ void GameScene::removeObjectWithSoul()
     cocos2d::Vector<BulletObject*> deleteList;
     for(auto work : this->m_BulletList)
     {
-        if(work->getAttack() <= 0)
+        if(work->getAttack() <= 0 ||
+           work->getPositionY() > (work->getContentSize().height + this->getContentSize().height))
         {
             this->m_BulletLayer->removeChild(work);
             deleteList.pushBack(work);
@@ -173,7 +209,7 @@ void GameScene::entryEnemyObject(EnemyObject* obj)
 void GameScene::entryBulletObject(BulletObject* obj)
 {
     this->m_BulletList.pushBack(obj);
-    this->m_EnemyLayer->addChild(obj);
+    this->m_BulletLayer->addChild(obj);
 }
 
 /**
@@ -182,6 +218,17 @@ void GameScene::entryBulletObject(BulletObject* obj)
 void GameScene::OnControlTapBegan(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
     this->m_PlayerObject->setPosition(pos);
+    
+    if(type == TouchControlLayer::TapType::Normal)
+    {
+        //マシンガン開始
+        this->m_PlayerObject->OnMashinGun();
+    }
+    else
+    {
+        //charge開始
+        this->m_PlayerObject->OnChage();
+    }
 }
 /**
  * コントローラのタップ移動
@@ -189,6 +236,17 @@ void GameScene::OnControlTapBegan(cocos2d::Vec2 pos,TouchControlLayer::TapType t
 void GameScene::OnControlTapMoved(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
     this->m_PlayerObject->setPosition(pos);
+    
+    if(type == TouchControlLayer::TapType::Normal)
+    {
+        //マシンガン開始
+        this->m_PlayerObject->OnMashinGun();
+    }
+    else
+    {
+        //charge開始
+        this->m_PlayerObject->OnChage();
+    }
 }
 /**
  * コントローラのタップ終了
@@ -196,5 +254,16 @@ void GameScene::OnControlTapMoved(cocos2d::Vec2 pos,TouchControlLayer::TapType t
 void GameScene::OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType type)
 {
     this->m_PlayerObject->setPosition(pos);
+    
+    if(type == TouchControlLayer::TapType::Normal)
+    {
+        //マシンガン開始
+        this->m_PlayerObject->OnMashinGun();
+    }
+    else
+    {
+        //charge開始
+        this->m_PlayerObject->OnChage();
+    }
 }
 

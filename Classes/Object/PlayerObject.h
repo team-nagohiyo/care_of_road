@@ -40,9 +40,9 @@ public:
     CC_SYNTHESIZE(int, m_Type, Type);
     CC_SYNTHESIZE(int, m_Score, Score);
     CC_SYNTHESIZE(int, m_Life, Life);
-    CC_SYNTHESIZE(PlayerState, State, State);
+    CC_SYNTHESIZE(PlayerState, m_State, State);
     
-    CC_SYNTHESIZE(int, m_ChargeMaxPower, ChargeMaxPower);
+    CC_SYNTHESIZE(float, m_ChargeMaxPower, ChargeMaxPower);
     CC_SYNTHESIZE(int, m_ChargeAdd, ChargeAdd);
     
 protected:
@@ -51,6 +51,8 @@ protected:
     float m_ChagePower;
     float m_Delay;
     ShotMode m_Mode;
+    
+    BulletObject * m_CatchBullet;
 public:
     PlayerObject();
     virtual ~PlayerObject();
@@ -60,7 +62,7 @@ public:
     /**
      * 行動の更新
      */
-    virtual void update(float dt);
+    virtual void updateAction(float dt);
     
     /**
      * 弾の発射
