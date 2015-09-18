@@ -30,7 +30,7 @@ public:
     CC_SYNTHESIZE(int, m_Score, Score);
     CC_SYNTHESIZE(int, m_Life, Life);
     CC_SYNTHESIZE(int, m_MaxLife, MaxLife);
-    CC_SYNTHESIZE(EnemyState, State, State);
+    CC_SYNTHESIZE(EnemyState, m_State, State);
 protected:
     cocos2d::Sprite * m_mainSprite;
 
@@ -44,6 +44,11 @@ public:
      * 行動の更新
      */
     virtual void updateAction(float dt);
+    
+    /**
+     * ダメージを受け入れるか
+     */
+    virtual bool isUnlockOfDamage();
 };
 
 #endif /* defined(__care_of_road__EnemyObject__) */

@@ -16,7 +16,7 @@ PlayerObject::PlayerObject()
 :m_CatchBullet(nullptr)
 ,m_State(PlayerState::Wait)
 {
-    
+    this->setHitLength(64.0f);
 }
 PlayerObject::~PlayerObject()
 {

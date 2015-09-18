@@ -19,7 +19,8 @@ BulletObject::BulletObject()
 ,m_ChageScale(1.0f)
 ,m_Attack(1)
 {
-    
+    this->setHitLength(64.0f);
+
 }
 BulletObject::~BulletObject()
 {

@@ -15,8 +15,10 @@ USING_NS_CC;
 EnemyObject::EnemyObject()
 :m_MaxLife(1)
 ,m_Life(1)
+,m_State(EnemyState::WAIT)
 {
-    
+    this->setHitLength(64.0f);
+
 }
 EnemyObject::~EnemyObject()
 {
@@ -77,14 +79,14 @@ void EnemyObject::updateAction(float dt)
                 this->setLife(this->getLife() - bullet->getAttack());
             }
         }
+        //死亡判定
+        if(this->getLife() < 0)
+        {
+            this->setState(EnemyState::DEAD);
+        }
     }
     this->getHitObjectList().clear();
     
-    //死亡判定
-    if(this->getLife() < 0)
-    {
-        this->setState(EnemyState::DEAD);
-    }
     
     //死亡アニメーション
     if(this->getState() == EnemyState::DEAD)
@@ -100,3 +102,12 @@ void EnemyObject::updateAction(float dt)
         }
     }
 }
+/**
+ * ダメージを受け入れるか
+ */
+bool EnemyObject::isUnlockOfDamage()
+{
+    if(this->getState() == EnemyState::WAIT)return true;
+    return false;
+}
+
