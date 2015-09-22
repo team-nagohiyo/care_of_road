@@ -14,6 +14,7 @@
 class HitObject : public cocos2d::Node
 {
     cocos2d::Vector<HitObject*> m_HitObjectList;
+    CC_SYNTHESIZE(bool, m_Enabled, Enabled);
     CC_SYNTHESIZE(float, m_HitLength, HitLength);
 public:
     HitObject();

@@ -32,7 +32,7 @@ bool RankingScene::init()
     auto titleSprite = Sprite::create("str/title_ranking.png");
     // position the sprite on the center of the screen
     titleSprite->setPosition(Vec2(visibleSize.width/2 + origin.x,
-                                  visibleSize.height/2 + origin.y + 300.0f));
+                                  visibleSize.height * 0.75f));
     
     this->addChild(titleSprite, 10);
     this->m_roll = RollBackgroundLayer::create();
@@ -40,8 +40,14 @@ bool RankingScene::init()
     this->m_roll->setPosition(Vec2::ZERO);
     
     //メニュー
+    auto labelScore = Sprite::create("str/label_score.png");
+    labelScore->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height * 0.625f));
+    this->addChild(labelScore, 3);
+    char strScore[32] = "";
+    sprintf(strScore,"%012d",GameData::getInstance()->getHighScore());
     
-    auto label = Label::createWithTTF("SCORE 000000", "fonts/Marker Felt.ttf", 56);
+    auto label = Label::createWithBMFont("str/little_number.fnt",strScore);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height/2));
     this->addChild(label, 2);

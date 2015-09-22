@@ -9,6 +9,8 @@
 #include "HitObject.h"
 
 HitObject::HitObject()
+:m_Enabled(true)
+,m_HitLength(0)
 {
     
 }

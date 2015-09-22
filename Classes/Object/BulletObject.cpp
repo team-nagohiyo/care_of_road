@@ -115,6 +115,7 @@ void BulletObject::updateAction(float dt)
 void BulletObject::catchBody(cocos2d::Node * target)
 {
     this->m_ChachParent = target;
+    this->setEnabled(false);
 }
 /**
  * 行動が自由になる
@@ -122,6 +123,7 @@ void BulletObject::catchBody(cocos2d::Node * target)
 void BulletObject::freeBody()
 {
     this->m_ChachParent = nullptr;
+    this->setEnabled(true);
 }
 /**
  * 放たれる

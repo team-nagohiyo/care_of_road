@@ -33,6 +33,8 @@ public:
     CC_SYNTHESIZE(EnemyState, m_State, State);
 protected:
     cocos2d::Sprite * m_mainSprite;
+    
+    float m_hitDelay;
 
 public:
     EnemyObject();
@@ -49,6 +51,11 @@ public:
      * ダメージを受け入れるか
      */
     virtual bool isUnlockOfDamage();
+
+    /**
+     * 生きているか
+     */
+    virtual bool isAlive();
 };
 
 #endif /* defined(__care_of_road__EnemyObject__) */

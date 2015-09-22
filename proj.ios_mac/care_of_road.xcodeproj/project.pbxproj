@@ -79,6 +79,10 @@
 		5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
 		5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
+		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; settings = {ASSET_TAGS = (); }; };
+		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; settings = {ASSET_TAGS = (); }; };
+		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; settings = {ASSET_TAGS = (); }; };
 		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
@@ -199,6 +203,10 @@
 		5710F0BC1BA9AD620036D30A /* HitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitObject.h; sourceTree = "<group>"; };
 		5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerObject.cpp; sourceTree = "<group>"; };
 		5710F0C01BA9B7530036D30A /* PlayerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerObject.h; sourceTree = "<group>"; };
+		5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGenerator.cpp; sourceTree = "<group>"; };
+		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
+		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
+		5765F6181BB0632B00B6ED18 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
 		57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RollBackgroundLayer.cpp; sourceTree = "<group>"; };
 		57955E591BA6E10600C765BB /* RollBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollBackgroundLayer.h; sourceTree = "<group>"; };
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -343,14 +351,13 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				5765F6111BADB27100B6ED18 /* Manager */,
 				5710F0981BA900E20036D30A /* Object */,
 				5710F0971BA900D40036D30A /* Scene */,
 				46880B8419C43A87006E1F66 /* AppDelegate.cpp */,
 				46880B8519C43A87006E1F66 /* AppDelegate.h */,
 				57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */,
 				57955E591BA6E10600C765BB /* RollBackgroundLayer.h */,
-				570E02E31BA887F400F2116F /* GameData.cpp */,
-				570E02E41BA887F400F2116F /* GameData.h */,
 				5710F0B51BA9118D0036D30A /* TouchControlLayer.cpp */,
 				5710F0B61BA9118D0036D30A /* TouchControlLayer.h */,
 				57D796041BAA829600915579 /* GameMediator.cpp */,
@@ -420,6 +427,8 @@
 				5710F0A61BA9010D0036D30A /* RankingScene.h */,
 				5710F0A71BA9010D0036D30A /* TitleScene.cpp */,
 				5710F0A81BA9010D0036D30A /* TitleScene.h */,
+				5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */,
+				5765F6181BB0632B00B6ED18 /* GameOverScene.h */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -437,6 +446,17 @@
 				5710F0C01BA9B7530036D30A /* PlayerObject.h */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		5765F6111BADB27100B6ED18 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				570E02E31BA887F400F2116F /* GameData.cpp */,
+				570E02E41BA887F400F2116F /* GameData.h */,
+				5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */,
+				5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */,
+			);
+			name = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -593,11 +613,13 @@
 			files = (
 				5710F0AD1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
 				5710F0B11BA9010D0036D30A /* TitleScene.cpp in Sources */,
 				570E02E51BA887F400F2116F /* GameData.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */,
 				5710F0B71BA9118D0036D30A /* TouchControlLayer.cpp in Sources */,
+				5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */,
 				5710F09D1BA901010036D30A /* BulletObject.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5710F09E1BA901010036D30A /* EnemyObject.cpp in Sources */,
@@ -621,8 +643,10 @@
 				5710F0B01BA9010D0036D30A /* RankingScene.cpp in Sources */,
 				5710F0B21BA9010D0036D30A /* TitleScene.cpp in Sources */,
 				5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */,
+				5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */,
+				5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
 				5710F0AC1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				5710F0AE1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				57D796091BAACA6300915579 /* GameMediator.cpp in Sources */,
@@ -655,6 +679,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -672,8 +697,9 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.nagohiyo.CareOfWay;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
@@ -687,6 +713,7 @@
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
+				ENABLE_BITCODE = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;
@@ -702,8 +729,9 @@
 					"$(SRCROOT)/../cocos2d/cocos/platform/ios/Simulation",
 				);
 				INFOPLIST_FILE = ios/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.nagohiyo.CareOfWay;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";

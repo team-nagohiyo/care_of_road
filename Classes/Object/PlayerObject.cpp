@@ -17,6 +17,7 @@ PlayerObject::PlayerObject()
 ,m_State(PlayerState::Wait)
 {
     this->setHitLength(64.0f);
+    this->setLife(1);
 }
 PlayerObject::~PlayerObject()
 {
@@ -53,7 +54,7 @@ bool PlayerObject::init()
     
     this->m_mainSprite->setPosition(this->getContentSize()/2.0f);
     
-    this->setChargeMaxPower(2.5f);
+    this->setChargeMaxPower(1.0f);
     this->setChargeAdd(1);
     this->m_ChagePower = 0;
     this->m_Delay = 0;
@@ -71,6 +72,8 @@ void PlayerObject::updateAction(float dt)
         this->setState(PlayerState::Hit);
         this->m_ChagePower = 0;
         this->getHitObjectList().clear();
+        
+        this->setLife(this->getLife() - 1);
     }
 
     //待ち時間状態に入ったなら
@@ -114,7 +117,7 @@ void PlayerObject::updateAction(float dt)
         float rote = (15.0f*360.0f/60) * rate;
         if(this->m_CatchBullet)
         {
-            this->m_CatchBullet->setChageScale(0.5f * rate);
+            this->m_CatchBullet->setChageScale(1.0f * (rate) + 1.0f);
             this->m_CatchBullet->setRotateSpeed((5.0f*360.0f/60) + rote);
         }
         
@@ -174,3 +177,10 @@ BulletObject * PlayerObject::createBullet()
     return ret;
 }
 
+/**
+ * 生きているか
+ */
+bool PlayerObject::isAlive()
+{
+    return this->getLife() > 0;
+}

@@ -79,6 +79,11 @@ public:
      */
     virtual BulletObject * createBullet();
     
+    /**
+     * 生きているか
+     */
+    virtual bool isAlive();
+    
 };
 
 

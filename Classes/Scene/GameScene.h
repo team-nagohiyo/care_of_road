@@ -24,11 +24,12 @@ public:
     enum struct GameState:int
     {
         StartWait = 0,
-        Stating,
+        Starting,
         GamePlay,
         GameOver,
     };
 
+    CC_SYNTHESIZE(GameState, m_State, State);
 protected:
     RollBackgroundLayer * m_roll;
     
@@ -41,7 +42,12 @@ protected:
     
     PlayerObject * m_PlayerObject;
     
-    float m_createDelay;
+    cocos2d::Rect m_TouchRect;
+    
+    cocos2d::Label * m_ScoreLabel;
+    
+    cocos2d::Vec2 m_StartingPos;
+    cocos2d::Vec2 m_StartPos;
     
 public:
     static cocos2d::Scene* createScene();
@@ -81,7 +87,16 @@ public:
      */
     virtual void entryBulletObject(BulletObject* obj);
     
+
+    /**
+     * スコア表示の更新
+     */
+    virtual void refreshScoreLabel();
     
+    /**
+     * 共通操作処理
+     */
+    virtual void sharedTapControl(cocos2d::Vec2 pos,TouchControlLayer::TapType type);
     /**
      * コントローラのタップ開始
      */
@@ -94,6 +109,11 @@ public:
      * コントローラのタップ終了
      */
     virtual void OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType type);
+    
+    /**
+     * ゲームオーバー画面に移動
+     */
+    void moveToGameOver();
 };
 
 #endif /* defined(__care_of_road__GameScene__) */

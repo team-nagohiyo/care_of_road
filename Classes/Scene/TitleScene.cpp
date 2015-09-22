@@ -70,7 +70,7 @@ bool TitleScene::init()
     //音楽は常に流しっぱなし
     if(false == SimpleAudioEngine::getInstance()->isBackgroundMusicPlaying())
     {
-        SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3");
+        SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3",true);
     }
 
     
@@ -81,7 +81,6 @@ bool TitleScene::init()
  */
 void TitleScene::moveToGame(Ref * sender)
 {
-    SimpleAudioEngine::getInstance()->playEffect("sound/cow_jingle_start.mp3");
     Director::getInstance()->replaceScene(GameScene::createScene());
 }
 /**

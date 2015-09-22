@@ -10,12 +10,16 @@
 #include "EnemyObject.h"
 #include "BulletObject.h"
 
+#define DEF_HIT_ANIME (0.25f)
+
 USING_NS_CC;
 
 EnemyObject::EnemyObject()
 :m_MaxLife(1)
 ,m_Life(1)
 ,m_State(EnemyState::WAIT)
+,m_Score(100)
+,m_hitDelay(0)
 {
     this->setHitLength(64.0f);
 
@@ -77,15 +81,34 @@ void EnemyObject::updateAction(float dt)
             if(bullet)
             {
                 this->setLife(this->getLife() - bullet->getAttack());
+                this->setState(EnemyState::HIT);
             }
         }
         //死亡判定
         if(this->getLife() < 0)
         {
+            this->setEnabled(false);
             this->setState(EnemyState::DEAD);
+        }
+        //ヒット状態のアニメーション
+        if(this->getState() == EnemyState::HIT)
+        {
+            this->m_mainSprite->setColor(Color3B::RED);
         }
     }
     this->getHitObjectList().clear();
+    
+    //ヒット中のアニメーション
+    if(this->getState() == EnemyState::HIT)
+    {
+        this->m_hitDelay += dt;
+        if(this->m_hitDelay > DEF_HIT_ANIME)
+        {
+            this->m_hitDelay = 0;
+            this->m_mainSprite->setColor(Color3B::WHITE);
+            this->setState(EnemyState::WAIT);
+        }
+    }
     
     
     //死亡アニメーション
@@ -97,7 +120,7 @@ void EnemyObject::updateAction(float dt)
         }
         else
         {
-            float rate = this->m_mainSprite->getScale() + 1.0f * dt;
+            float rate = this->m_mainSprite->getScale() + (1.0f / 0.25f) * dt;
             this->m_mainSprite->setScale(rate);
         }
     }
@@ -109,5 +132,12 @@ bool EnemyObject::isUnlockOfDamage()
 {
     if(this->getState() == EnemyState::WAIT)return true;
     return false;
+}
+/**
+ * 生きているか
+ */
+bool EnemyObject::isAlive()
+{
+    return this->getLife() > 0;
 }
 
