@@ -45,6 +45,9 @@ bool GameScene::init()
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
 
+    //情報の読み込み
+    GameData::getInstance()->loadSettingData();
+    
     //背景の動く床
     this->m_roll = RollBackgroundLayer::create();
     this->addChild(this->m_roll,0);
@@ -64,14 +67,16 @@ bool GameScene::init()
     this->m_StartingPos = Vec2(visibleSize.width * 0.5f,200.0f);
     this->m_StartPos = Vec2(visibleSize.width * 0.5f,-128.0f);
     this->m_PlayerObject->setPosition(m_StartPos);
-    this->m_PlayerObject->addChild(this->m_PlayerObject,30);
+    this->addChild(this->m_PlayerObject,30);
     
     //プレイヤーの基本値の設定
-    this->m_PlayerObject->setChargeMaxPower(GameData::getInstance()->getChargePower());
-    this->m_PlayerObject->setChargeAdd(
-                                       GameData::getInstance()->getChargePower()
-                                       /GameData::getInstance()->getChargeSpeed());
+    GameData * game = GameData::getInstance();
+    this->m_PlayerObject->setBaseMaxPower(game->getMaxPower());
+    this->m_PlayerObject->setShotCycle(game->getShotCycle());
+    this->m_PlayerObject->setChargeMaxPower(game->getChargePower());
+    this->m_PlayerObject->setChargeMaxTime(game->getChargeTime());
     this->m_PlayerObject->setLife(GameData::getInstance()->getPlayerHp());
+    if(this->m_PlayerObject->getLife() < 1)this->m_PlayerObject->setLife(1);
     
     //メニュー
     auto labelScore = Sprite::create("str/label_score.png");
@@ -132,27 +137,30 @@ void GameScene::update(float dt)
  */
 void GameScene::hitCheck()
 {
-    for(auto target : this->m_EnemyList)
+    if(this->getState() == GameScene::GameState::GamePlay)
     {
-        if(false == target->getEnabled())continue;
-        
-        for(auto work : this->m_BulletList)
+        for(auto target : this->m_EnemyList)
         {
-            if(false == work->getEnabled())continue;
-            float range = work->getHitLength() + target->getHitLength();
-            if((work->getPosition() - target->getPosition()).length() < range)
+            if(false == target->getEnabled())continue;
+            
+            for(auto work : this->m_BulletList)
             {
-                target->entryHitObject(work);
-                work->entryHitObject(target);
+                if(false == work->getEnabled())continue;
+                float range = work->getHitLength() + target->getHitLength();
+                if((work->getPosition() - target->getPosition()).length() < range)
+                {
+                    target->entryHitObject(work);
+                    work->entryHitObject(target);
+                }
             }
-        }
-        
-        if(false == m_PlayerObject->getEnabled())continue;
-        float range = this->m_PlayerObject->getHitLength() + target->getHitLength();
-        if((this->m_PlayerObject->getPosition() - target->getPosition()).length() < range)
-        {
-            target->entryHitObject(this->m_PlayerObject);
-            this->m_PlayerObject->entryHitObject(target);
+            
+            if(false == m_PlayerObject->getEnabled())continue;
+            float range = this->m_PlayerObject->getHitLength() + target->getHitLength();
+            if((this->m_PlayerObject->getPosition() - target->getPosition()).length() < range)
+            {
+                target->entryHitObject(this->m_PlayerObject);
+                this->m_PlayerObject->entryHitObject(target);
+            }
         }
     }
 }

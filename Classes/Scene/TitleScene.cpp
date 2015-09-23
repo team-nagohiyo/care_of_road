@@ -73,6 +73,9 @@ bool TitleScene::init()
         SimpleAudioEngine::getInstance()->playBackgroundMusic("sound/cow_bgm_Sunrise.mp3",true);
     }
 
+    //データの初回読み込み
+    GameData::getInstance()->loadSettingData();
+    GameData::getInstance()->saveSettingData();
     
     return true;
 }

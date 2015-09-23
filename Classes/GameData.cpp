@@ -35,6 +35,34 @@ void GameData::setHighScore(int val)
 void GameData::loadSettingData()
 {
     //ポイント
+    this->m_GamePoint = UserDefault::getInstance()->getIntegerForKey("GamePoint", 0);
+    if(this->m_GamePoint < 0)this->m_GamePoint = 0;
+    //最大パワー
+    this->m_MaxPower = UserDefault::getInstance()->getIntegerForKey("MaxPower", 1);
+    if(this->m_MaxPower < 1)this->m_MaxPower = 1;
+    //チャージパワー
+    this->m_ChargePower = UserDefault::getInstance()->getIntegerForKey("ChargePower", 1);
+    if(this->m_ChargePower < 1)this->m_ChargePower = 1;
+    //チャージ速度
+    this->m_ChargeTime = UserDefault::getInstance()->getFloatForKey("ChargeTime", 1.5f);
+    if(this->m_ChargeTime < 1.5f)this->m_ChargeTime = 1.5f;
+    //連射ディレイ
+    this->m_ShotCycle = UserDefault::getInstance()->getFloatForKey("ShotCycle", 1.0f);
+    if(this->m_ShotCycle < 1.0f)this->m_ShotCycle = 1.0f;
+    //弾の大きさ
+    this->m_ShotSize = UserDefault::getInstance()->getFloatForKey("ShotSize", 1.0f);
+    if(this->m_ShotSize < 1.0f)this->m_ShotSize = 1.0f;
+    //プレイヤーのHP
+    this->m_PlayerHp = UserDefault::getInstance()->getIntegerForKey("PlayerHp", 1);
+    if(this->m_PlayerHp < 1)this->m_PlayerHp = 1;
+}
+
+/**
+ * 基本値の保存
+ */
+void GameData::saveSettingData()
+{
+    //ポイント
     UserDefault::getInstance()->setIntegerForKey("GamePoint", this->m_GamePoint);
     //最大パワー
     UserDefault::getInstance()->setIntegerForKey("MaxPower", this->m_MaxPower);
@@ -48,27 +76,5 @@ void GameData::loadSettingData()
     UserDefault::getInstance()->setFloatForKey("ShotSize", this->m_ShotSize);
     //プレイヤーのHP
     UserDefault::getInstance()->setIntegerForKey("PlayerHp", this->m_PlayerHp);
-    
-}
-
-/**
- * 基本値の保存
- */
-void GameData::saveSettingData()
-{
-    //ポイント
-    this->m_GamePoint = UserDefault::getInstance()->getIntegerForKey("GamePoint", 0);
-    //最大パワー
-    this->m_MaxPower = UserDefault::getInstance()->getIntegerForKey("MaxPower", 1);
-    //チャージパワー
-    this->m_ChargePower = UserDefault::getInstance()->getIntegerForKey("ChargePower", 1);
-    //チャージ速度
-    this->m_ChargeTime = UserDefault::getInstance()->getFloatForKey("ChargeTime", 1.5f);
-    //連射ディレイ
-    this->m_ShotCycle = UserDefault::getInstance()->getFloatForKey("ShotCycle", 1.0f);
-    //弾の大きさ
-    this->m_ShotSize = UserDefault::getInstance()->getFloatForKey("ShotSize", 1.0f);
-    //プレイヤーのHP
-    this->m_PlayerHp = UserDefault::getInstance()->getIntegerForKey("PlayerHp", 1);
 }
 
