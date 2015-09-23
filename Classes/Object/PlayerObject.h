@@ -42,13 +42,16 @@ public:
     CC_SYNTHESIZE(int, m_Life, Life);
     CC_SYNTHESIZE(PlayerState, m_State, State);
     
+    CC_SYNTHESIZE(float, m_BaseMaxPower, BaseMaxPower);
     CC_SYNTHESIZE(float, m_ChargeMaxPower, ChargeMaxPower);
-    CC_SYNTHESIZE(int, m_ChargeAdd, ChargeAdd);
+    CC_SYNTHESIZE(float, m_ChargeAdd, ChargeAdd);
+    CC_SYNTHESIZE(float, m_ChargeTime, ChargeTime);
+    CC_SYNTHESIZE(float, m_ShotCycle, ShotCycle);
     
 protected:
     cocos2d::Sprite * m_mainSprite;
     
-    float m_ChagePower;
+    float m_ChageTime;
     float m_Delay;
     ShotMode m_Mode;
     

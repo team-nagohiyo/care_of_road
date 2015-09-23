@@ -15,6 +15,7 @@ USING_NS_CC;
 PlayerObject::PlayerObject()
 :m_CatchBullet(nullptr)
 ,m_State(PlayerState::Wait)
+,m_ChageTime(0)
 {
     this->setHitLength(64.0f);
     this->setLife(1);
@@ -53,10 +54,8 @@ bool PlayerObject::init()
     this->setAnchorPoint(Vec2::ONE * 0.5f);
     
     this->m_mainSprite->setPosition(this->getContentSize()/2.0f);
-    
-    this->setChargeMaxPower(1.0f);
-    this->setChargeAdd(1);
-    this->m_ChagePower = 0;
+
+    this->m_ChageTime = 0;
     this->m_Delay = 0;
     return true;
 }
@@ -70,7 +69,7 @@ void PlayerObject::updateAction(float dt)
     if(!this->getHitObjectList().empty())
     {
         this->setState(PlayerState::Hit);
-        this->m_ChagePower = 0;
+        this->m_ChageTime = 0;
         this->getHitObjectList().clear();
         
         this->setLife(this->getLife() - 1);
@@ -101,7 +100,7 @@ void PlayerObject::updateAction(float dt)
             }
             
             //待ち時間の初期化
-            this->m_Delay += 0.2f;
+            this->m_Delay += this->getShotCycle();
         }
         else
         {
@@ -113,12 +112,11 @@ void PlayerObject::updateAction(float dt)
     //チャージ中の処理
     if(this->getState() == PlayerState::Charge)
     {
-        float rate = (this->m_ChagePower / this->getChargeMaxPower());
-        float rote = (15.0f*360.0f/60) * rate;
+        float rate = (this->m_ChageTime / this->getChargeTime());
         if(this->m_CatchBullet)
         {
             this->m_CatchBullet->setChageScale(1.0f * (rate) + 1.0f);
-            this->m_CatchBullet->setRotateSpeed((5.0f*360.0f/60) + rote);
+            this->m_CatchBullet->setRotateSpeed((15.0f * 360.0f / 60) * rate);
         }
         
         //チャージ中にモードが変更されたら
@@ -126,26 +124,34 @@ void PlayerObject::updateAction(float dt)
         {
             //[状態切替]ショット
             this->setState(PlayerState::Shot);
+            this->m_CatchBullet->setAttack(this->m_ChagePower);
         }
         else if(this->m_ChagePower > this->getChargeMaxPower())
         {
             //[状態切替]ショット
             this->setState(PlayerState::Shot);
+            this->m_CatchBullet->setAttack(this->m_ChagePower);
         }
         else
         {
-            this->m_ChagePower += this->getChargeAdd() * dt;
+            this->m_ChageTime += dt;
         }
     }
     
     //ショットの処理
     if(this->getState() == PlayerState::Shot)
     {
-        this->m_ChagePower = 0;
+        this->m_ChageTime = 0;
         this->m_CatchBullet->shot();
         this->m_CatchBullet = nullptr;
         
         //[状態切替]待ち時間の設定
+        this->setState(PlayerState::Delay);
+    }
+    
+    if(this->getState() == PlayerState::Hit)
+    {
+        this->m_ChageTime = 0;
         this->setState(PlayerState::Delay);
     }
     

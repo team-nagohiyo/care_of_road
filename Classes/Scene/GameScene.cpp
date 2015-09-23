@@ -64,7 +64,14 @@ bool GameScene::init()
     this->m_StartingPos = Vec2(visibleSize.width * 0.5f,200.0f);
     this->m_StartPos = Vec2(visibleSize.width * 0.5f,-128.0f);
     this->m_PlayerObject->setPosition(m_StartPos);
-    this->addChild(this->m_PlayerObject,30);
+    this->m_PlayerObject->addChild(this->m_PlayerObject,30);
+    
+    //プレイヤーの基本値の設定
+    this->m_PlayerObject->setChargeMaxPower(GameData::getInstance()->getChargePower());
+    this->m_PlayerObject->setChargeAdd(
+                                       GameData::getInstance()->getChargePower()
+                                       /GameData::getInstance()->getChargeSpeed());
+    this->m_PlayerObject->setLife(GameData::getInstance()->getPlayerHp());
     
     //メニュー
     auto labelScore = Sprite::create("str/label_score.png");
@@ -79,7 +86,7 @@ bool GameScene::init()
     this->m_ScoreLabel->setAnchorPoint(Vec2(0.0f,0.5f));
     this->addChild(this->m_ScoreLabel, 60);
     
-    //
+    //スコア表示の更新
     this->refreshScoreLabel();
     
     GameData::getInstance()->setGameScore(0);
@@ -117,6 +124,8 @@ void GameScene::update(float dt)
     //オブジェクトデリートチェック
     this->removeObjectWithSoul();
     
+    //スコア表示の更新
+    this->refreshScoreLabel();
 }
 /**
  * ヒットチェック
@@ -337,7 +346,7 @@ void GameScene::sharedTapControl(cocos2d::Vec2 pos,TouchControlLayer::TapType ty
 void GameScene::refreshScoreLabel()
 {
     char strScore[32] = "";
-    sprintf(strScore,"%012d",GameData::getInstance()->getHighScore());
+    sprintf(strScore,"%012d",GameData::getInstance()->getGameScore());
     this->m_ScoreLabel->setString(strScore);
 }
 /**
