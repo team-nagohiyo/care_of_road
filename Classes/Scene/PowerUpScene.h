@@ -16,6 +16,30 @@ class PowerUpScene : public cocos2d::Layer
 {
 protected:
     RollBackgroundLayer * m_roll;
+
+    //ポイント
+    cocos2d::Sprite * m_LabelPoint;
+    cocos2d::Label * m_ValuePoint;
+    
+    //ノーマルショットパワー
+    cocos2d::Sprite * m_LabelBaseMaxPower;
+    cocos2d::Label * m_ValueBaseMaxPowerBefore;
+    cocos2d::Label * m_ValueBaseMaxPowerAfter;
+    
+    //連射
+    cocos2d::Sprite * m_LabelShotCycle;
+    cocos2d::Label * m_ValueShotCycleBefore;
+    cocos2d::Label * m_ValueShotCycleAfter;
+    
+    //チャージパワー
+    cocos2d::Sprite * m_LabelChargePower;
+    cocos2d::Label * m_ValueChargePowerBefore;
+    cocos2d::Label * m_ValueChargePowerAfter;
+    
+    //チャージ時間
+    cocos2d::Sprite * m_LabelChargeTime;
+    cocos2d::Label * m_ValueChargeTimeBefore;
+    cocos2d::Label * m_ValueChargeTimeAfter;
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();

@@ -39,7 +39,31 @@ bool PowerUpScene::init()
     this->addChild(this->m_roll,0);
     this->m_roll->setPosition(Vec2::ZERO);
     
+    //----------------
     //メニュー
+    //----------------
+    
+    this->m_ValuePoint = Label::createWithBMFont("str/little_number.fnt","000000000 p");
+
+    //ノーマルショットパワーアップ
+    this->m_ValueShotCycleBefore = Label::createWithBMFont("str/little_number.fnt","001 p");
+    this->m_ValueShotCycleAfter = Label::createWithBMFont("str/little_number.fnt","001 p");
+    
+    //連射時間
+    this->m_ValueShotCycleBefore = Label::createWithBMFont("str/little_number.fnt","1.50sec");
+    this->m_ValueShotCycleAfter = Label::createWithBMFont("str/little_number.fnt","1.50sec");
+    
+    //チャージショット最大パワー
+    this->m_ValueChargePowerBefore = Label::createWithBMFont("str/little_number.fnt","001 p");
+    this->m_ValueChargePowerAfter = Label::createWithBMFont("str/little_number.fnt","001 p");
+    
+    //チャージ時間
+    this->m_ValueChargeTimeBefore = Label::createWithBMFont("str/little_number.fnt","1.50 sec");
+    this->m_ValueChargeTimeAfter = Label::createWithBMFont("str/little_number.fnt","1.50 sec");
+
+    //プレイヤーHP
+    this->m_ValueShotCycleAfter = Label::createWithBMFont("str/little_number.fnt","");
+    this->m_ValueShotCycleBefore = Label::createWithBMFont("str/little_number.fnt","");
     
     
     auto topMenuItem = MenuItemImage::create("str/menu_top_menu.png", "str/menu_top_menu.png");

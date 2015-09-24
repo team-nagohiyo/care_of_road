@@ -79,10 +79,10 @@
 		5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
 		5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
-		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; settings = {ASSET_TAGS = (); }; };
-		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; settings = {ASSET_TAGS = (); }; };
-		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; settings = {ASSET_TAGS = (); }; };
-		5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; settings = {ASSET_TAGS = (); }; };
+		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
+		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
+		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
+		5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
 		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
@@ -91,8 +91,8 @@
 		57AF355E1BA5E5D9005F65A4 /* game in Resources */ = {isa = PBXBuildFile; fileRef = 57AF355C1BA5E5D9005F65A4 /* game */; };
 		57AF35601BA5E5E2005F65A4 /* str in Resources */ = {isa = PBXBuildFile; fileRef = 57AF355F1BA5E5E2005F65A4 /* str */; };
 		57AF35611BA5E5E2005F65A4 /* str in Resources */ = {isa = PBXBuildFile; fileRef = 57AF355F1BA5E5E2005F65A4 /* str */; };
-		57D796061BAA829600915579 /* GameMediator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D796041BAA829600915579 /* GameMediator.cpp */; };
-		57D796091BAACA6300915579 /* GameMediator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57D796041BAA829600915579 /* GameMediator.cpp */; };
+		57AF454B1BB395FF00665086 /* GameMediator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AF45491BB395FF00665086 /* GameMediator.cpp */; };
+		57AF454C1BB395FF00665086 /* GameMediator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AF45491BB395FF00665086 /* GameMediator.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -212,8 +212,8 @@
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		57AF355C1BA5E5D9005F65A4 /* game */ = {isa = PBXFileReference; lastKnownFileType = folder; path = game; sourceTree = "<group>"; };
 		57AF355F1BA5E5E2005F65A4 /* str */ = {isa = PBXFileReference; lastKnownFileType = folder; path = str; sourceTree = "<group>"; };
-		57D796041BAA829600915579 /* GameMediator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMediator.cpp; sourceTree = "<group>"; };
-		57D796051BAA829600915579 /* GameMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMediator.h; sourceTree = "<group>"; };
+		57AF45491BB395FF00665086 /* GameMediator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameMediator.cpp; sourceTree = "<group>"; };
+		57AF454A1BB395FF00665086 /* GameMediator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameMediator.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -360,8 +360,6 @@
 				57955E591BA6E10600C765BB /* RollBackgroundLayer.h */,
 				5710F0B51BA9118D0036D30A /* TouchControlLayer.cpp */,
 				5710F0B61BA9118D0036D30A /* TouchControlLayer.h */,
-				57D796041BAA829600915579 /* GameMediator.cpp */,
-				57D796051BAA829600915579 /* GameMediator.h */,
 			);
 			name = Classes;
 			path = ../Classes;
@@ -451,12 +449,14 @@
 		5765F6111BADB27100B6ED18 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				57AF45491BB395FF00665086 /* GameMediator.cpp */,
+				57AF454A1BB395FF00665086 /* GameMediator.h */,
 				570E02E31BA887F400F2116F /* GameData.cpp */,
 				570E02E41BA887F400F2116F /* GameData.h */,
 				5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */,
 				5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */,
 			);
-			name = Manager;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -623,10 +623,10 @@
 				5710F09D1BA901010036D30A /* BulletObject.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				5710F09E1BA901010036D30A /* EnemyObject.cpp in Sources */,
-				57D796061BAA829600915579 /* GameMediator.cpp in Sources */,
 				5710F0BD1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5710F0AB1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
+				57AF454B1BB395FF00665086 /* GameMediator.cpp in Sources */,
 				5710F0AF1BA9010D0036D30A /* RankingScene.cpp in Sources */,
 				5710F0A91BA9010D0036D30A /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
@@ -647,9 +647,9 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
+				57AF454C1BB395FF00665086 /* GameMediator.cpp in Sources */,
 				5710F0AC1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				5710F0AE1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
-				57D796091BAACA6300915579 /* GameMediator.cpp in Sources */,
 				570E02E61BA887F400F2116F /* GameData.cpp in Sources */,
 				57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
