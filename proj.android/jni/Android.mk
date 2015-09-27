@@ -10,11 +10,12 @@ LOCAL_MODULE := cocos2dcpp_shared
 
 LOCAL_MODULE_FILENAME := libcocos2dcpp
 
-LOCAL_SRC_FILES := hellocpp/main.cpp \
-                   ../../Classes/AppDelegate.cpp \
-                   ../../Classes/HelloWorldScene.cpp
+MY_CLASS_FILES :=$(shell find $(LOCAL_PATH)/../../Classes -name *.cpp)
 
-LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes
+LOCAL_SRC_FILES := hellocpp/main.cpp
+LOCAL_SRC_FILES += $(MY_CLASS_FILES:$(LOCAL_PATH)/%=%)
+
+LOCAL_C_INCLUDES := $(shell find $(LOCAL_PATH)/../../Classes -type d)
 
 LOCAL_STATIC_LIBRARIES := cocos2dx_static
 
