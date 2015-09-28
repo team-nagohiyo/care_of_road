@@ -54,6 +54,12 @@ bool GameOverScene::init()
     char strScore[32] = "";
     sprintf(strScore,"%012d",GameData::getInstance()->getGameScore());
     
+    //ハイスコアへの登録
+    if(GameData::getInstance()->getHighScore() > GameData::getInstance()->getGameScore())
+    {
+        GameData::getInstance()->setHighScore(GameData::getInstance()->getGameScore());
+    }
+    
     auto label = Label::createWithBMFont("str/little_number.fnt",strScore);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height/2));

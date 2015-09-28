@@ -40,6 +40,11 @@ protected:
     cocos2d::Sprite * m_LabelChargeTime;
     cocos2d::Label * m_ValueChargeTimeBefore;
     cocos2d::Label * m_ValueChargeTimeAfter;
+    
+    //プレイヤーLife
+    cocos2d::Sprite * m_LabelPlayerLife;
+    cocos2d::Label * m_ValuePlayerLifeBefore;
+    cocos2d::Label * m_ValuePlayerLifeAfter;
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
