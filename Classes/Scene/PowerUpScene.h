@@ -15,6 +15,17 @@
 class PowerUpScene : public cocos2d::Layer
 {
 protected:
+    enum PowerUpItemType: int
+    {
+        None,
+        ShotPower,
+        ShotCycle,
+        ChargePower,
+        ChargeTime,
+        ShotSize,
+        PlayerLife,
+    };
+    
     RollBackgroundLayer * m_roll;
 
     //ポイント
@@ -23,28 +34,44 @@ protected:
     
     //ノーマルショットパワー
     cocos2d::Sprite * m_LabelBaseMaxPower;
-    cocos2d::Label * m_ValueBaseMaxPowerBefore;
-    cocos2d::Label * m_ValueBaseMaxPowerAfter;
+    cocos2d::Label * m_ValueBaseMaxPowerValue;
+    cocos2d::Label * m_ValueBaseMaxPowerCost;
+    cocos2d::MenuItem * m_MenuBaseMaxPower;
     
     //連射
     cocos2d::Sprite * m_LabelShotCycle;
-    cocos2d::Label * m_ValueShotCycleBefore;
-    cocos2d::Label * m_ValueShotCycleAfter;
+    cocos2d::Label * m_ValueShotCycleValue;
+    cocos2d::Label * m_ValueShotCycleCost;
+    cocos2d::MenuItem * m_MenuShotCycle;
     
     //チャージパワー
     cocos2d::Sprite * m_LabelChargePower;
-    cocos2d::Label * m_ValueChargePowerBefore;
-    cocos2d::Label * m_ValueChargePowerAfter;
+    cocos2d::Label * m_ValueChargePowerValue;
+    cocos2d::Label * m_ValueChargePowerCost;
+    cocos2d::MenuItem * m_MenuChargePower;
     
     //チャージ時間
     cocos2d::Sprite * m_LabelChargeTime;
-    cocos2d::Label * m_ValueChargeTimeBefore;
-    cocos2d::Label * m_ValueChargeTimeAfter;
+    cocos2d::Label * m_ValueChargeTimeValue;
+    cocos2d::Label * m_ValueChargeTimeCost;
+    cocos2d::MenuItem * m_MenuChargeTime;
     
     //プレイヤーLife
     cocos2d::Sprite * m_LabelPlayerLife;
-    cocos2d::Label * m_ValuePlayerLifeBefore;
-    cocos2d::Label * m_ValuePlayerLifeAfter;
+    cocos2d::Label * m_ValuePlayerLifeValue;
+    cocos2d::Label * m_ValuePlayerLifeCost;
+    cocos2d::MenuItem * m_MenuPlayerLife;
+    
+    
+    /**
+     * メニューの作成
+     */
+    cocos2d::MenuItem * makeMenuItemRect(PowerUpItemType itemType);
+    
+    /**
+     * メニューの数値更新
+     */
+    void updateValue();
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
