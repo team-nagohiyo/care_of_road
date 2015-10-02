@@ -127,7 +127,7 @@ void PowerUpScene::moveToTitle(cocos2d::Ref * sender)
 cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
 {
     MenuItem * ret = MenuItem::create();
-    auto tapRect = LayerColor::create(Color4B(0x00,0x00,0x00,0x3F), DEF_TAPLAYER_RECT_WIDTH, DEF_TAPLAYER_RECT_HEIGHT);
+    auto tapRect = LayerColor::create(Color4B(0x00,0x00,0x00,0x7F), DEF_TAPLAYER_RECT_WIDTH, DEF_TAPLAYER_RECT_HEIGHT);
     ret->addChild(tapRect,1);
     cocos2d::Sprite * labelSprite = nullptr;
     cocos2d::Label * Valuelabel = nullptr;
