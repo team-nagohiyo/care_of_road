@@ -13,14 +13,16 @@
 
 #define DEF_TITLE_Y (400.0f)
 #define DEF_POINT_Y (300.0f)
-#define DEF_LABEL_Y (200.0f)
+#define DEF_LABEL_Y (150.0f)
 #define DEF_LABEL_Y_MARGIN (110.0f)
 #define DEF_LABEL_Y_LAYER_BOTTOM (10.0f)
 
 #define DEF_LABEL_ANCHOR (cocos2d::Vec2(0,0))
 #define DEF_NAME_X (30.0f)
-#define DEF_BEFORE_X (280.0f)
-#define DEF_AFTER_X (450.0f)
+#define DEF_NAME_Y (50.0f)
+#define DEF_VALUE_X (100.0f)
+#define DEF_COST_X (400.0f)
+#define DEF_COST_Y_MARGIN (40.0f)
 
 #define DEF_TAPLAYER_RECT_WIDTH (600.0f)
 #define DEF_TAPLAYER_RECT_HEIGHT (100.0f)
@@ -43,6 +45,10 @@ bool PowerUpScene::init()
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
+    
+    
+    auto backLayer = LayerColor::create(cocos2d::Color4B(0,0,0,0x7F));
+    this->addChild(backLayer,1);
     
     auto titleSprite = Sprite::create("str/title_power_up.png");
     // position the sprite on the center of the screen
@@ -127,11 +133,12 @@ void PowerUpScene::moveToTitle(cocos2d::Ref * sender)
 cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
 {
     MenuItem * ret = MenuItem::create();
-    auto tapRect = LayerColor::create(Color4B(0x00,0x00,0x00,0x7F), DEF_TAPLAYER_RECT_WIDTH, DEF_TAPLAYER_RECT_HEIGHT);
+    auto tapRect = LayerColor::create(Color4B(0xFF,0xFF,0xFF,0x7F), DEF_TAPLAYER_RECT_WIDTH, DEF_TAPLAYER_RECT_HEIGHT);
     ret->addChild(tapRect,1);
     cocos2d::Sprite * labelSprite = nullptr;
     cocos2d::Label * Valuelabel = nullptr;
     cocos2d::Label * CostLabel = Label::createWithBMFont("str/FNT_small_font_y.fnt","0000000p");
+    cocos2d::Sprite * labelSpriteCost = Sprite::create("str/label_cost.png");
     
     switch (itemType)
     {
@@ -140,7 +147,7 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             //ノーマルショットパワーアップ
             this->m_LabelBaseMaxPower = Sprite::create("str/label_shot_power.png");
             labelSprite = this->m_LabelBaseMaxPower;
-            this->m_ValueBaseMaxPowerValue = Label::createWithBMFont("str/little_number.fnt","Lv 01");
+            this->m_ValueBaseMaxPowerValue = Label::createWithBMFont("str/FNT_value_s.fnt","Lv 01");
             Valuelabel = this->m_ValueBaseMaxPowerValue;
             this->m_ValueBaseMaxPowerCost = CostLabel;
         }
@@ -150,7 +157,7 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             //連射時間
             this->m_LabelShotCycle = Sprite::create("str/label_shot_cycle.png");
             labelSprite = this->m_LabelShotCycle;
-            this->m_ValueShotCycleValue = Label::createWithBMFont("str/little_number.fnt","1.50 sec");
+            this->m_ValueShotCycleValue = Label::createWithBMFont("str/FNT_value_s.fnt","1.50 sec");
             Valuelabel = this->m_ValueShotCycleValue;
             this->m_ValueShotCycleCost = CostLabel;
         }
@@ -160,7 +167,7 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             //チャージショット最大パワー
             this->m_LabelChargePower = Sprite::create("str/label_charge_power.png");
             labelSprite = this->m_LabelChargePower;
-            this->m_ValueChargePowerValue = Label::createWithBMFont("str/little_number.fnt","Lv 01");
+            this->m_ValueChargePowerValue = Label::createWithBMFont("str/FNT_value_s.fnt","Lv 01");
             Valuelabel = this->m_ValueChargePowerValue;
             this->m_ValueChargePowerCost = CostLabel;
         }
@@ -170,7 +177,7 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             //チャージ時間
             this->m_LabelChargeTime = Sprite::create("str/label_charge_time.png");
             labelSprite = this->m_LabelChargeTime;
-            this->m_ValueChargeTimeValue = Label::createWithBMFont("str/little_number.fnt","1.50 sec");
+            this->m_ValueChargeTimeValue = Label::createWithBMFont("str/FNT_value_s.fnt","1.50 sec");
             Valuelabel = this->m_ValueChargeTimeValue;
             this->m_ValueChargeTimeCost = CostLabel;
         }
@@ -180,7 +187,7 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             //プレイヤーHP
             this->m_LabelPlayerLife = Sprite::create("str/label_player_life.png");
             labelSprite = this->m_LabelPlayerLife;
-            this->m_ValuePlayerLifeValue = Label::createWithBMFont("str/little_number.fnt","Life 1");
+            this->m_ValuePlayerLifeValue = Label::createWithBMFont("str/FNT_value_s.fnt","Life 1");
             Valuelabel = this->m_ValuePlayerLifeValue;
             this->m_ValuePlayerLifeCost = CostLabel;
         }
@@ -189,14 +196,20 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
             break;
     }
     
+    //項目名
     labelSprite->setAnchorPoint(DEF_LABEL_ANCHOR);
-    labelSprite->setPosition(DEF_NAME_X,DEF_LABEL_Y_LAYER_BOTTOM);
+    labelSprite->setPosition(DEF_NAME_X,DEF_NAME_Y);
     tapRect->addChild(labelSprite);
+    //数値
     Valuelabel->setAnchorPoint(DEF_LABEL_ANCHOR);
-    Valuelabel->setPosition(DEF_BEFORE_X,DEF_LABEL_Y_LAYER_BOTTOM);
+    Valuelabel->setPosition(DEF_VALUE_X,DEF_LABEL_Y_LAYER_BOTTOM);
     tapRect->addChild(Valuelabel);
+    //コスト
+    labelSpriteCost->setPosition(DEF_COST_X,DEF_LABEL_Y_LAYER_BOTTOM + DEF_COST_Y_MARGIN);
+    labelSpriteCost->setAnchorPoint(DEF_LABEL_ANCHOR);
+    tapRect->addChild(labelSpriteCost);
     CostLabel->setAnchorPoint(DEF_LABEL_ANCHOR);
-    CostLabel->setPosition(DEF_AFTER_X,DEF_LABEL_Y_LAYER_BOTTOM);
+    CostLabel->setPosition(DEF_COST_X,DEF_LABEL_Y_LAYER_BOTTOM);
     tapRect->addChild(CostLabel);
     
     
@@ -207,6 +220,30 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
  */
 void PowerUpScene::updateValue()
 {
+    char buff[256] = "";
     
+    //ポイント
+    sprintf(buff,"%09d p",GameData::getInstance()->getGamePoint());
+    this->m_ValuePoint->setString(buff);
+    
+    //基本パワー
+    sprintf(buff,"Lv %03d",GameData::getInstance()->getBaseMaxPower());
+    this->m_ValueBaseMaxPowerValue->setString(buff);
+    
+    //連射時間
+    sprintf(buff,"%f01.02 sec",GameData::getInstance()->getShotCycle());
+    this->m_ValueShotCycleValue->setString(buff);
+    
+    //チャージショット最大パワー
+    sprintf(buff,"Lv %02d",GameData::getInstance()->getChargePower());
+    this->m_ValueChargePowerValue->setString(buff);
+    
+    //チャージ時間
+    sprintf(buff,"%f01.02 sec",GameData::getInstance()->getChargeTime());
+    this->m_ValueChargeTimeValue->setString(buff);
+    
+    //プレイヤーHP
+    sprintf(buff,"Life %d",GameData::getInstance()->getPlayerHp());
+    this->m_ValuePlayerLifeValue->setString(buff);
 }
 

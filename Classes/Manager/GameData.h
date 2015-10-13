@@ -22,7 +22,7 @@ class GameData
     CC_SYNTHESIZE(int, m_GamePoint, GamePoint);
     
     //最大パワー
-    CC_SYNTHESIZE(int, m_MaxPower, MaxPower);
+    CC_SYNTHESIZE(int, m_BaseMaxPower, BaseMaxPower);
     //チャージパワー
     CC_SYNTHESIZE(int, m_ChargePower, ChargePower);
     //チャージ速度

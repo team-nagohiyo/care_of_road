@@ -38,8 +38,8 @@ void GameData::loadSettingData()
     this->m_GamePoint = UserDefault::getInstance()->getIntegerForKey("GamePoint", 0);
     if(this->m_GamePoint < 0)this->m_GamePoint = 0;
     //最大パワー
-    this->m_MaxPower = UserDefault::getInstance()->getIntegerForKey("MaxPower", 1);
-    if(this->m_MaxPower < 1)this->m_MaxPower = 1;
+    this->m_BaseMaxPower = UserDefault::getInstance()->getIntegerForKey("MaxPower", 1);
+    if(this->m_BaseMaxPower < 1)this->m_BaseMaxPower = 1;
     //チャージパワー
     this->m_ChargePower = UserDefault::getInstance()->getIntegerForKey("ChargePower", 1);
     if(this->m_ChargePower < 1)this->m_ChargePower = 1;
@@ -65,7 +65,7 @@ void GameData::saveSettingData()
     //ポイント
     UserDefault::getInstance()->setIntegerForKey("GamePoint", this->m_GamePoint);
     //最大パワー
-    UserDefault::getInstance()->setIntegerForKey("MaxPower", this->m_MaxPower);
+    UserDefault::getInstance()->setIntegerForKey("MaxPower", this->m_BaseMaxPower);
     //チャージパワー
     UserDefault::getInstance()->setIntegerForKey("ChargePower", this->m_ChargePower);
     //チャージ速度

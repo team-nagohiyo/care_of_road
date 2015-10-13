@@ -79,6 +79,8 @@
 		5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
 		5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
+		573E34191BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; settings = {ASSET_TAGS = (); }; };
+		573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; settings = {ASSET_TAGS = (); }; };
 		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
@@ -203,6 +205,8 @@
 		5710F0BC1BA9AD620036D30A /* HitObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HitObject.h; sourceTree = "<group>"; };
 		5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PlayerObject.cpp; sourceTree = "<group>"; };
 		5710F0C01BA9B7530036D30A /* PlayerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerObject.h; sourceTree = "<group>"; };
+		573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLevelPlanner.cpp; sourceTree = "<group>"; };
+		573E34181BCB6375002DB8AF /* GameLevelPlanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevelPlanner.h; sourceTree = "<group>"; };
 		5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGenerator.cpp; sourceTree = "<group>"; };
 		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
 		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
@@ -455,6 +459,8 @@
 				570E02E41BA887F400F2116F /* GameData.h */,
 				5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */,
 				5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */,
+				573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */,
+				573E34181BCB6375002DB8AF /* GameLevelPlanner.h */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -618,6 +624,7 @@
 				570E02E51BA887F400F2116F /* GameData.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */,
+				573E34191BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */,
 				5710F0B71BA9118D0036D30A /* TouchControlLayer.cpp in Sources */,
 				5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */,
 				5710F09D1BA901010036D30A /* BulletObject.cpp in Sources */,
@@ -652,6 +659,7 @@
 				5710F0AE1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				570E02E61BA887F400F2116F /* GameData.cpp in Sources */,
 				57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
+				573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */,
 				503AE10517EB98FF00D1A890 /* main.cpp in Sources */,
 				5710F0B81BA9118D0036D30A /* TouchControlLayer.cpp in Sources */,
 			);

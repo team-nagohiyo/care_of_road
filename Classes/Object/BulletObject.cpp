@@ -8,6 +8,7 @@
 
 #include "BulletObject.h"
 #include "EnemyObject.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -130,6 +131,8 @@ void BulletObject::freeBody()
  */
 void BulletObject::shot()
 {
+    CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/se_shot.mp3");
+    
     this->freeBody();
     this->m_ChachParent = nullptr;
 }

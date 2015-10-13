@@ -30,10 +30,18 @@ bool TouchControlLayer::init()
     this->m_normal = LayerColor::create(Color4B(0x3F,0x3F,0xFF,0x7F), this->getContentSize().width, 125.0f);
     this->m_normal->setPosition(Vec2(0.0f,125.0f));
     this->addChild(this->m_normal);
+    auto normalLabel = Label::createWithBMFont("str/FNT_value_s.fnt", "Normal Area");
+    this->m_normal->addChild(normalLabel);
+    normalLabel->setAnchorPoint(Vec2(0,1));
+    normalLabel->setPosition(Vec2(0,this->m_normal->getContentSize().height * 0.5f));
 
     this->m_charge = LayerColor::create(Color4B(0xFF,0x3F,0x3F,0x7F), this->getContentSize().width, 125.0f);
     this->m_charge->setPosition(Vec2(0.0f,0.0f));
     this->addChild(this->m_charge);
+    auto chargeLabel = Label::createWithBMFont("str/FNT_value_s.fnt", "Chage Area");
+    this->m_charge->addChild(chargeLabel);
+    chargeLabel->setAnchorPoint(Vec2(0,1));
+    chargeLabel->setPosition(Vec2(0,this->m_charge->getContentSize().height * 0.5f));
     
     this->m_Listener = EventListenerTouchOneByOne::create();
     this->m_Listener->setSwallowTouches(true);

@@ -9,6 +9,7 @@
 
 #include "EnemyObject.h"
 #include "BulletObject.h"
+#include "SimpleAudioEngine.h"
 
 #define DEF_HIT_ANIME (0.25f)
 
@@ -82,6 +83,7 @@ void EnemyObject::updateAction(float dt)
             {
                 this->setLife(this->getLife() - bullet->getAttack());
                 this->setState(EnemyState::HIT);
+                CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/se_enemy_hit.mp3");
             }
         }
         //死亡判定
@@ -89,6 +91,7 @@ void EnemyObject::updateAction(float dt)
         {
             this->setEnabled(false);
             this->setState(EnemyState::DEAD);
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/se_burst.mp3");
         }
         //ヒット状態のアニメーション
         if(this->getState() == EnemyState::HIT)

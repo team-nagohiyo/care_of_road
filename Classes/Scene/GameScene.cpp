@@ -71,7 +71,7 @@ bool GameScene::init()
     
     //プレイヤーの基本値の設定
     GameData * game = GameData::getInstance();
-    this->m_PlayerObject->setBaseMaxPower(game->getMaxPower());
+    this->m_PlayerObject->setBaseMaxPower(game->getBaseMaxPower());
     this->m_PlayerObject->setShotCycle(game->getShotCycle());
     this->m_PlayerObject->setChargeMaxPower(game->getChargePower());
     this->m_PlayerObject->setChargeMaxTime(game->getChargeTime());
@@ -336,15 +336,15 @@ void GameScene::sharedTapControl(cocos2d::Vec2 pos,TouchControlLayer::TapType ty
     
     this->m_PlayerObject->setPosition(pos);
     
-    if(type == TouchControlLayer::TapType::Normal)
-    {
-        //マシンガン開始
-        this->m_PlayerObject->OnMashinGun();
-    }
-    else
+    if(type == TouchControlLayer::TapType::Charge)
     {
         //charge開始
         this->m_PlayerObject->OnChage();
+    }
+    else
+    {
+        //マシンガン開始
+        this->m_PlayerObject->OnMashinGun();
     }
 }
 
