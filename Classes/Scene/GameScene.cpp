@@ -184,7 +184,7 @@ void GameScene::updateAction(float dt)
                 if(work->getScore() != 0)
                 {
                     GameData * ins = GameData::getInstance();
-                    ins->setGameScore((ins->getGameScore() - work->getScore()));
+                    ins->setGameScore((ins->getGameScore() + work->getScore()));
                     work->setScore(0);
                 }
             }

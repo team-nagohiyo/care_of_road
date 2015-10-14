@@ -118,6 +118,8 @@ bool PowerUpScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
 
+    this->updateValue();
+    
     return true;
 }
 /**
@@ -223,7 +225,7 @@ void PowerUpScene::updateValue()
     char buff[256] = "";
     
     //ポイント
-    sprintf(buff,"%09d p",GameData::getInstance()->getGamePoint());
+    sprintf(buff,"%12d pt",GameData::getInstance()->getGamePoint());
     this->m_ValuePoint->setString(buff);
     
     //基本パワー
@@ -231,7 +233,7 @@ void PowerUpScene::updateValue()
     this->m_ValueBaseMaxPowerValue->setString(buff);
     
     //連射時間
-    sprintf(buff,"%f01.02 sec",GameData::getInstance()->getShotCycle());
+    sprintf(buff,"%01.02f sec",GameData::getInstance()->getShotCycle());
     this->m_ValueShotCycleValue->setString(buff);
     
     //チャージショット最大パワー
@@ -239,7 +241,7 @@ void PowerUpScene::updateValue()
     this->m_ValueChargePowerValue->setString(buff);
     
     //チャージ時間
-    sprintf(buff,"%f01.02 sec",GameData::getInstance()->getChargeTime());
+    sprintf(buff,"%1.02f sec",GameData::getInstance()->getChargeTime());
     this->m_ValueChargeTimeValue->setString(buff);
     
     //プレイヤーHP

@@ -62,8 +62,19 @@ bool GameOverScene::init()
     
     auto label = Label::createWithBMFont("str/little_number.fnt",strScore);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height/2));
+                            origin.y + visibleSize.height/2 + 50.0f));
     this->addChild(label, 2);
+    
+    //ポイントの取得
+    int getPoint = GameData::getInstance()->getGameScore() * 0.01f;
+    int totalPoint = GameData::getInstance()->getGamePoint() + getPoint;
+    GameData::getInstance()->setGamePoint(totalPoint);
+    char strPoint[32] = "";
+    sprintf(strPoint,"Get %12d pt",getPoint);
+    auto pointLabel = Label::createWithBMFont("str/FNT_small_font_y.fnt",strPoint);
+    pointLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
+                            origin.y + visibleSize.height/2));
+    this->addChild(pointLabel, 2);
     
     auto gameItem = MenuItemImage::create("str/menu_retry.png", "str/menu_retry.png");
     gameItem->setCallback(CC_CALLBACK_1(GameOverScene::moveToGame, this));
@@ -90,6 +101,9 @@ bool GameOverScene::init()
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
+    
+    //ポイントの保存
+    GameData::getInstance()->saveSettingData();
     return true;
 }
 /**
