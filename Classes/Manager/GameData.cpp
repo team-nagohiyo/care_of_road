@@ -10,6 +10,21 @@
 
 USING_NS_CC;
 
+#define DEF_DEFAULT_MAX_POWER (1)
+#define DEF_DEFAULT_CHARGE_POWER (1)
+#define DEF_DEFAULT_CHARGE_TIME (1.5f)
+#define DEF_DEFAULT_SHOT_CYCLE (1.0f)
+#define DEF_DEFAULT_SHOT_SIZE (1.0f)
+#define DEF_DEFAULT_PLAYER_HP (1)
+
+#define DEF_ADD_MAX_POWER (1)
+#define DEF_ADD_CHARGE_POWER (1)
+#define DEF_ADD_CHARGE_TIME (1.5f)
+#define DEF_ADD_SHOT_CYCLE (1.0f)
+#define DEF_ADD_SHOT_SIZE (1.0f)
+#define DEF_ADD_PLAYER_HP (1)
+
+
 GameData * GameData::getInstance()
 {
     static GameData instance;
@@ -77,4 +92,103 @@ void GameData::saveSettingData()
     //プレイヤーのHP
     UserDefault::getInstance()->setIntegerForKey("PlayerHp", this->m_PlayerHp);
 }
+/**
+ * デバック用デフォルトリセット
+ */
+void GameData::resetdefaultValue()
+{
+    
+}
+//---------------------
+//default値
+//---------------------
+/**
+ * 最大パワー
+ */
+int GameData::getDefaultValueBaseMaxPower()
+{
+    return DEF_DEFAULT_MAX_POWER;
+}
+/**
+ * チャージパワー
+ */
+int GameData::getDefaultValueChargePower()
+{
+    return DEF_DEFAULT_CHARGE_POWER;
+}
+/**
+ * チャージ速度
+ */
+int GameData::getDefaultValueChargeTime()
+{
+    return DEF_DEFAULT_CHARGE_TIME;
+}
+/**
+ * 連射ディレイ
+ */
+int GameData::getDefaultValueShotCycle()
+{
+    return DEF_DEFAULT_SHOT_CYCLE;
+}
+/**
+ * 弾の大きさ
+ */
+int GameData::getDefaultValueShotSize()
+{
+    return DEF_DEFAULT_SHOT_SIZE;
+}
+/**
+ * プレイヤーのHP
+ */
+int GameData::getDefaultValuePlayerHp()
+{
+    return DEF_DEFAULT_PLAYER_HP;
+}
+
+//---------------------
+//加算値
+//---------------------
+/**
+ * 最大パワー
+ */
+int GameData::getAddValueBaseMaxPower()
+{
+    return DEF_ADD_MAX_POWER;
+}
+/**
+ * チャージパワー
+ */
+int GameData::getAddValueChargePower()
+{
+    return DEF_ADD_CHARGE_POWER;
+}
+/**
+ * チャージ速度
+ */
+int GameData::getAddValueChargeTime()
+{
+    return DEF_ADD_CHARGE_TIME;
+}
+/**
+ * 連射ディレイ
+ */
+int GameData::getAddValueShotCycle()
+{
+    return DEF_ADD_SHOT_CYCLE;
+}
+/**
+ * 弾の大きさ
+ */
+int GameData::getAddValueShotSize()
+{
+    return DEF_ADD_SHOT_SIZE;
+}
+/**
+ * プレイヤーのHP
+ */
+int GameData::getAddValuePlayerHp()
+{
+    return DEF_ADD_PLAYER_HP;
+}
+
 

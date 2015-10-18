@@ -56,6 +56,66 @@ public:
      */
     void saveSettingData();
     
+    /**
+     * デバック用デフォルトリセット
+     */
+    void resetdefaultValue();
+
+    //---------------------
+    //default値
+    //---------------------
+    /**
+     * 最大パワー
+     */
+    virtual int getDefaultValueBaseMaxPower();
+    /**
+     * チャージパワー
+     */
+    virtual int getDefaultValueChargePower();
+    /**
+     * チャージ速度
+     */
+    virtual int getDefaultValueChargeTime();
+    /**
+     * 連射ディレイ
+     */
+    virtual int getDefaultValueShotCycle();
+    /**
+     * 弾の大きさ
+     */
+    virtual int getDefaultValueShotSize();
+    /**
+     * プレイヤーのHP
+     */
+    virtual int getDefaultValuePlayerHp();
+
+    //---------------------
+    //加算値
+    //---------------------
+    /**
+     * 最大パワー
+     */
+    virtual int getAddValueBaseMaxPower();
+    /**
+     * チャージパワー
+     */
+    virtual int getAddValueChargePower();
+    /**
+     * チャージ速度
+     */
+    virtual int getAddValueChargeTime();
+    /**
+     * 連射ディレイ
+     */
+    virtual int getAddValueShotCycle();
+    /**
+     * 弾の大きさ
+     */
+    virtual int getAddValueShotSize();
+    /**
+     * プレイヤーのHP
+     */
+    virtual int getAddValuePlayerHp();
 };
 
 #endif /* defined(__care_of_road__GameData__) */
