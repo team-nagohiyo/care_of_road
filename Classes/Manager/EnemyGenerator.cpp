@@ -35,7 +35,6 @@ void EnemyGenerator::updateSchedule(float dt)
     //敵の生成
     if(this->m_createDelay < 0.0f)
     {
-        this->m_createDelay = 1.0f;
         auto enemy = EnemyObject::create(0);
         float workX = this->getGeneratePosition().x;
         float workY = this->getGeneratePosition().y;
@@ -43,7 +42,18 @@ void EnemyGenerator::updateSchedule(float dt)
         workX += (random(0.0f, width) + (enemy->getContentSize().width / 2.0f) - workX);
         enemy->setPosition(Vec2(workX,workY));
         GameMediator::getInstance()->entryEnemyObjectToField(enemy);
-    }    
+        
+        //仮で生成レベルのコントロール
+        this->setMakeCount(this->getMakeCount()+ 1);
+        if(0 == this->getMakeCount()%10 )
+        {
+            this->setLevel(this->getLevel() + 1);
+        }
+        
+        enemy->setLife(this->getLevel() + 3);
+        
+        this->m_createDelay = 1.0f;
+    }
 }
 /**
  * カウントの初期化
@@ -51,6 +61,7 @@ void EnemyGenerator::updateSchedule(float dt)
 void EnemyGenerator::reset()
 {
     this->m_createDelay = 0.0f;
+    this->setMakeCount(0);
     this->setLevel(0);
 }
 

@@ -79,6 +79,11 @@ public:
     CREATE_FUNC(PowerUpScene);
     
     /**
+     * パワーアップメニューの選択
+     */
+    void onPowerUpItem(cocos2d::Ref * sender);
+    
+    /**
      * タイトル画面に移動
      */
     void moveToTitle(cocos2d::Ref * sender);

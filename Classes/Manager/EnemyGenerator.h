@@ -14,6 +14,7 @@
 class EnemyGenerator
 {
 protected:
+    CC_SYNTHESIZE(int, m_MakeCount, MakeCount);
     CC_SYNTHESIZE(int, m_Level, Level);
     CC_SYNTHESIZE(int, m_MaxLevel, MaxLevel);
     CC_SYNTHESIZE(float, m_GenerateWidth, GenerateWidth);

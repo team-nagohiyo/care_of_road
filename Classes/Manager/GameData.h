@@ -35,6 +35,7 @@ class GameData
     CC_SYNTHESIZE(int, m_PlayerHp, PlayerHp);
     
 public:
+    GameData();
     static GameData * getInstance();
     
     /**
@@ -75,15 +76,15 @@ public:
     /**
      * チャージ速度
      */
-    virtual int getDefaultValueChargeTime();
+    virtual float getDefaultValueChargeTime();
     /**
      * 連射ディレイ
      */
-    virtual int getDefaultValueShotCycle();
+    virtual float getDefaultValueShotCycle();
     /**
      * 弾の大きさ
      */
-    virtual int getDefaultValueShotSize();
+    virtual float getDefaultValueShotSize();
     /**
      * プレイヤーのHP
      */
@@ -103,15 +104,15 @@ public:
     /**
      * チャージ速度
      */
-    virtual int getAddValueChargeTime();
+    virtual float getAddValueChargeTime();
     /**
      * 連射ディレイ
      */
-    virtual int getAddValueShotCycle();
+    virtual float getAddValueShotCycle();
     /**
      * 弾の大きさ
      */
-    virtual int getAddValueShotSize();
+    virtual float getAddValueShotSize();
     /**
      * プレイヤーのHP
      */

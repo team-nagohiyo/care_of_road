@@ -7,3 +7,18 @@
 //
 
 #include "GameLevelPlanner.h"
+
+GameLevelPlanner::GameLevelPlanner()
+{
+    
+}
+GameLevelPlanner::~GameLevelPlanner()
+{
+    
+}
+
+GameLevelPlanner * GameLevelPlanner::getInstance()
+{
+    static GameLevelPlanner instance;
+    return &instance;
+}

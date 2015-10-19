@@ -76,35 +76,40 @@ bool PowerUpScene::init()
     
     //ノーマルショットパワーアップ
     this->m_MenuBaseMaxPower = this->makeMenuItemRect(PowerUpItemType::ShotPower);
-    this->m_MenuBaseMaxPower->setPosition(Vec2(20.0f,UpLabelPosY));
+    this->m_MenuBaseMaxPower->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuBaseMaxPower->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
     menuList.pushBack(this->m_MenuBaseMaxPower);
     
     UpLabelPosY -= DEF_LABEL_Y_MARGIN;
     
     //連射時間
     this->m_MenuShotCycle = this->makeMenuItemRect(PowerUpItemType::ShotCycle);
-    this->m_MenuShotCycle->setPosition(Vec2(20.0f,UpLabelPosY));
+    this->m_MenuShotCycle->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuShotCycle->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
     menuList.pushBack(this->m_MenuShotCycle);
 
     UpLabelPosY -= DEF_LABEL_Y_MARGIN;
 
     //チャージショット最大パワー
     this->m_MenuChargePower = this->makeMenuItemRect(PowerUpItemType::ChargePower);
-    this->m_MenuChargePower->setPosition(Vec2(20.0f,UpLabelPosY));
+    this->m_MenuChargePower->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuChargePower->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
     menuList.pushBack(this->m_MenuChargePower);
     
     UpLabelPosY -= DEF_LABEL_Y_MARGIN;
     
     //チャージ時間
     this->m_MenuChargeTime = this->makeMenuItemRect(PowerUpItemType::ChargeTime);
-    this->m_MenuChargeTime->setPosition(Vec2(20.0f,UpLabelPosY));
+    this->m_MenuChargeTime->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuChargeTime->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
     menuList.pushBack(this->m_MenuChargeTime);
 
     UpLabelPosY -= DEF_LABEL_Y_MARGIN;
     
     //プレイヤーHP
     this->m_MenuPlayerLife = this->makeMenuItemRect(PowerUpItemType::PlayerLife);
-    this->m_MenuPlayerLife->setPosition(Vec2(20.0f,UpLabelPosY));
+    this->m_MenuPlayerLife->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuPlayerLife->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
     menuList.pushBack(this->m_MenuPlayerLife);
     
     
@@ -137,6 +142,8 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
     MenuItem * ret = MenuItem::create();
     auto tapRect = LayerColor::create(Color4B(0xFF,0xFF,0xFF,0x7F), DEF_TAPLAYER_RECT_WIDTH, DEF_TAPLAYER_RECT_HEIGHT);
     ret->addChild(tapRect,1);
+    ret->setContentSize(tapRect->getContentSize());
+    
     cocos2d::Sprite * labelSprite = nullptr;
     cocos2d::Label * Valuelabel = nullptr;
     cocos2d::Label * CostLabel = Label::createWithBMFont("str/FNT_small_font_y.fnt","0000000p");
@@ -217,6 +224,39 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
     
     return ret;
 }
+/**
+ * パワーアップメニューの選択
+ */
+void PowerUpScene::onPowerUpItem(cocos2d::Ref * sender)
+{
+    auto gd = GameData::getInstance();
+    
+    if(sender == this->m_MenuBaseMaxPower)
+    {
+        gd->setBaseMaxPower(gd->getBaseMaxPower() + gd->getAddValueBaseMaxPower());
+    }
+    else if(sender == this->m_MenuChargePower)
+    {
+        gd->setChargePower(gd->getChargePower() + gd->getAddValueChargePower());
+    }
+    else if(sender == this->m_MenuChargeTime)
+    {
+        gd->setChargeTime(gd->getChargeTime() - gd->getAddValueChargeTime());
+    }
+    else if(sender == this->m_MenuShotCycle)
+    {
+        gd->setShotCycle(gd->getShotCycle() - gd->getAddValueShotCycle());
+    }
+    else if(sender == this->m_MenuPlayerLife)
+    {
+        gd->setPlayerHp(gd->getPlayerHp() + gd->getAddValuePlayerHp());
+    }
+    
+    gd->saveSettingData();
+    
+    this->updateValue();
+}
+
 /**
  * メニューの数値更新
  */

@@ -19,12 +19,17 @@ USING_NS_CC;
 
 #define DEF_ADD_MAX_POWER (1)
 #define DEF_ADD_CHARGE_POWER (1)
-#define DEF_ADD_CHARGE_TIME (1.5f)
-#define DEF_ADD_SHOT_CYCLE (1.0f)
-#define DEF_ADD_SHOT_SIZE (1.0f)
+#define DEF_ADD_CHARGE_TIME (0.05f)
+#define DEF_ADD_SHOT_CYCLE (0.05f)
+#define DEF_ADD_SHOT_SIZE (0.1f)
 #define DEF_ADD_PLAYER_HP (1)
 
 
+GameData::GameData()
+{
+    this->resetdefaultValue();
+    this->saveSettingData();
+}
 GameData * GameData::getInstance()
 {
     static GameData instance;
@@ -60,10 +65,10 @@ void GameData::loadSettingData()
     if(this->m_ChargePower < 1)this->m_ChargePower = 1;
     //チャージ速度
     this->m_ChargeTime = UserDefault::getInstance()->getFloatForKey("ChargeTime", 1.5f);
-    if(this->m_ChargeTime < 1.5f)this->m_ChargeTime = 1.5f;
+    if(this->m_ChargeTime < 0.2f)this->m_ChargeTime = 0.2f;
     //連射ディレイ
     this->m_ShotCycle = UserDefault::getInstance()->getFloatForKey("ShotCycle", 1.0f);
-    if(this->m_ShotCycle < 1.0f)this->m_ShotCycle = 1.0f;
+    if(this->m_ShotCycle < 0.2f)this->m_ShotCycle = 0.2f;
     //弾の大きさ
     this->m_ShotSize = UserDefault::getInstance()->getFloatForKey("ShotSize", 1.0f);
     if(this->m_ShotSize < 1.0f)this->m_ShotSize = 1.0f;
@@ -97,7 +102,12 @@ void GameData::saveSettingData()
  */
 void GameData::resetdefaultValue()
 {
-    
+    this->setBaseMaxPower(this->getDefaultValueBaseMaxPower());
+    this->setChargePower(this->getDefaultValueChargePower());
+    this->setChargeTime(this->getDefaultValueChargeTime());
+    this->setShotCycle(this->getDefaultValueShotCycle());
+    this->setShotSize(this->getDefaultValueShotSize());
+    this->setPlayerHp(this->getDefaultValuePlayerHp());
 }
 //---------------------
 //default値
@@ -119,21 +129,21 @@ int GameData::getDefaultValueChargePower()
 /**
  * チャージ速度
  */
-int GameData::getDefaultValueChargeTime()
+float GameData::getDefaultValueChargeTime()
 {
     return DEF_DEFAULT_CHARGE_TIME;
 }
 /**
  * 連射ディレイ
  */
-int GameData::getDefaultValueShotCycle()
+float GameData::getDefaultValueShotCycle()
 {
     return DEF_DEFAULT_SHOT_CYCLE;
 }
 /**
  * 弾の大きさ
  */
-int GameData::getDefaultValueShotSize()
+float GameData::getDefaultValueShotSize()
 {
     return DEF_DEFAULT_SHOT_SIZE;
 }
@@ -165,21 +175,21 @@ int GameData::getAddValueChargePower()
 /**
  * チャージ速度
  */
-int GameData::getAddValueChargeTime()
+float GameData::getAddValueChargeTime()
 {
     return DEF_ADD_CHARGE_TIME;
 }
 /**
  * 連射ディレイ
  */
-int GameData::getAddValueShotCycle()
+float GameData::getAddValueShotCycle()
 {
     return DEF_ADD_SHOT_CYCLE;
 }
 /**
  * 弾の大きさ
  */
-int GameData::getAddValueShotSize()
+float GameData::getAddValueShotSize()
 {
     return DEF_ADD_SHOT_SIZE;
 }
