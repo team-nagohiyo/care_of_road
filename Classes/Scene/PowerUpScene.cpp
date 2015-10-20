@@ -264,28 +264,60 @@ void PowerUpScene::updateValue()
 {
     char buff[256] = "";
     
+    auto gd = GameData::getInstance();
+    
     //ポイント
-    sprintf(buff,"%12d pt",GameData::getInstance()->getGamePoint());
+    sprintf(buff,"%12d pt",gd->getGamePoint());
     this->m_ValuePoint->setString(buff);
     
     //基本パワー
-    sprintf(buff,"Lv %03d",GameData::getInstance()->getBaseMaxPower());
+    sprintf(buff,"Lv %03d",gd->getBaseMaxPower());
     this->m_ValueBaseMaxPowerValue->setString(buff);
     
+    this->m_CostBaseMaxPower = gd->getBaseMaxPower() - gd->getDefaultValueBaseMaxPower();
+    this->m_CostBaseMaxPower /= gd->getAddValueBaseMaxPower();
+    this->m_CostBaseMaxPower = pow(this->m_CostBaseMaxPower + 1, 2.3) * 10;
+    sprintf(buff,"%07dp",this->m_CostBaseMaxPower);
+    this->m_ValueBaseMaxPowerCost->setString(buff);
+    
     //連射時間
-    sprintf(buff,"%01.02f sec",GameData::getInstance()->getShotCycle());
+    sprintf(buff,"%01.02f sec",gd->getShotCycle());
     this->m_ValueShotCycleValue->setString(buff);
+    
+    this->m_CostShotCycle = gd->getDefaultValueShotCycle() - gd->getShotCycle();
+    this->m_CostShotCycle /= gd->getAddValueShotCycle();
+    this->m_CostShotCycle = pow(this->m_CostShotCycle + 1, 2.3) * 10;
+    sprintf(buff,"%07dp",this->m_CostShotCycle);
+    this->m_ValueShotCycleCost->setString(buff);
     
     //チャージショット最大パワー
     sprintf(buff,"Lv %02d",GameData::getInstance()->getChargePower());
     this->m_ValueChargePowerValue->setString(buff);
     
+    this->m_CostChargePower = gd->getChargePower() - gd->getDefaultValueChargePower();
+    this->m_CostChargePower /= gd->getAddValueChargePower();
+    this->m_CostChargePower = pow(this->m_CostChargePower + 1, 2.3) * 10;
+    sprintf(buff,"%06dp",this->m_CostChargePower);
+    this->m_ValueChargePowerCost->setString(buff);
+    
     //チャージ時間
     sprintf(buff,"%1.02f sec",GameData::getInstance()->getChargeTime());
     this->m_ValueChargeTimeValue->setString(buff);
     
+    this->m_CostChargePower = gd->getDefaultValueChargeTime() - gd->getChargeTime();
+    this->m_CostChargePower /= gd->getAddValueChargeTime();
+    this->m_CostChargePower = pow(this->m_CostChargePower + 1, 2.3) * 10;
+    sprintf(buff,"%06dp",this->m_CostChargeTime);
+    this->m_ValueChargeTimeCost->setString(buff);
+    
     //プレイヤーHP
     sprintf(buff,"Life %d",GameData::getInstance()->getPlayerHp());
     this->m_ValuePlayerLifeValue->setString(buff);
+    
+    this->m_CostPlayerLife = gd->getDefaultValuePlayerHp() - gd->getPlayerHp();
+    this->m_CostPlayerLife /= gd->getAddValuePlayerHp();
+    this->m_CostPlayerLife = pow(this->m_CostPlayerLife + 1, 5) * 10;
+    sprintf(buff,"%06dp",this->m_CostPlayerLife);
+    this->m_ValuePlayerLifeCost->setString(buff);
 }
 

@@ -37,30 +37,35 @@ protected:
     cocos2d::Label * m_ValueBaseMaxPowerValue;
     cocos2d::Label * m_ValueBaseMaxPowerCost;
     cocos2d::MenuItem * m_MenuBaseMaxPower;
+    int m_CostBaseMaxPower;
     
     //連射
     cocos2d::Sprite * m_LabelShotCycle;
     cocos2d::Label * m_ValueShotCycleValue;
     cocos2d::Label * m_ValueShotCycleCost;
     cocos2d::MenuItem * m_MenuShotCycle;
+    int m_CostShotCycle;
     
     //チャージパワー
     cocos2d::Sprite * m_LabelChargePower;
     cocos2d::Label * m_ValueChargePowerValue;
     cocos2d::Label * m_ValueChargePowerCost;
     cocos2d::MenuItem * m_MenuChargePower;
+    int m_CostChargePower;
     
     //チャージ時間
     cocos2d::Sprite * m_LabelChargeTime;
     cocos2d::Label * m_ValueChargeTimeValue;
     cocos2d::Label * m_ValueChargeTimeCost;
     cocos2d::MenuItem * m_MenuChargeTime;
+    int m_CostChargeTime;
     
     //プレイヤーLife
     cocos2d::Sprite * m_LabelPlayerLife;
     cocos2d::Label * m_ValuePlayerLifeValue;
     cocos2d::Label * m_ValuePlayerLifeCost;
     cocos2d::MenuItem * m_MenuPlayerLife;
+    int m_CostPlayerLife;
     
     
     /**
