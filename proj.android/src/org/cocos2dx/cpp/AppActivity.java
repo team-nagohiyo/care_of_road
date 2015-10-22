@@ -27,6 +27,83 @@ THE SOFTWARE.
 package org.cocos2dx.cpp;
 
 import org.cocos2dx.lib.Cocos2dxActivity;
+import android.os.Bundle;
 
-public class AppActivity extends Cocos2dxActivity {
+import com.unity3d.ads.android.IUnityAdsListener;
+import com.unity3d.ads.android.UnityAds;
+
+public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
+	@Override
+	protected void onCreate(final Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        UnityAds.init(this, "1008934", this);
+	}
+	
+	@Override
+	public void onResume() {
+	  super.onResume();
+	  //アクティビティが変更された時は登録しなおす。
+	  UnityAds.changeActivity(this);
+	}
+	
+	@Override
+	/**
+	 * 動画在庫がある場合のイベント
+	 */
+	public void onFetchCompleted() {
+	}
+
+	@Override
+	/**
+	 * 動画在庫がない場合のイベント
+	 */
+	public void onFetchFailed() {
+	}
+
+	@Override
+	/**
+	 * UnityAdsが表示されたイベント
+	 */
+	public void onHide() {
+	}
+
+	@Override
+	/**
+	 * UnityAdsが閉じられたイベント
+	 */
+	public void onShow() {
+	}
+
+	@Override
+	/**
+	 * 動画の再生開始イベント
+	 */
+	public void onVideoStarted() {
+	}
+	
+	@Override
+	/**
+	 * 動画の再生完了イベント
+	 * @param key インセンティブキー
+	 * @param skip スキップしたか
+	 */
+	public void onVideoCompleted(String key, boolean skip) {
+	}
+
+	/**
+	 * UnityAdsの広告表示準備が完了しているか
+	 * @return 表示可能
+	 */
+	public boolean canUnityAdsShow()
+	{
+		return UnityAds.canShow();
+	}
+
+	/**
+	 * UnityAdsの広告を表示する
+	 */
+	public void showUnityAds()
+	{
+		  UnityAds.show();
+	}
 }

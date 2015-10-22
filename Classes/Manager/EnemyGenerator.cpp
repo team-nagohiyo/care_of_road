@@ -13,6 +13,7 @@
 USING_NS_CC;
 
 EnemyGenerator::EnemyGenerator()
+:m_Level(0)
 {
     
 }
@@ -50,7 +51,7 @@ void EnemyGenerator::updateSchedule(float dt)
             this->setLevel(this->getLevel() + 1);
         }
         
-        enemy->setLife(this->getLevel() + 3);
+        enemy->setLife(this->getLevel() + 1);
         
         this->m_createDelay = 1.0f;
     }
