@@ -79,12 +79,21 @@
 		5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BB1BA9AD620036D30A /* HitObject.cpp */; };
 		5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
-		573E34191BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; settings = {ASSET_TAGS = (); }; };
-		573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; settings = {ASSET_TAGS = (); }; };
+		573E34191BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; };
+		573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; };
 		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
 		5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
+		579236BE1BD9714E00062180 /* UnityAdsWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 579236BD1BD9714E00062180 /* UnityAdsWrapper.mm */; };
+		579236C11BD99DAF00062180 /* UnityAds.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236BF1BD99DAF00062180 /* UnityAds.bundle */; };
+		579236C21BD99DAF00062180 /* UnityAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236C01BD99DAF00062180 /* UnityAds.framework */; };
+		579236C61BD99E2300062180 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236C51BD99E2300062180 /* AdSupport.framework */; };
+		579236C81BD99E3B00062180 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236C71BD99E3B00062180 /* SystemConfiguration.framework */; };
+		579236CA1BD99E4F00062180 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236C91BD99E4F00062180 /* CoreTelephony.framework */; };
+		579236CC1BD99E6000062180 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236CB1BD99E6000062180 /* CoreMedia.framework */; };
+		579236CE1BD9A08500062180 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 579236CD1BD9A08500062180 /* StoreKit.framework */; };
+		579236D01BD9C3F400062180 /* UnityAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 579236CF1BD9C3F400062180 /* UnityAds.bundle */; };
 		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
@@ -211,6 +220,17 @@
 		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
 		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
 		5765F6181BB0632B00B6ED18 /* GameOverScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverScene.h; sourceTree = "<group>"; };
+		579236BC1BD96FC100062180 /* UnityAdsWrapper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnityAdsWrapper.h; sourceTree = "<group>"; };
+		579236BD1BD9714E00062180 /* UnityAdsWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UnityAdsWrapper.mm; sourceTree = "<group>"; };
+		579236BF1BD99DAF00062180 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = UnityAds.bundle; path = "../unity-ads-sdk-master/UnityAds.bundle"; sourceTree = "<group>"; };
+		579236C01BD99DAF00062180 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = "../unity-ads-sdk-master/UnityAds.framework"; sourceTree = "<group>"; };
+		579236C31BD99DE400062180 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = "../unity-ads-sdk-master/UnityAds.framework"; sourceTree = "<group>"; };
+		579236C51BD99E2300062180 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
+		579236C71BD99E3B00062180 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		579236C91BD99E4F00062180 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
+		579236CB1BD99E6000062180 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CoreMedia.framework; sourceTree = DEVELOPER_DIR; };
+		579236CD1BD9A08500062180 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/StoreKit.framework; sourceTree = DEVELOPER_DIR; };
+		579236CF1BD9C3F400062180 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UnityAds.bundle; sourceTree = "<group>"; };
 		57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RollBackgroundLayer.cpp; sourceTree = "<group>"; };
 		57955E591BA6E10600C765BB /* RollBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollBackgroundLayer.h; sourceTree = "<group>"; };
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
@@ -232,6 +252,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579236CE1BD9A08500062180 /* StoreKit.framework in Frameworks */,
+				579236CC1BD99E6000062180 /* CoreMedia.framework in Frameworks */,
+				579236CA1BD99E4F00062180 /* CoreTelephony.framework in Frameworks */,
+				579236C81BD99E3B00062180 /* SystemConfiguration.framework in Frameworks */,
+				579236C61BD99E2300062180 /* AdSupport.framework in Frameworks */,
+				579236C11BD99DAF00062180 /* UnityAds.bundle in Frameworks */,
+				579236C21BD99DAF00062180 /* UnityAds.framework in Frameworks */,
 				1AC6FB30180E99EB004C840B /* libcocos2d iOS.a in Frameworks */,
 				D6B0611B1803AB670077942B /* CoreMotion.framework in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -303,6 +330,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				579236C31BD99DE400062180 /* UnityAds.framework */,
+				579236B81BD96F9200062180 /* native */,
 				46880B8319C43A87006E1F66 /* Classes */,
 				46880B7519C43A67006E1F66 /* Resources */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
@@ -317,6 +346,13 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				579236CD1BD9A08500062180 /* StoreKit.framework */,
+				579236CB1BD99E6000062180 /* CoreMedia.framework */,
+				579236C91BD99E4F00062180 /* CoreTelephony.framework */,
+				579236C71BD99E3B00062180 /* SystemConfiguration.framework */,
+				579236C51BD99E2300062180 /* AdSupport.framework */,
+				579236BF1BD99DAF00062180 /* UnityAds.bundle */,
+				579236C01BD99DAF00062180 /* UnityAds.framework */,
 				D6B0611A1803AB670077942B /* CoreMotion.framework */,
 				503AE11A17EB9C5A00D1A890 /* IOKit.framework */,
 				503AE11117EB99EE00D1A890 /* libcurl.dylib */,
@@ -339,6 +375,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				579236CF1BD9C3F400062180 /* UnityAds.bundle */,
 				57AF355F1BA5E5E2005F65A4 /* str */,
 				57AF355C1BA5E5D9005F65A4 /* game */,
 				57AF35591BA5E5CF005F65A4 /* sound */,
@@ -465,6 +502,32 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		579236B81BD96F9200062180 /* native */ = {
+			isa = PBXGroup;
+			children = (
+				579236BA1BD96F9200062180 /* iOS */,
+				579236BB1BD96F9200062180 /* wrapper */,
+			);
+			name = native;
+			path = ../native;
+			sourceTree = "<group>";
+		};
+		579236BA1BD96F9200062180 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				579236BD1BD9714E00062180 /* UnityAdsWrapper.mm */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		579236BB1BD96F9200062180 /* wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				579236BC1BD96FC100062180 /* UnityAdsWrapper.h */,
+			);
+			path = wrapper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -565,6 +628,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				579236D01BD9C3F400062180 /* UnityAds.bundle in Resources */,
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
@@ -632,6 +696,7 @@
 				5710F09E1BA901010036D30A /* EnemyObject.cpp in Sources */,
 				5710F0BD1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5710F0AB1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
+				579236BE1BD9714E00062180 /* UnityAdsWrapper.mm in Sources */,
 				57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */,
 				57AF454B1BB395FF00665086 /* GameMediator.cpp in Sources */,
 				5710F0AF1BA9010D0036D30A /* RankingScene.cpp in Sources */,
@@ -688,6 +753,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ooharayukio/care_of_road/unity-ads-sdk-master",
+				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -722,6 +791,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COMPRESS_PNG_FILES = NO;
 				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/ooharayukio/care_of_road/unity-ads-sdk-master",
+				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ios/Prefix.pch;

@@ -1,8 +1,11 @@
 #import <UIKit/UIKit.h>
 
+//UnityAds
+#import <UnityAds/UnityAds.h>
+
 @class RootViewController;
 
-@interface AppController : NSObject <UIApplicationDelegate> {
+@interface AppController : NSObject <UIApplicationDelegate ,UnityAdsDelegate> {
     UIWindow *window;
 }
 

@@ -36,6 +36,8 @@ public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        UnityAds.setDebugMode(true);
+        UnityAds.setTestMode(true);
         UnityAds.init(this, "1008934", this);
 	}
 	
@@ -43,7 +45,7 @@ public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
 	public void onResume() {
 	  super.onResume();
 	  //アクティビティが変更された時は登録しなおす。
-	  UnityAds.changeActivity(this);
+	  //UnityAds.changeActivity(this);
 	}
 	
 	@Override
@@ -94,7 +96,7 @@ public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
 	 * UnityAdsの広告表示準備が完了しているか
 	 * @return 表示可能
 	 */
-	public boolean canUnityAdsShow()
+	public static boolean canUnityAdsShow()
 	{
 		return UnityAds.canShow();
 	}
@@ -102,7 +104,7 @@ public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
 	/**
 	 * UnityAdsの広告を表示する
 	 */
-	public void showUnityAds()
+	public static void showUnityAds()
 	{
 		  UnityAds.show();
 	}

@@ -61,6 +61,12 @@ static AppDelegate s_sharedApplication;
     _viewController.wantsFullScreenLayout = YES;
     _viewController.view = eaglView;
 
+    //Unity Ads
+    [[UnityAds sharedInstance] setTestMode:YES];
+    [[UnityAds sharedInstance] setDebugMode:YES];
+    [[UnityAds sharedInstance] startWithGameId:@"1008933" andViewController:_viewController];
+    [[UnityAds sharedInstance] setDelegate:self];
+    
     // Set RootViewController to window
     if ( [[UIDevice currentDevice].systemVersion floatValue] < 6.0)
     {
@@ -126,6 +132,11 @@ static AppDelegate s_sharedApplication;
      */
 }
 
+//Unity Ads
+- (void)unityAdsVideoCompleted:(NSString *)rewardItemKey skipped:(BOOL)skipped
+{
+    //callback
+}
 
 #pragma mark -
 #pragma mark Memory management

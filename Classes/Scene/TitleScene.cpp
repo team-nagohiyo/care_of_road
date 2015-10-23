@@ -13,6 +13,7 @@
 #include "RankingScene.h"
 
 #include "SimpleAudioEngine.h"
+#include "UnityAdsWrapper.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -98,5 +99,9 @@ void TitleScene::moveToPowrUp(Ref * sender)
  */
 void TitleScene::moveToRanking(Ref * sender)
 {
-    Director::getInstance()->replaceScene(RankingScene::createScene());
+//    Director::getInstance()->replaceScene(RankingScene::createScene());
+    if(UnityAdsWrapper::canShow())
+    {
+        UnityAdsWrapper::show();
+    }
 }
