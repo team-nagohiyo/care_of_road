@@ -77,6 +77,31 @@ protected:
      * メニューの数値更新
      */
     void updateValue();
+    
+    /**
+     * 消費値の計算
+     */
+    template<typename T>
+    int calcDownValueCost(float rate,T currentVal,T defaultVal, T AddVal)
+    {
+        int cost;
+        cost = defaultVal - currentVal;
+        cost /= AddVal;
+        cost = pow(cost+ 1, rate) * 10;
+        return cost;
+    }
+    /**
+     * 消費値の計算
+     */
+    template<typename T>
+    int calcUpValueCost(float rate,T currentVal,T defaultVal, T AddVal)
+    {
+        int cost;
+        cost = currentVal - defaultVal;
+        cost /= AddVal;
+        cost = pow(cost+ 1, rate) * 10;
+        return cost;
+    }
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();

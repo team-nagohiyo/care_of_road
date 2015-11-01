@@ -233,10 +233,13 @@ void PowerUpScene::onPowerUpItem(cocos2d::Ref * sender)
     
     if(sender == this->m_MenuBaseMaxPower)
     {
+        
+        //コストチェック
         gd->setBaseMaxPower(gd->getBaseMaxPower() + gd->getAddValueBaseMaxPower());
     }
     else if(sender == this->m_MenuChargePower)
     {
+        //コストチェック
         gd->setChargePower(gd->getChargePower() + gd->getAddValueChargePower());
     }
     else if(sender == this->m_MenuChargeTime)
@@ -304,9 +307,11 @@ void PowerUpScene::updateValue()
     sprintf(buff,"%1.02f sec",GameData::getInstance()->getChargeTime());
     this->m_ValueChargeTimeValue->setString(buff);
     
-    this->m_CostChargePower = gd->getDefaultValueChargeTime() - gd->getChargeTime();
-    this->m_CostChargePower /= gd->getAddValueChargeTime();
-    this->m_CostChargePower = pow(this->m_CostChargePower + 1, 2.3) * 10;
+    this->m_CostChargeTime = this->calcDownValueCost(
+                                                     gd->getCostRateChargePower(),
+                                                     gd->getChargeTime(),
+                                                     gd->getDefaultValueChargeTime(),
+                                                     gd->getAddValueChargeTime());
     sprintf(buff,"%06dp",this->m_CostChargeTime);
     this->m_ValueChargeTimeCost->setString(buff);
     
@@ -314,9 +319,10 @@ void PowerUpScene::updateValue()
     sprintf(buff,"Life %d",GameData::getInstance()->getPlayerHp());
     this->m_ValuePlayerLifeValue->setString(buff);
     
-    this->m_CostPlayerLife = gd->getDefaultValuePlayerHp() - gd->getPlayerHp();
-    this->m_CostPlayerLife /= gd->getAddValuePlayerHp();
-    this->m_CostPlayerLife = pow(this->m_CostPlayerLife + 1, 5) * 10;
+    this->m_CostPlayerLife = this->calcUpValueCost(gd->getCostRatePlayerHp(),
+                     gd->getPlayerHp(),
+                     gd->getDefaultValuePlayerHp(),
+                     gd->getAddValuePlayerHp());
     sprintf(buff,"%06dp",this->m_CostPlayerLife);
     this->m_ValuePlayerLifeCost->setString(buff);
 }

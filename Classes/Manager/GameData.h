@@ -66,7 +66,7 @@ public:
     //default値
     //---------------------
     /**
-     * 最大パワー
+     * 基本パワー
      */
     virtual int getDefaultValueBaseMaxPower();
     /**
@@ -94,7 +94,7 @@ public:
     //加算値
     //---------------------
     /**
-     * 最大パワー
+     * 基本パワー
      */
     virtual int getAddValueBaseMaxPower();
     /**
@@ -117,6 +117,62 @@ public:
      * プレイヤーのHP
      */
     virtual int getAddValuePlayerHp();
+    
+    //---------------------
+    //最大値
+    //---------------------
+    /**
+     * 基本パワー
+     */
+    virtual int getMaxValueBaseMaxPower();
+    /**
+     * チャージパワー
+     */
+    virtual int getMaxValueChargePower();
+    /**
+     * チャージ速度
+     */
+    virtual float getMinValueChargeTime();
+    /**
+     * 連射ディレイ
+     */
+    virtual float getMinValueShotCycle();
+    /**
+     * 弾の大きさ
+     */
+    virtual float getMaxValueShotSize();
+    /**
+     * プレイヤーのHP
+     */
+    virtual int getMaxValuePlayerHp();
+    
+    //---------------------
+    //消費レート値
+    //---------------------
+    /**
+     * 基本パワー
+     */
+    virtual int getCostRateBaseMaxPower();
+    /**
+     * チャージパワー
+     */
+    virtual int getCostRateChargePower();
+    /**
+     * チャージ速度
+     */
+    virtual float getCostRateChargeTime();
+    /**
+     * 連射ディレイ
+     */
+    virtual float getCostRateShotCycle();
+    /**
+     * 弾の大きさ
+     */
+    virtual float getCostRateShotSize();
+    /**
+     * プレイヤーのHP
+     */
+    virtual int getCostRatePlayerHp();
 };
 
 #endif /* defined(__care_of_road__GameData__) */
