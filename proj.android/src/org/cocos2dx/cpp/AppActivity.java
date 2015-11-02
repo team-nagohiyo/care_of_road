@@ -32,7 +32,9 @@ import android.os.Bundle;
 import com.unity3d.ads.android.IUnityAdsListener;
 import com.unity3d.ads.android.UnityAds;
 
-public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
+public class AppActivity extends Cocos2dxActivity
+implements IUnityAdsListener
+{
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

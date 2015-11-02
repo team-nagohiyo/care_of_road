@@ -10,25 +10,45 @@
 
 USING_NS_CC;
 
-#define DEF_DEFAULT_MAX_POWER (1)
+//初期値
+#define DEF_DEFAULT_BASE_POWER (1)
 #define DEF_DEFAULT_CHARGE_POWER (1)
 #define DEF_DEFAULT_CHARGE_TIME (1.5f)
 #define DEF_DEFAULT_SHOT_CYCLE (1.0f)
 #define DEF_DEFAULT_SHOT_SIZE (1.0f)
 #define DEF_DEFAULT_PLAYER_HP (1)
 
-#define DEF_ADD_MAX_POWER (1)
+//最大値
+#define DEF_MAX_BASE_POWER (30)
+#define DEF_MAX_CHARGE_POWER (30)
+#define DEF_MIN_CHARGE_TIME (0.2f)
+#define DEF_MIN_SHOT_CYCLE (0.2f)
+#define DEF_MAX_SHOT_SIZE (3.0f)
+#define DEF_MAX_PLAYER_HP (5)
+
+//加算レート
+#define DEF_ADD_BASE_POWER (1)
 #define DEF_ADD_CHARGE_POWER (1)
 #define DEF_ADD_CHARGE_TIME (0.05f)
 #define DEF_ADD_SHOT_CYCLE (0.05f)
 #define DEF_ADD_SHOT_SIZE (0.1f)
 #define DEF_ADD_PLAYER_HP (1)
 
+//消費レート
+#define DEF_RATE_BASE_POWER (1.2f)
+#define DEF_RATE_CHARGE_POWER (3.2f)
+#define DEF_RATE_CHARGE_TIME (6.0f)
+#define DEF_RATE_SHOT_CYCLE (10.0f)
+#define DEF_RATE_SHOT_SIZE (0.1f)
+#define DEF_RATE_PLAYER_HP (100.0f)
 
 GameData::GameData()
 {
+#if COCOS2D_DEBUG
     this->resetdefaultValue();
+    this->setGamePoint(100000);
     this->saveSettingData();
+#endif
 }
 GameData * GameData::getInstance()
 {
@@ -113,11 +133,11 @@ void GameData::resetdefaultValue()
 //default値
 //---------------------
 /**
- * 最大パワー
+ * 基本パワー
  */
 int GameData::getDefaultValueBaseMaxPower()
 {
-    return DEF_DEFAULT_MAX_POWER;
+    return DEF_DEFAULT_BASE_POWER;
 }
 /**
  * チャージパワー
@@ -163,7 +183,7 @@ int GameData::getDefaultValuePlayerHp()
  */
 int GameData::getAddValueBaseMaxPower()
 {
-    return DEF_ADD_MAX_POWER;
+    return DEF_ADD_BASE_POWER;
 }
 /**
  * チャージパワー
@@ -199,6 +219,96 @@ float GameData::getAddValueShotSize()
 int GameData::getAddValuePlayerHp()
 {
     return DEF_ADD_PLAYER_HP;
+}
+//---------------------
+//最大値
+//---------------------
+/**
+ * 最大パワー
+ */
+int GameData::getMaxValueBaseMaxPower()
+{
+    return DEF_MAX_BASE_POWER;
+}
+/**
+ * チャージパワー
+ */
+int GameData::getMaxValueChargePower()
+{
+    return DEF_MAX_CHARGE_POWER;
+}
+/**
+ * チャージ速度
+ */
+float GameData::getMinValueChargeTime()
+{
+    return DEF_MIN_CHARGE_TIME;
+}
+/**
+ * 連射ディレイ
+ */
+float GameData::getMinValueShotCycle()
+{
+    return DEF_MIN_SHOT_CYCLE;
+}
+/**
+ * 弾の大きさ
+ */
+float GameData::getMaxValueShotSize()
+{
+    return DEF_MAX_SHOT_SIZE;
+}
+/**
+ * プレイヤーのHP
+ */
+int GameData::getMaxValuePlayerHp()
+{
+    return DEF_MAX_PLAYER_HP;
+}
+//---------------------
+//消費レート値
+//---------------------
+/**
+ * 基本パワー
+ */
+int GameData::getCostRateBaseMaxPower()
+{
+    return DEF_RATE_BASE_POWER;
+}
+/**
+ * チャージパワー
+ */
+int GameData::getCostRateChargePower()
+{
+    return DEF_RATE_CHARGE_POWER;
+}
+/**
+ * チャージ速度
+ */
+float GameData::getCostRateChargeTime()
+{
+    return DEF_RATE_CHARGE_TIME;
+}
+/**
+ * 連射ディレイ
+ */
+float GameData::getCostRateShotCycle()
+{
+    return DEF_RATE_SHOT_CYCLE;
+}
+/**
+ * 弾の大きさ
+ */
+float GameData::getCostRateShotSize()
+{
+    return DEF_RATE_SHOT_SIZE;
+}
+/**
+ * プレイヤーのHP
+ */
+int GameData::getCostRatePlayerHp()
+{
+    return DEF_RATE_PLAYER_HP;
 }
 
 
