@@ -29,6 +29,10 @@ extern "C" {
 		
         bool ret = false;
         if(JNI_TRUE == ans)ret = true;
+        
+        // オブジェクトの解放
+        methodInfo.env->DeleteLocalRef(methodInfo.classID);
+        
 		return ret;
 	}
     
@@ -45,6 +49,9 @@ extern "C" {
         
         // Android側のメソッドコール
         methodInfo.env->CallStaticVoidMethod(methodInfo.classID, methodInfo.methodID);
+        
+        // オブジェクトの解放
+        methodInfo.env->DeleteLocalRef(methodInfo.classID);
         
     }
 

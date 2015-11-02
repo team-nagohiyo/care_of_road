@@ -98,7 +98,7 @@ public class AppActivity extends Cocos2dxActivity implements IUnityAdsListener{
 	 */
 	public static boolean canUnityAdsShow()
 	{
-		return UnityAds.canShow();
+		return UnityAds.canShow() && UnityAds.canShowAds() && UnityAds.isSupported();
 	}
 
 	/**
