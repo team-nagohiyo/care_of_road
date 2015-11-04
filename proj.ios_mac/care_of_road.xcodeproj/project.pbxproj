@@ -81,6 +81,8 @@
 		5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5710F0BF1BA9B7530036D30A /* PlayerObject.cpp */; };
 		573E34191BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; };
 		573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; };
+		573FEA4C1BE86CDF00D787DB /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 573FEA4B1BE86CDF00D787DB /* icon */; };
+		573FEA4D1BE86CDF00D787DB /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 573FEA4B1BE86CDF00D787DB /* icon */; };
 		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
@@ -216,6 +218,7 @@
 		5710F0C01BA9B7530036D30A /* PlayerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerObject.h; sourceTree = "<group>"; };
 		573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLevelPlanner.cpp; sourceTree = "<group>"; };
 		573E34181BCB6375002DB8AF /* GameLevelPlanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevelPlanner.h; sourceTree = "<group>"; };
+		573FEA4B1BE86CDF00D787DB /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
 		5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGenerator.cpp; sourceTree = "<group>"; };
 		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
 		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
@@ -224,7 +227,7 @@
 		579236BD1BD9714E00062180 /* UnityAdsWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = UnityAdsWrapper.mm; sourceTree = "<group>"; };
 		579236BF1BD99DAF00062180 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = UnityAds.bundle; path = "../unity-ads-sdk-master/UnityAds.bundle"; sourceTree = "<group>"; };
 		579236C01BD99DAF00062180 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = "../unity-ads-sdk-master/UnityAds.framework"; sourceTree = "<group>"; };
-		579236C31BD99DE400062180 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = "../unity-ads-sdk-master/UnityAds.framework"; sourceTree = "<group>"; };
+		579236C31BD99DE400062180 /* UnityAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UnityAds.framework; path = "../unity-ads-sdk/UnityAds.framework"; sourceTree = "<group>"; };
 		579236C51BD99E2300062180 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/AdSupport.framework; sourceTree = DEVELOPER_DIR; };
 		579236C71BD99E3B00062180 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		579236C91BD99E4F00062180 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/System/Library/Frameworks/CoreTelephony.framework; sourceTree = DEVELOPER_DIR; };
@@ -375,6 +378,7 @@
 		46880B7519C43A67006E1F66 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				573FEA4B1BE86CDF00D787DB /* icon */,
 				579236CF1BD9C3F400062180 /* UnityAds.bundle */,
 				57AF355F1BA5E5E2005F65A4 /* str */,
 				57AF355C1BA5E5D9005F65A4 /* game */,
@@ -637,6 +641,7 @@
 				46880B8119C43A67006E1F66 /* HelloWorld.png in Resources */,
 				57AF35601BA5E5E2005F65A4 /* str in Resources */,
 				57AF355A1BA5E5CF005F65A4 /* sound in Resources */,
+				573FEA4C1BE86CDF00D787DB /* icon in Resources */,
 				46880B7D19C43A67006E1F66 /* CloseSelected.png in Resources */,
 				5087E77D17EB970100C73F5D /* Default-568h@2x.png in Resources */,
 				5087E78517EB970100C73F5D /* Icon-72.png in Resources */,
@@ -663,6 +668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57AF35611BA5E5E2005F65A4 /* str in Resources */,
+				573FEA4D1BE86CDF00D787DB /* icon in Resources */,
 				46880B8219C43A67006E1F66 /* HelloWorld.png in Resources */,
 				503AE0F817EB97AB00D1A890 /* Icon.icns in Resources */,
 				3EACC99019EE6D4300EB3C5E /* res in Resources */,
@@ -755,7 +761,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ooharayukio/care_of_road/unity-ads-sdk-master",
+					"/Users/ooharayukio/care_of_road/unity-ads-sdk",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -793,7 +799,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ooharayukio/care_of_road/unity-ads-sdk-master",
+					"/Users/ooharayukio/care_of_road/unity-ads-sdk",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

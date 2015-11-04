@@ -15,6 +15,8 @@
 
 #include "SimpleAudioEngine.h"
 
+#include "UnityAdsWrapper.h"
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
