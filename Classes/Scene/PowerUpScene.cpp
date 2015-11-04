@@ -233,26 +233,48 @@ void PowerUpScene::onPowerUpItem(cocos2d::Ref * sender)
     
     if(sender == this->m_MenuBaseMaxPower)
     {
-        
         //コストチェック
-        gd->setBaseMaxPower(gd->getBaseMaxPower() + gd->getAddValueBaseMaxPower());
+        if(gd->getGamePoint() >= this->m_CostBaseMaxPower)
+        {
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostBaseMaxPower);
+            gd->setBaseMaxPower(gd->getBaseMaxPower() + gd->getAddValueBaseMaxPower());
+        }
     }
     else if(sender == this->m_MenuChargePower)
     {
         //コストチェック
-        gd->setChargePower(gd->getChargePower() + gd->getAddValueChargePower());
+        if(gd->getGamePoint() >= this->m_CostChargePower)
+        {
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostChargePower);
+            gd->setChargePower(gd->getChargePower() + gd->getAddValueChargePower());
+        }
     }
     else if(sender == this->m_MenuChargeTime)
     {
-        gd->setChargeTime(gd->getChargeTime() - gd->getAddValueChargeTime());
+        //コストチェック
+        if(gd->getGamePoint() >= this->m_CostChargeTime)
+        {
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostChargeTime);
+            gd->setChargeTime(gd->getChargeTime() - gd->getAddValueChargeTime());
+        }
     }
     else if(sender == this->m_MenuShotCycle)
     {
-        gd->setShotCycle(gd->getShotCycle() - gd->getAddValueShotCycle());
+        //コストチェック
+        if(gd->getGamePoint() >= this->m_CostShotCycle)
+        {
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostShotCycle);
+            gd->setShotCycle(gd->getShotCycle() - gd->getAddValueShotCycle());
+        }
     }
     else if(sender == this->m_MenuPlayerLife)
     {
-        gd->setPlayerHp(gd->getPlayerHp() + gd->getAddValuePlayerHp());
+        //コストチェック
+        if(gd->getGamePoint() >= this->m_CostPlayerLife)
+        {
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostPlayerLife);
+            gd->setPlayerHp(gd->getPlayerHp() + gd->getAddValuePlayerHp());
+        }
     }
     
     gd->saveSettingData();
@@ -277,9 +299,10 @@ void PowerUpScene::updateValue()
     sprintf(buff,"Lv %03d",gd->getBaseMaxPower());
     this->m_ValueBaseMaxPowerValue->setString(buff);
     
-    this->m_CostBaseMaxPower = gd->getBaseMaxPower() - gd->getDefaultValueBaseMaxPower();
-    this->m_CostBaseMaxPower /= gd->getAddValueBaseMaxPower();
-    this->m_CostBaseMaxPower = pow(this->m_CostBaseMaxPower + 1, 2.3) * 10;
+    this->m_CostBaseMaxPower = this->calcUpValueCost(gd->getCostRateBaseMaxPower(),
+                                                  gd->getBaseMaxPower(),
+                                                  gd->getDefaultValueBaseMaxPower(),
+                                                  gd->getAddValueBaseMaxPower());
     sprintf(buff,"%07dp",this->m_CostBaseMaxPower);
     this->m_ValueBaseMaxPowerCost->setString(buff);
     
@@ -287,9 +310,10 @@ void PowerUpScene::updateValue()
     sprintf(buff,"%01.02f sec",gd->getShotCycle());
     this->m_ValueShotCycleValue->setString(buff);
     
-    this->m_CostShotCycle = gd->getDefaultValueShotCycle() - gd->getShotCycle();
-    this->m_CostShotCycle /= gd->getAddValueShotCycle();
-    this->m_CostShotCycle = pow(this->m_CostShotCycle + 1, 2.3) * 10;
+    this->m_CostShotCycle = this->calcDownValueCost(gd->getCostRateShotCycle(),
+                                                    gd->getShotCycle(),
+                                                    gd->getDefaultValueShotCycle(),
+                                                    gd->getAddValueShotCycle());
     sprintf(buff,"%07dp",this->m_CostShotCycle);
     this->m_ValueShotCycleCost->setString(buff);
     
@@ -297,9 +321,10 @@ void PowerUpScene::updateValue()
     sprintf(buff,"Lv %02d",GameData::getInstance()->getChargePower());
     this->m_ValueChargePowerValue->setString(buff);
     
-    this->m_CostChargePower = gd->getChargePower() - gd->getDefaultValueChargePower();
-    this->m_CostChargePower /= gd->getAddValueChargePower();
-    this->m_CostChargePower = pow(this->m_CostChargePower + 1, 2.3) * 10;
+    this->m_CostChargePower = this->calcUpValueCost(gd->getCostRateChargePower(),
+                                                    gd->getChargePower(),
+                                                    gd->getDefaultValueChargePower(),
+                                                    gd->getAddValueChargePower());
     sprintf(buff,"%06dp",this->m_CostChargePower);
     this->m_ValueChargePowerCost->setString(buff);
     
@@ -307,8 +332,7 @@ void PowerUpScene::updateValue()
     sprintf(buff,"%1.02f sec",GameData::getInstance()->getChargeTime());
     this->m_ValueChargeTimeValue->setString(buff);
     
-    this->m_CostChargeTime = this->calcDownValueCost(
-                                                     gd->getCostRateChargePower(),
+    this->m_CostChargeTime = this->calcDownValueCost(gd->getCostRateChargePower(),
                                                      gd->getChargeTime(),
                                                      gd->getDefaultValueChargeTime(),
                                                      gd->getAddValueChargeTime());
@@ -320,9 +344,9 @@ void PowerUpScene::updateValue()
     this->m_ValuePlayerLifeValue->setString(buff);
     
     this->m_CostPlayerLife = this->calcUpValueCost(gd->getCostRatePlayerHp(),
-                     gd->getPlayerHp(),
-                     gd->getDefaultValuePlayerHp(),
-                     gd->getAddValuePlayerHp());
+                                                   gd->getPlayerHp(),
+                                                   gd->getDefaultValuePlayerHp(),
+                                                   gd->getAddValuePlayerHp());
     sprintf(buff,"%06dp",this->m_CostPlayerLife);
     this->m_ValuePlayerLifeCost->setString(buff);
 }

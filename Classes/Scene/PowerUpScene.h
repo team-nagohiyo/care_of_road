@@ -84,10 +84,10 @@ protected:
     template<typename T>
     int calcDownValueCost(float rate,T currentVal,T defaultVal, T AddVal)
     {
+        T val = defaultVal - currentVal + AddVal;
+        val /= AddVal;
         int cost;
-        cost = defaultVal - currentVal;
-        cost /= AddVal;
-        cost = pow(cost+ 1, rate) * 10;
+        cost = pow(val, rate) * 10.0f;
         return cost;
     }
     /**
@@ -96,10 +96,10 @@ protected:
     template<typename T>
     int calcUpValueCost(float rate,T currentVal,T defaultVal, T AddVal)
     {
+        T val = currentVal - defaultVal + AddVal;
+        val /= AddVal;
         int cost;
-        cost = currentVal - defaultVal;
-        cost /= AddVal;
-        cost = pow(cost+ 1, rate) * 10;
+        cost = pow(val, rate) * 10.0f;
         return cost;
     }
 public:

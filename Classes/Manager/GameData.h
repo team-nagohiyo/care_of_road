@@ -152,11 +152,11 @@ public:
     /**
      * 基本パワー
      */
-    virtual int getCostRateBaseMaxPower();
+    virtual float getCostRateBaseMaxPower();
     /**
      * チャージパワー
      */
-    virtual int getCostRateChargePower();
+    virtual float getCostRateChargePower();
     /**
      * チャージ速度
      */
@@ -172,7 +172,7 @@ public:
     /**
      * プレイヤーのHP
      */
-    virtual int getCostRatePlayerHp();
+    virtual float getCostRatePlayerHp();
 };
 
 #endif /* defined(__care_of_road__GameData__) */

@@ -35,12 +35,12 @@ USING_NS_CC;
 #define DEF_ADD_PLAYER_HP (1)
 
 //消費レート
-#define DEF_RATE_BASE_POWER (1.2f)
-#define DEF_RATE_CHARGE_POWER (3.2f)
-#define DEF_RATE_CHARGE_TIME (6.0f)
-#define DEF_RATE_SHOT_CYCLE (10.0f)
+#define DEF_RATE_BASE_POWER (1.5f)
+#define DEF_RATE_CHARGE_POWER (2.2f)
+#define DEF_RATE_CHARGE_TIME (4.3f)
+#define DEF_RATE_SHOT_CYCLE (3.8f)
 #define DEF_RATE_SHOT_SIZE (0.1f)
-#define DEF_RATE_PLAYER_HP (100.0f)
+#define DEF_RATE_PLAYER_HP (5.0f)
 
 GameData::GameData()
 {
@@ -271,14 +271,14 @@ int GameData::getMaxValuePlayerHp()
 /**
  * 基本パワー
  */
-int GameData::getCostRateBaseMaxPower()
+float GameData::getCostRateBaseMaxPower()
 {
     return DEF_RATE_BASE_POWER;
 }
 /**
  * チャージパワー
  */
-int GameData::getCostRateChargePower()
+float GameData::getCostRateChargePower()
 {
     return DEF_RATE_CHARGE_POWER;
 }
@@ -306,7 +306,7 @@ float GameData::getCostRateShotSize()
 /**
  * プレイヤーのHP
  */
-int GameData::getCostRatePlayerHp()
+float GameData::getCostRatePlayerHp()
 {
     return DEF_RATE_PLAYER_HP;
 }

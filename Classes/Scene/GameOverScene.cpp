@@ -17,6 +17,8 @@
 
 #include "UnityAdsWrapper.h"
 
+#define DEF_BONUS_RATE (20.0f)
+
 USING_NS_CC;
 using namespace CocosDenshion;
 
@@ -68,38 +70,59 @@ bool GameOverScene::init()
     this->addChild(label, 2);
     
     //ポイントの取得
-    int getPoint = GameData::getInstance()->getGameScore() * 0.01f;
-    int totalPoint = GameData::getInstance()->getGamePoint() + getPoint;
+    this->m_GetPointValue = GameData::getInstance()->getGameScore() * 0.01f;
+    int totalPoint = GameData::getInstance()->getGamePoint() + this->m_GetPointValue;
     GameData::getInstance()->setGamePoint(totalPoint);
-    char strPoint[32] = "";
-    sprintf(strPoint,"Get %12d pt",getPoint);
-    auto pointLabel = Label::createWithBMFont("str/FNT_small_font_y.fnt",strPoint);
-    pointLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
+    
+    this->m_GetPointLabel = Label::createWithBMFont("str/FNT_small_font_y.fnt","Get 000000000000 pt");
+    this->m_GetPointLabel->setPosition(Vec2(origin.x + visibleSize.width/2,
                             origin.y + visibleSize.height/2));
-    this->addChild(pointLabel, 2);
+    this->addChild(this->m_GetPointLabel, 2);
+    this->refreshLabelGamePoint();
+
+    
+    cocos2d::Vector<MenuItem*> menuList;
     
     auto gameItem = MenuItemImage::create("str/menu_retry.png", "str/menu_retry.png");
     gameItem->setCallback(CC_CALLBACK_1(GameOverScene::moveToGame, this));
     gameItem->setPosition(Vec2(visibleSize.width/2 + origin.x,
                                visibleSize.width/2 + origin.y - 50.0f));
+    menuList.pushBack(gameItem);
     
     auto powerUpItem = MenuItemImage::create("str/menu_power_up.png", "str/menu_power_up.png");
     powerUpItem->setCallback(CC_CALLBACK_1(GameOverScene::moveToPowrUp, this));
     powerUpItem->setPosition(Vec2(visibleSize.width/2 + origin.x,
                                   visibleSize.width/2 + origin.y - 100.0f));
+    menuList.pushBack(powerUpItem);
     
     auto rankingItem = MenuItemImage::create("str/menu_ranking.png", "str/menu_ranking.png");
     rankingItem->setCallback(CC_CALLBACK_1(GameOverScene::moveToRanking, this));
     rankingItem->setPosition(Vec2(visibleSize.width/2 + origin.x,
                                   visibleSize.width/2 + origin.y - 150.0f));
+    menuList.pushBack(rankingItem);
     
     auto topItem = MenuItemImage::create("str/menu_top_menu.png", "str/menu_top_menu.png");
     topItem->setCallback(CC_CALLBACK_1(GameOverScene::moveToTitle, this));
     topItem->setPosition(Vec2(visibleSize.width/2 + origin.x,
                                   visibleSize.width/2 + origin.y - 200.0f));
+    menuList.pushBack(topItem);
+    
+    if(UnityAdsWrapper::canShow())
+    {
+        auto cmPointItem = MenuItemImage::create("icon/icon_cm_point.png", "icon/icon_cm_point.png");
+        cmPointItem->setCallback(CC_CALLBACK_1(GameOverScene::viewMoveCM, this));
+        cmPointItem->setPosition(Vec2(visibleSize.width - cmPointItem->getContentSize().width * 0.5f - 20.0f,
+                                  visibleSize.width/2 + origin.y + 100.0f));
+        Vector<cocos2d::FiniteTimeAction *> actionList;
+        actionList.pushBack(DelayTime::create(0.5f));
+        actionList.pushBack(ScaleTo::create(0.25f, 1.1f));
+        actionList.pushBack(ScaleTo::create(0.25f, 1.0f));
+        cmPointItem->runAction(RepeatForever::create(Sequence::create(actionList)));
+        menuList.pushBack(cmPointItem);
+    }
     
     // create menu, it's an autorelease object
-    auto menu = Menu::create(gameItem, powerUpItem,rankingItem,topItem,NULL);
+    auto menu = Menu::createWithArray(menuList);
     menu->setPosition(Vec2::ZERO);
     this->addChild(menu, 1);
     
@@ -136,4 +159,36 @@ void GameOverScene::moveToRanking(Ref * sender)
 void GameOverScene::moveToTitle(cocos2d::Ref * sender)
 {
     Director::getInstance()->replaceScene(TitleScene::createScene());
+}
+/**
+ * 動画CMの表示
+ */
+void GameOverScene::viewMoveCM(cocos2d::Ref * sender)
+{
+    if(UnityAdsWrapper::canShow())
+    {
+        UnityAdsWrapper::show();
+        
+        auto gd = GameData::getInstance();
+        int getPoint = gd->getGameScore() * DEF_BONUS_RATE;
+        gd->setGamePoint(gd->getGamePoint() + getPoint);
+        
+        this->m_GetPointValue += getPoint;
+        
+        //仮ポイントを加算
+        this->refreshLabelGamePoint();
+    }
+    
+}
+
+/**
+ * 更新
+ */
+void GameOverScene::refreshLabelGamePoint()
+{
+    char strPoint[128] = "";
+    sprintf(strPoint,"Get %12d pt",this->m_GetPointValue);
+    
+    //更新
+    this->m_GetPointLabel->setString(strPoint);
 }

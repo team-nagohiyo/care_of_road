@@ -17,6 +17,14 @@ class GameOverScene : public cocos2d::Layer
 {
 protected:
     RollBackgroundLayer * m_roll;
+    int m_GetPointValue;
+    cocos2d::Label * m_GetPointLabel;
+    
+    /**
+     * 更新
+     */
+    virtual void refreshLabelGamePoint();
+    
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
@@ -39,6 +47,10 @@ public:
      * タイトル画面に移動
      */
     void moveToTitle(cocos2d::Ref * sender);
+    /**
+     * 動画CMの表示
+     */
+    void viewMoveCM(cocos2d::Ref * sender);
 };
 
 #endif /* GameOverScene_hpp */
