@@ -18,6 +18,7 @@ USING_NS_CC;
 using namespace CocosDenshion;
 GameScene::GameScene()
 :m_State(GameState::StartWait)
+,m_TapStartSprite(nullptr)
 {
     //仲介クラスに登録する
     GameMediator::getInstance()->setMediateGameScene(this);
@@ -90,6 +91,11 @@ bool GameScene::init()
                             labelScore->getPositionY()));
     this->m_ScoreLabel->setAnchorPoint(Vec2(0.0f,0.5f));
     this->addChild(this->m_ScoreLabel, 60);
+    
+    //タップスタートのUI
+    this->m_TapStartSprite = Sprite::create("str/title_tap_start.png");
+    this->m_TapStartSprite->setPosition(this->getContentSize() * 0.5f);
+    this->addChild(this->m_TapStartSprite, 1000);
     
     //スコア表示の更新
     this->refreshScoreLabel();
@@ -315,9 +321,10 @@ void GameScene::OnControlTapEnded(cocos2d::Vec2 pos,TouchControlLayer::TapType t
 {
     if(this->getState() == GameScene::GameState::StartWait)
     {
+        //TapStartラベルの非表示
+        this->m_TapStartSprite->setVisible(false);
         this->setState(GameState::Starting);
         SimpleAudioEngine::getInstance()->playEffect("sound/cow_jingle_start.mp3");
-        
     }
     else if(this->getState() == GameState::GamePlay)
     {

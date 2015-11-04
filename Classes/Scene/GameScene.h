@@ -49,6 +49,8 @@ protected:
     cocos2d::Vec2 m_StartingPos;
     cocos2d::Vec2 m_StartPos;
     
+    cocos2d::Sprite * m_TapStartSprite;
+    
 public:
     static cocos2d::Scene* createScene();
     virtual bool init();
