@@ -22,7 +22,7 @@ class GameData
     CC_SYNTHESIZE(int, m_GamePoint, GamePoint);
     
     //最大パワー
-    CC_SYNTHESIZE(int, m_BaseMaxPower, BaseMaxPower);
+    CC_SYNTHESIZE(int, m_BasePower, BasePower);
     //チャージパワー
     CC_SYNTHESIZE(int, m_ChargePower, ChargePower);
     //チャージ速度
@@ -68,7 +68,7 @@ public:
     /**
      * 基本パワー
      */
-    virtual int getDefaultValueBaseMaxPower();
+    virtual int getDefaultValueBasePower();
     /**
      * チャージパワー
      */
@@ -96,7 +96,7 @@ public:
     /**
      * 基本パワー
      */
-    virtual int getAddValueBaseMaxPower();
+    virtual int getAddValueBasePower();
     /**
      * チャージパワー
      */
@@ -124,7 +124,7 @@ public:
     /**
      * 基本パワー
      */
-    virtual int getMaxValueBaseMaxPower();
+    virtual int getMaxValueBasePower();
     /**
      * チャージパワー
      */
@@ -152,7 +152,7 @@ public:
     /**
      * 基本パワー
      */
-    virtual float getCostRateBaseMaxPower();
+    virtual float getCostRateBasePower();
     /**
      * チャージパワー
      */

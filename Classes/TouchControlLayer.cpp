@@ -64,17 +64,12 @@ bool TouchControlLayer::onTouchBegan(Touch *touch, Event *unused_event)
     
 
     TapType type = TapType::None;
-    if(this->m_NormalRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Normal");
-        type = TapType::Normal;
-    }
-    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Charge");
-        type = TapType::Charge;
-    }
-    if(this->m_BeganCallback)this->m_BeganCallback(touch->getLocation(),type);
+    Vec2 pos = touch->getLocation();
+    if(pos.x < 0)pos.x = 0;
+    if(pos.y < 0)pos.y = 0;
+    if(this->m_NormalRect.containsPoint(pos))type = TapType::Normal;
+    else if(this->m_ChargeRect.containsPoint(pos))type = TapType::Charge;
+    if(this->m_BeganCallback)this->m_BeganCallback(pos,type);
     
     return true;
 }
@@ -89,17 +84,12 @@ void TouchControlLayer::onTouchMoved(Touch *touch, Event *unused_event)
     
     
     TapType type = TapType::None;
-    if(this->m_NormalRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Normal");
-        type = TapType::Normal;
-    }
-    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Charge");
-        type = TapType::Charge;
-    }
-    if(this->m_MovedCallback)this->m_MovedCallback(touch->getLocation(),type);
+    Vec2 pos = touch->getLocation();
+    if(pos.x < 0)pos.x = 0;
+    if(pos.y < 0)pos.y = 0;
+    if(this->m_NormalRect.containsPoint(pos))type = TapType::Normal;
+    else if(this->m_ChargeRect.containsPoint(pos))type = TapType::Charge;
+    if(this->m_MovedCallback)this->m_MovedCallback(pos,type);
     
 }
 
@@ -113,15 +103,10 @@ void TouchControlLayer::onTouchEnded(Touch *touch, Event *unused_event)
     
     
     TapType type = TapType::None;
-    if(this->m_NormalRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Normal");
-        type = TapType::Normal;
-    }
-    else if(this->m_ChargeRect.containsPoint(touch->getLocation()))
-    {
-        CCLOG("Charge");
-        type = TapType::Charge;
-    }
-    if(this->m_EndedCallback)this->m_EndedCallback(touch->getLocation(),type);
+    Vec2 pos = touch->getLocation();
+    if(pos.x < 0)pos.x = 0;
+    if(pos.y < 0)pos.y = 0;
+    if(this->m_NormalRect.containsPoint(pos))type = TapType::Normal;
+    else if(this->m_ChargeRect.containsPoint(pos))type = TapType::Charge;
+    if(this->m_EndedCallback)this->m_EndedCallback(pos,type);
 }

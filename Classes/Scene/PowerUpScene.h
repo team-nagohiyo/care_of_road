@@ -33,11 +33,11 @@ protected:
     cocos2d::Label * m_ValuePoint;
     
     //ノーマルショットパワー
-    cocos2d::Sprite * m_LabelBaseMaxPower;
-    cocos2d::Label * m_ValueBaseMaxPowerValue;
-    cocos2d::Label * m_ValueBaseMaxPowerCost;
-    cocos2d::MenuItem * m_MenuBaseMaxPower;
-    int m_CostBaseMaxPower;
+    cocos2d::Sprite * m_LabelBasePower;
+    cocos2d::Label * m_ValueBasePowerValue;
+    cocos2d::Label * m_ValueBasePowerCost;
+    cocos2d::MenuItem * m_MenuBasePower;
+    int m_CostBasePower;
     
     //連射
     cocos2d::Sprite * m_LabelShotCycle;

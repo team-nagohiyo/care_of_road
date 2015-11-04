@@ -99,9 +99,5 @@ void TitleScene::moveToPowrUp(Ref * sender)
  */
 void TitleScene::moveToRanking(Ref * sender)
 {
-//    Director::getInstance()->replaceScene(RankingScene::createScene());
-    if(UnityAdsWrapper::canShow())
-    {
-        UnityAdsWrapper::show();
-    }
+    Director::getInstance()->replaceScene(RankingScene::createScene());
 }

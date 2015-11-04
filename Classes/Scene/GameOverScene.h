@@ -19,6 +19,7 @@ protected:
     RollBackgroundLayer * m_roll;
     int m_GetPointValue;
     cocos2d::Label * m_GetPointLabel;
+    cocos2d::MenuItemImage * m_CmMenuItem;
     
     /**
      * 更新
@@ -27,6 +28,8 @@ protected:
     
 public:
     static cocos2d::Scene* createScene();
+    GameOverScene();
+    virtual ~GameOverScene();
     virtual bool init();
     
     CREATE_FUNC(GameOverScene);

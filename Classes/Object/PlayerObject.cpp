@@ -83,7 +83,7 @@ void PlayerObject::updateAction(float dt)
             this->m_CatchBullet = this->createBullet();
             GameMediator::getInstance()->entryBulletObjectToField(this->m_CatchBullet);
             this->m_CatchBullet->setPosition(this->getPosition());
-            this->m_CatchBullet->setAttack(this->getBaseMaxPower());
+            this->m_CatchBullet->setAttack(this->getBasePower());
             
             //charge中ステートの処理
             if(this->m_Mode == ShotMode::ChageShot)
@@ -120,17 +120,13 @@ void PlayerObject::updateAction(float dt)
         }
         
         //チャージ中にモードが変更されたら
-        if(this->m_Mode == ShotMode::MachineGun)
+        if(this->m_Mode == ShotMode::MachineGun ||
+           this->m_ChargeTime > this->getChargeMaxTime()
+           )
         {
             //[状態切替]ショット
             this->setState(PlayerState::Shot);
-            this->m_CatchBullet->setAttack(this->getBaseMaxPower() + this->getChargeMaxTime() * rate);
-        }
-        else if(this->m_ChargeTime > this->getChargeMaxTime())
-        {
-            //[状態切替]ショット
-            this->setState(PlayerState::Shot);
-            this->m_CatchBullet->setAttack(this->getBaseMaxPower() + this->getChargeMaxTime() * rate);
+            this->m_CatchBullet->setAttack(this->getBasePower() + this->getChargeMaxTime() * rate);
         }
         else
         {

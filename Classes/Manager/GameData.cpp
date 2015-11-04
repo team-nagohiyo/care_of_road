@@ -78,8 +78,8 @@ void GameData::loadSettingData()
     this->m_GamePoint = UserDefault::getInstance()->getIntegerForKey("GamePoint", 0);
     if(this->m_GamePoint < 0)this->m_GamePoint = 0;
     //最大パワー
-    this->m_BaseMaxPower = UserDefault::getInstance()->getIntegerForKey("MaxPower", 1);
-    if(this->m_BaseMaxPower < 1)this->m_BaseMaxPower = 1;
+    this->m_BasePower = UserDefault::getInstance()->getIntegerForKey("BasePower", 1);
+    if(this->m_BasePower < 1)this->m_BasePower = 1;
     //チャージパワー
     this->m_ChargePower = UserDefault::getInstance()->getIntegerForKey("ChargePower", 1);
     if(this->m_ChargePower < 1)this->m_ChargePower = 1;
@@ -105,7 +105,7 @@ void GameData::saveSettingData()
     //ポイント
     UserDefault::getInstance()->setIntegerForKey("GamePoint", this->m_GamePoint);
     //最大パワー
-    UserDefault::getInstance()->setIntegerForKey("MaxPower", this->m_BaseMaxPower);
+    UserDefault::getInstance()->setIntegerForKey("BasePower", this->m_BasePower);
     //チャージパワー
     UserDefault::getInstance()->setIntegerForKey("ChargePower", this->m_ChargePower);
     //チャージ速度
@@ -122,7 +122,7 @@ void GameData::saveSettingData()
  */
 void GameData::resetdefaultValue()
 {
-    this->setBaseMaxPower(this->getDefaultValueBaseMaxPower());
+    this->setBasePower(this->getDefaultValueBasePower());
     this->setChargePower(this->getDefaultValueChargePower());
     this->setChargeTime(this->getDefaultValueChargeTime());
     this->setShotCycle(this->getDefaultValueShotCycle());
@@ -135,7 +135,7 @@ void GameData::resetdefaultValue()
 /**
  * 基本パワー
  */
-int GameData::getDefaultValueBaseMaxPower()
+int GameData::getDefaultValueBasePower()
 {
     return DEF_DEFAULT_BASE_POWER;
 }
@@ -181,7 +181,7 @@ int GameData::getDefaultValuePlayerHp()
 /**
  * 最大パワー
  */
-int GameData::getAddValueBaseMaxPower()
+int GameData::getAddValueBasePower()
 {
     return DEF_ADD_BASE_POWER;
 }
@@ -226,7 +226,7 @@ int GameData::getAddValuePlayerHp()
 /**
  * 最大パワー
  */
-int GameData::getMaxValueBaseMaxPower()
+int GameData::getMaxValueBasePower()
 {
     return DEF_MAX_BASE_POWER;
 }
@@ -271,7 +271,7 @@ int GameData::getMaxValuePlayerHp()
 /**
  * 基本パワー
  */
-float GameData::getCostRateBaseMaxPower()
+float GameData::getCostRateBasePower()
 {
     return DEF_RATE_BASE_POWER;
 }

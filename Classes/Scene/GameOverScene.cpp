@@ -22,6 +22,16 @@
 USING_NS_CC;
 using namespace CocosDenshion;
 
+GameOverScene::GameOverScene()
+:m_CmMenuItem(nullptr)
+,m_GetPointLabel(nullptr)
+,m_GetPointValue(0)
+{
+}
+GameOverScene::~GameOverScene()
+{
+    
+}
 Scene* GameOverScene::createScene()
 {
     auto scene = Scene::create();
@@ -109,16 +119,16 @@ bool GameOverScene::init()
     
     if(UnityAdsWrapper::canShow())
     {
-        auto cmPointItem = MenuItemImage::create("icon/icon_cm_point.png", "icon/icon_cm_point.png");
-        cmPointItem->setCallback(CC_CALLBACK_1(GameOverScene::viewMoveCM, this));
-        cmPointItem->setPosition(Vec2(visibleSize.width - cmPointItem->getContentSize().width * 0.5f - 20.0f,
-                                  visibleSize.width/2 + origin.y + 100.0f));
+        this->m_CmMenuItem = MenuItemImage::create("icon/icon_cm_point.png", "icon/icon_cm_point.png");
+        this->m_CmMenuItem->setCallback(CC_CALLBACK_1(GameOverScene::viewMoveCM, this));
+        this->m_CmMenuItem->setPosition(Vec2(visibleSize.width - 10.0f,visibleSize.height - 10.0f)
+                                        - this->m_CmMenuItem->getContentSize() * 0.5f);
         Vector<cocos2d::FiniteTimeAction *> actionList;
         actionList.pushBack(DelayTime::create(0.5f));
         actionList.pushBack(ScaleTo::create(0.25f, 1.1f));
         actionList.pushBack(ScaleTo::create(0.25f, 1.0f));
-        cmPointItem->runAction(RepeatForever::create(Sequence::create(actionList)));
-        menuList.pushBack(cmPointItem);
+        this->m_CmMenuItem->runAction(RepeatForever::create(Sequence::create(actionList)));
+        menuList.pushBack(this->m_CmMenuItem);
     }
     
     // create menu, it's an autorelease object
@@ -179,6 +189,9 @@ void GameOverScene::viewMoveCM(cocos2d::Ref * sender)
         this->refreshLabelGamePoint();
     }
     
+    this->m_CmMenuItem->setEnabled(false);
+    this->m_CmMenuItem->setVisible(false);
+    this->m_CmMenuItem->stopAllActions();
 }
 
 /**

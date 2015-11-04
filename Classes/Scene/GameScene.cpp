@@ -71,7 +71,7 @@ bool GameScene::init()
     
     //プレイヤーの基本値の設定
     GameData * game = GameData::getInstance();
-    this->m_PlayerObject->setBaseMaxPower(game->getBaseMaxPower());
+    this->m_PlayerObject->setBasePower(game->getBasePower());
     this->m_PlayerObject->setShotCycle(game->getShotCycle());
     this->m_PlayerObject->setChargeMaxPower(game->getChargePower());
     this->m_PlayerObject->setChargeMaxTime(game->getChargeTime());

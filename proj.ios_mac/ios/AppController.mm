@@ -62,8 +62,8 @@ static AppDelegate s_sharedApplication;
     _viewController.view = eaglView;
 
     //Unity Ads
-    [[UnityAds sharedInstance] setTestMode:YES];
-    [[UnityAds sharedInstance] setDebugMode:YES];
+//    [[UnityAds sharedInstance] setTestMode:YES];
+//    [[UnityAds sharedInstance] setDebugMode:YES];
     [[UnityAds sharedInstance] startWithGameId:@"1008933" andViewController:_viewController];
     [[UnityAds sharedInstance] setDelegate:self];
     

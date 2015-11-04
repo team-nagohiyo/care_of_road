@@ -75,10 +75,10 @@ bool PowerUpScene::init()
     float UpLabelPosY = visibleSize.height/2 + origin.y + DEF_LABEL_Y;
     
     //ノーマルショットパワーアップ
-    this->m_MenuBaseMaxPower = this->makeMenuItemRect(PowerUpItemType::ShotPower);
-    this->m_MenuBaseMaxPower->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
-    this->m_MenuBaseMaxPower->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
-    menuList.pushBack(this->m_MenuBaseMaxPower);
+    this->m_MenuBasePower = this->makeMenuItemRect(PowerUpItemType::ShotPower);
+    this->m_MenuBasePower->setPosition(Vec2(visibleSize.width/2 + origin.x,UpLabelPosY));
+    this->m_MenuBasePower->setCallback(CC_CALLBACK_1(PowerUpScene::onPowerUpItem, this));
+    menuList.pushBack(this->m_MenuBasePower);
     
     UpLabelPosY -= DEF_LABEL_Y_MARGIN;
     
@@ -154,11 +154,11 @@ cocos2d::MenuItem * PowerUpScene::makeMenuItemRect(PowerUpItemType itemType)
         case PowerUpItemType::ShotPower :
         {
             //ノーマルショットパワーアップ
-            this->m_LabelBaseMaxPower = Sprite::create("str/label_shot_power.png");
-            labelSprite = this->m_LabelBaseMaxPower;
-            this->m_ValueBaseMaxPowerValue = Label::createWithBMFont("str/FNT_value_s.fnt","Lv 01");
-            Valuelabel = this->m_ValueBaseMaxPowerValue;
-            this->m_ValueBaseMaxPowerCost = CostLabel;
+            this->m_LabelBasePower = Sprite::create("str/label_shot_power.png");
+            labelSprite = this->m_LabelBasePower;
+            this->m_ValueBasePowerValue = Label::createWithBMFont("str/FNT_value_s.fnt","Lv 01");
+            Valuelabel = this->m_ValueBasePowerValue;
+            this->m_ValueBasePowerCost = CostLabel;
         }
             break;
         case PowerUpItemType::ShotCycle :
@@ -231,13 +231,13 @@ void PowerUpScene::onPowerUpItem(cocos2d::Ref * sender)
 {
     auto gd = GameData::getInstance();
     
-    if(sender == this->m_MenuBaseMaxPower)
+    if(sender == this->m_MenuBasePower)
     {
         //コストチェック
-        if(gd->getGamePoint() >= this->m_CostBaseMaxPower)
+        if(gd->getGamePoint() >= this->m_CostBasePower)
         {
-            gd->setGamePoint(gd->getGamePoint() - this->m_CostBaseMaxPower);
-            gd->setBaseMaxPower(gd->getBaseMaxPower() + gd->getAddValueBaseMaxPower());
+            gd->setGamePoint(gd->getGamePoint() - this->m_CostBasePower);
+            gd->setBasePower(gd->getBasePower() + gd->getAddValueBasePower());
         }
     }
     else if(sender == this->m_MenuChargePower)
@@ -291,63 +291,115 @@ void PowerUpScene::updateValue()
     
     auto gd = GameData::getInstance();
     
+    //-----------------
     //ポイント
+    //-----------------
     sprintf(buff,"%12d pt",gd->getGamePoint());
     this->m_ValuePoint->setString(buff);
     
+    //-----------------
     //基本パワー
-    sprintf(buff,"Lv %03d",gd->getBaseMaxPower());
-    this->m_ValueBaseMaxPowerValue->setString(buff);
+    //-----------------
+    sprintf(buff,"Lv %03d",gd->getBasePower());
+    this->m_ValueBasePowerValue->setString(buff);
     
-    this->m_CostBaseMaxPower = this->calcUpValueCost(gd->getCostRateBaseMaxPower(),
-                                                  gd->getBaseMaxPower(),
-                                                  gd->getDefaultValueBaseMaxPower(),
-                                                  gd->getAddValueBaseMaxPower());
-    sprintf(buff,"%07dp",this->m_CostBaseMaxPower);
-    this->m_ValueBaseMaxPowerCost->setString(buff);
+    if(gd->getBasePower() < gd->getMaxValueBasePower())
+    {
+        this->m_CostBasePower = this->calcUpValueCost(gd->getCostRateBasePower(),
+                                                      gd->getBasePower(),
+                                                      gd->getDefaultValueBasePower(),
+                                                      gd->getAddValueBasePower());
+        sprintf(buff,"%07dp",this->m_CostBasePower);
+    }
+    else
+    {
+        sprintf(buff,"Complete");
+        this->m_MenuBasePower->setEnabled(false);
+    }
+    this->m_ValueBasePowerCost->setString(buff);
     
+    //-----------------
     //連射時間
+    //-----------------
     sprintf(buff,"%01.02f sec",gd->getShotCycle());
     this->m_ValueShotCycleValue->setString(buff);
     
-    this->m_CostShotCycle = this->calcDownValueCost(gd->getCostRateShotCycle(),
-                                                    gd->getShotCycle(),
-                                                    gd->getDefaultValueShotCycle(),
-                                                    gd->getAddValueShotCycle());
-    sprintf(buff,"%07dp",this->m_CostShotCycle);
+    if(gd->getShotCycle() > gd->getMinValueShotCycle())
+    {
+        this->m_CostShotCycle = this->calcDownValueCost(gd->getCostRateShotCycle(),
+                                                        gd->getShotCycle(),
+                                                        gd->getDefaultValueShotCycle(),
+                                                        gd->getAddValueShotCycle());
+        sprintf(buff,"%07dp",this->m_CostShotCycle);
+    }
+    else
+    {
+        sprintf(buff,"Complete");
+        this->m_MenuShotCycle->setEnabled(false);
+    }
     this->m_ValueShotCycleCost->setString(buff);
     
+    //-----------------
     //チャージショット最大パワー
+    //-----------------
     sprintf(buff,"Lv %02d",GameData::getInstance()->getChargePower());
     this->m_ValueChargePowerValue->setString(buff);
     
-    this->m_CostChargePower = this->calcUpValueCost(gd->getCostRateChargePower(),
-                                                    gd->getChargePower(),
-                                                    gd->getDefaultValueChargePower(),
-                                                    gd->getAddValueChargePower());
-    sprintf(buff,"%06dp",this->m_CostChargePower);
+    if(gd->getChargePower() < gd->getMaxValueChargePower())
+    {
+        this->m_CostChargePower = this->calcUpValueCost(gd->getCostRateChargePower(),
+                                                        gd->getChargePower(),
+                                                        gd->getDefaultValueChargePower(),
+                                                        gd->getAddValueChargePower());
+        sprintf(buff,"%06dp",this->m_CostChargePower);
+    }
+    else
+    {
+        sprintf(buff,"Complete");
+        this->m_MenuChargePower->setEnabled(false);
+    }
     this->m_ValueChargePowerCost->setString(buff);
-    
+
+    //-----------------
     //チャージ時間
+    //-----------------
     sprintf(buff,"%1.02f sec",GameData::getInstance()->getChargeTime());
     this->m_ValueChargeTimeValue->setString(buff);
     
-    this->m_CostChargeTime = this->calcDownValueCost(gd->getCostRateChargePower(),
-                                                     gd->getChargeTime(),
-                                                     gd->getDefaultValueChargeTime(),
-                                                     gd->getAddValueChargeTime());
-    sprintf(buff,"%06dp",this->m_CostChargeTime);
+    if(gd->getChargeTime() > gd->getMinValueChargeTime())
+    {
+        this->m_CostChargeTime = this->calcDownValueCost(gd->getCostRateChargePower(),
+                                                         gd->getChargeTime(),
+                                                         gd->getDefaultValueChargeTime(),
+                                                         gd->getAddValueChargeTime());
+        sprintf(buff,"%06dp",this->m_CostChargeTime);
+    }
+    else
+    {
+        sprintf(buff,"Complete");
+        this->m_MenuChargeTime->setEnabled(false);
+    }
     this->m_ValueChargeTimeCost->setString(buff);
     
+    //-----------------
     //プレイヤーHP
+    //-----------------
     sprintf(buff,"Life %d",GameData::getInstance()->getPlayerHp());
     this->m_ValuePlayerLifeValue->setString(buff);
     
-    this->m_CostPlayerLife = this->calcUpValueCost(gd->getCostRatePlayerHp(),
-                                                   gd->getPlayerHp(),
-                                                   gd->getDefaultValuePlayerHp(),
-                                                   gd->getAddValuePlayerHp());
-    sprintf(buff,"%06dp",this->m_CostPlayerLife);
+    if(gd->getPlayerHp() < gd->getMaxValuePlayerHp())
+    {
+        this->m_CostPlayerLife = this->calcUpValueCost(gd->getCostRatePlayerHp(),
+                                                       gd->getPlayerHp(),
+                                                       gd->getDefaultValuePlayerHp(),
+                                                       gd->getAddValuePlayerHp());
+        sprintf(buff,"%06dp",this->m_CostPlayerLife);
+    }
+    else
+    {
+        sprintf(buff,"Complete");
+        this->m_MenuChargeTime->setEnabled(false);
+    }
     this->m_ValuePlayerLifeCost->setString(buff);
 }
 
