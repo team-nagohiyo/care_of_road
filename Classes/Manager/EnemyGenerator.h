@@ -11,6 +11,9 @@
 
 #include "cocos2d.h"
 
+/**
+ * 敵の生成
+ */
 class EnemyGenerator
 {
 protected:
