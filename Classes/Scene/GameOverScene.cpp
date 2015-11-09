@@ -121,8 +121,9 @@ bool GameOverScene::init()
     {
         this->m_CmMenuItem = MenuItemImage::create("icon/icon_cm_point.png", "icon/icon_cm_point.png");
         this->m_CmMenuItem->setCallback(CC_CALLBACK_1(GameOverScene::viewMoveCM, this));
-        this->m_CmMenuItem->setPosition(Vec2(visibleSize.width - 10.0f,visibleSize.height - 10.0f)
-                                        - this->m_CmMenuItem->getContentSize() * 0.5f);
+        this->m_CmMenuItem->setPosition(Vec2(visibleSize.width - this->m_CmMenuItem->getContentSize().width * 0.5f - 10.0f ,
+                                            (this->m_CmMenuItem->getContentSize().height * 0.5f) + 10.0f)
+                                       );
         Vector<cocos2d::FiniteTimeAction *> actionList;
         actionList.pushBack(DelayTime::create(0.5f));
         actionList.pushBack(ScaleTo::create(0.25f, 1.1f));

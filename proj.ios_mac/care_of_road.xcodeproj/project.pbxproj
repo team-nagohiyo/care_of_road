@@ -77,6 +77,8 @@
 		573E341A1BCB6375002DB8AF /* GameLevelPlanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */; };
 		573FEA4C1BE86CDF00D787DB /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 573FEA4B1BE86CDF00D787DB /* icon */; };
 		573FEA4D1BE86CDF00D787DB /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 573FEA4B1BE86CDF00D787DB /* icon */; };
+		573FEA5D1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */; };
+		573FEA5E1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */; };
 		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
@@ -210,6 +212,15 @@
 		573E34171BCB6374002DB8AF /* GameLevelPlanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameLevelPlanner.cpp; sourceTree = "<group>"; };
 		573E34181BCB6375002DB8AF /* GameLevelPlanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameLevelPlanner.h; sourceTree = "<group>"; };
 		573FEA4B1BE86CDF00D787DB /* icon */ = {isa = PBXFileReference; lastKnownFileType = folder; path = icon; sourceTree = "<group>"; };
+		573FEA541BEE4E5D00D787DB /* appC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appC.h; sourceTree = "<group>"; };
+		573FEA551BEE4E5D00D787DB /* appCCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCCloud.h; sourceTree = "<group>"; };
+		573FEA561BEE4E5D00D787DB /* appCCloudDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCCloudDefine.h; sourceTree = "<group>"; };
+		573FEA571BEE4E5D00D787DB /* appCCutinView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCCutinView.h; sourceTree = "<group>"; };
+		573FEA581BEE4E5D00D787DB /* appCDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCDefine.h; sourceTree = "<group>"; };
+		573FEA591BEE4E5D00D787DB /* appCDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCDelegate.h; sourceTree = "<group>"; };
+		573FEA5A1BEE4E5D00D787DB /* appCInAppPurchaseProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCInAppPurchaseProduct.h; sourceTree = "<group>"; };
+		573FEA5B1BEE4E5D00D787DB /* appCMatchAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCMatchAppDelegate.h; sourceTree = "<group>"; };
+		573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libappCCloud.a; sourceTree = "<group>"; };
 		5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGenerator.cpp; sourceTree = "<group>"; };
 		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
 		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
@@ -258,6 +269,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				573FEA5D1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */,
 				BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */,
 				BF1712471292920000B8313A /* libz.dylib in Frameworks */,
 				BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */,
@@ -274,6 +286,7 @@
 				1AC6FB21180E996B004C840B /* libcocos2d Mac.a in Frameworks */,
 				503AE11217EB99EE00D1A890 /* libcurl.dylib in Frameworks */,
 				5087E76717EB910900C73F5D /* libz.dylib in Frameworks */,
+				573FEA5E1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */,
 				503AE11B17EB9C5A00D1A890 /* IOKit.framework in Frameworks */,
 				5087E78B17EB975400C73F5D /* OpenGL.framework in Frameworks */,
 				5087E78917EB974C00C73F5D /* AppKit.framework in Frameworks */,
@@ -324,6 +337,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				573FEA511BEE4E5D00D787DB /* appc_cloud_ios_3_2_0 */,
 				579236C31BD99DE400062180 /* UnityAds.framework */,
 				579236B81BD96F9200062180 /* native */,
 				46880B8319C43A87006E1F66 /* Classes */,
@@ -477,6 +491,39 @@
 				5710F0C01BA9B7530036D30A /* PlayerObject.h */,
 			);
 			path = Object;
+			sourceTree = "<group>";
+		};
+		573FEA511BEE4E5D00D787DB /* appc_cloud_ios_3_2_0 */ = {
+			isa = PBXGroup;
+			children = (
+				573FEA521BEE4E5D00D787DB /* include */,
+				573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */,
+			);
+			name = appc_cloud_ios_3_2_0;
+			path = ../appc_cloud_ios_3_2_0;
+			sourceTree = "<group>";
+		};
+		573FEA521BEE4E5D00D787DB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				573FEA531BEE4E5D00D787DB /* appCCloud */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		573FEA531BEE4E5D00D787DB /* appCCloud */ = {
+			isa = PBXGroup;
+			children = (
+				573FEA541BEE4E5D00D787DB /* appC.h */,
+				573FEA551BEE4E5D00D787DB /* appCCloud.h */,
+				573FEA561BEE4E5D00D787DB /* appCCloudDefine.h */,
+				573FEA571BEE4E5D00D787DB /* appCCutinView.h */,
+				573FEA581BEE4E5D00D787DB /* appCDefine.h */,
+				573FEA591BEE4E5D00D787DB /* appCDelegate.h */,
+				573FEA5A1BEE4E5D00D787DB /* appCInAppPurchaseProduct.h */,
+				573FEA5B1BEE4E5D00D787DB /* appCMatchAppDelegate.h */,
+			);
+			path = appCCloud;
 			sourceTree = "<group>";
 		};
 		5765F6111BADB27100B6ED18 /* Manager */ = {
