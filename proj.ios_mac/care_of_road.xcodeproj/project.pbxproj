@@ -79,6 +79,10 @@
 		573FEA4D1BE86CDF00D787DB /* icon in Resources */ = {isa = PBXBuildFile; fileRef = 573FEA4B1BE86CDF00D787DB /* icon */; };
 		573FEA5D1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */; };
 		573FEA5E1BEE4E5D00D787DB /* libappCCloud.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */; };
+		573FEA621BF6D94F00D787DB /* AppCCloudPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573FEA5F1BF6D94F00D787DB /* AppCCloudPlugin.cpp */; };
+		573FEA631BF6D94F00D787DB /* AppCCloudPlugin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 573FEA5F1BF6D94F00D787DB /* AppCCloudPlugin.cpp */; };
+		573FEA641BF6D94F00D787DB /* AppCCloudPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 573FEA611BF6D94F00D787DB /* AppCCloudPlugin.mm */; };
+		573FEA651BF6D94F00D787DB /* AppCCloudPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = 573FEA611BF6D94F00D787DB /* AppCCloudPlugin.mm */; };
 		5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */; };
 		5765F6191BB0632B00B6ED18 /* GameOverScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */; };
@@ -221,6 +225,9 @@
 		573FEA5A1BEE4E5D00D787DB /* appCInAppPurchaseProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCInAppPurchaseProduct.h; sourceTree = "<group>"; };
 		573FEA5B1BEE4E5D00D787DB /* appCMatchAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = appCMatchAppDelegate.h; sourceTree = "<group>"; };
 		573FEA5C1BEE4E5D00D787DB /* libappCCloud.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libappCCloud.a; sourceTree = "<group>"; };
+		573FEA5F1BF6D94F00D787DB /* AppCCloudPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppCCloudPlugin.cpp; sourceTree = "<group>"; };
+		573FEA601BF6D94F00D787DB /* AppCCloudPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppCCloudPlugin.h; sourceTree = "<group>"; };
+		573FEA611BF6D94F00D787DB /* AppCCloudPlugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppCCloudPlugin.mm; sourceTree = "<group>"; };
 		5765F6131BADB2A500B6ED18 /* EnemyGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EnemyGenerator.cpp; sourceTree = "<group>"; };
 		5765F6141BADB2A500B6ED18 /* EnemyGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnemyGenerator.h; sourceTree = "<group>"; };
 		5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameOverScene.cpp; sourceTree = "<group>"; };
@@ -398,6 +405,9 @@
 		46880B8319C43A87006E1F66 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				573FEA5F1BF6D94F00D787DB /* AppCCloudPlugin.cpp */,
+				573FEA601BF6D94F00D787DB /* AppCCloudPlugin.h */,
+				573FEA611BF6D94F00D787DB /* AppCCloudPlugin.mm */,
 				5765F6111BADB27100B6ED18 /* Manager */,
 				5710F0981BA900E20036D30A /* Object */,
 				5710F0971BA900D40036D30A /* Scene */,
@@ -718,8 +728,10 @@
 			files = (
 				5710F0AD1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				46880B8819C43A87006E1F66 /* AppDelegate.cpp in Sources */,
+				573FEA621BF6D94F00D787DB /* AppCCloudPlugin.cpp in Sources */,
 				5765F6151BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
 				5710F0B11BA9010D0036D30A /* TitleScene.cpp in Sources */,
+				573FEA641BF6D94F00D787DB /* AppCCloudPlugin.mm in Sources */,
 				570E02E51BA887F400F2116F /* GameData.cpp in Sources */,
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				5710F0C11BA9B7530036D30A /* PlayerObject.cpp in Sources */,
@@ -750,11 +762,13 @@
 				5710F0B01BA9010D0036D30A /* RankingScene.cpp in Sources */,
 				5710F0B21BA9010D0036D30A /* TitleScene.cpp in Sources */,
 				5710F0C21BA9B7530036D30A /* PlayerObject.cpp in Sources */,
+				573FEA631BF6D94F00D787DB /* AppCCloudPlugin.cpp in Sources */,
 				5765F61A1BB0632B00B6ED18 /* GameOverScene.cpp in Sources */,
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
 				57AF454C1BB395FF00665086 /* GameMediator.cpp in Sources */,
+				573FEA651BF6D94F00D787DB /* AppCCloudPlugin.mm in Sources */,
 				5710F0AC1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,
 				5710F0AE1BA9010D0036D30A /* PowerUpScene.cpp in Sources */,
 				570E02E61BA887F400F2116F /* GameData.cpp in Sources */,
@@ -790,7 +804,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ooharayukio/care_of_road/unity-ads-sdk",
+					"\"$(PROJECT_DIR)/../unity-ads-sdk\"",
 				);
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
@@ -810,7 +824,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_DIR)/../appc_cloud_ios_3_2_0\"";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nagohiyo.CareOfWay;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -828,7 +842,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/ooharayukio/care_of_road/unity-ads-sdk",
+					"\"$(PROJECT_DIR)/../unity-ads-sdk\"",
 				);
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -846,7 +860,7 @@
 				);
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "\"$(PROJECT_DIR)/../appc_cloud_ios_3_2_0\"";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nagohiyo.CareOfWay;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";

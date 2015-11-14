@@ -1,6 +1,9 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 
+#include "AppCCloudPlugin.h"
+#define MEDIA_KEY "7f6de7b004dc223856907051e3727d67e1b947be"
+
 USING_NS_CC;
 
 AppDelegate::AppDelegate() {
@@ -29,6 +32,14 @@ bool AppDelegate::applicationDidFinishLaunching() {
     if(!glview) {
         glview = GLViewImpl::create("My Game");
         director->setOpenGLView(glview);
+    }
+    
+    // appC cloud 開始
+    bool startResult = AppCCloudPlugin::setMK_iOS(MEDIA_KEY).start();
+    if(startResult){
+        CCLOG("start() succeeded");
+    }else{
+        CCLOG("start() failed");
     }
     
     //プラットフォーム別の設定
