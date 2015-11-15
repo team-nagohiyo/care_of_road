@@ -16,6 +16,7 @@
 #include "SimpleAudioEngine.h"
 
 #include "UnityAdsWrapper.h"
+#include "AppCCloudPlugin.h"
 
 #define DEF_BONUS_RATE (20.0f)
 
@@ -46,6 +47,9 @@ bool GameOverScene::init()
         return false;
     }
     
+    // ネイティブ(バナー)表示
+    AppCCloudPlugin::Ad::showMatchAppView(AppCCloudPlugin::LEFT, AppCCloudPlugin::TOP);
+    
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
     
@@ -73,6 +77,11 @@ bool GameOverScene::init()
     {
         GameData::getInstance()->setHighScore(GameData::getInstance()->getGameScore());
     }
+    // ID：1885(Best score)のリーダーボードにスコア：セット
+    AppCCloudPlugin::Gamers::setLeaderBoard(1885, GameData::getInstance()->getGameScore());
+    
+    // プレイカウントをインクリメント
+    AppCCloudPlugin::Gamers::incPlayCount();
     
     auto label = Label::createWithBMFont("str/little_number.fnt",strScore);
     label->setPosition(Vec2(origin.x + visibleSize.width/2,
@@ -155,6 +164,9 @@ void GameOverScene::moveToGame(Ref * sender)
  */
 void GameOverScene::moveToPowrUp(Ref * sender)
 {
+    // ネイティブ(バナー)消去
+    AppCCloudPlugin::Ad::hideMatchAppView();
+    
     Director::getInstance()->replaceScene(PowerUpScene::createScene());
 }
 /**
@@ -162,6 +174,9 @@ void GameOverScene::moveToPowrUp(Ref * sender)
  */
 void GameOverScene::moveToRanking(Ref * sender)
 {
+    // ネイティブ(バナー)消去
+    AppCCloudPlugin::Ad::hideMatchAppView();
+    
     Director::getInstance()->replaceScene(RankingScene::createScene());
 }
 /**
@@ -169,6 +184,9 @@ void GameOverScene::moveToRanking(Ref * sender)
  */
 void GameOverScene::moveToTitle(cocos2d::Ref * sender)
 {
+    // ネイティブ(バナー)消去
+    AppCCloudPlugin::Ad::hideMatchAppView();
+    
     Director::getInstance()->replaceScene(TitleScene::createScene());
 }
 /**

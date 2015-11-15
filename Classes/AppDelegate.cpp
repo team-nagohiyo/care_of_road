@@ -41,6 +41,12 @@ bool AppDelegate::applicationDidFinishLaunching() {
     }else{
         CCLOG("start() failed");
     }
+    startResult = AppCCloudPlugin::setOptions(API_GAMERS).setMK_iOS(MEDIA_KEY).start();
+    if(startResult){
+        CCLOG("start() succeeded");
+    }else{
+        CCLOG("start() failed");
+    }
     
     //プラットフォーム別の設定
     Application::Platform platform = Application::getInstance()->getTargetPlatform();

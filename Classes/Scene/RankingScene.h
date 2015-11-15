@@ -26,6 +26,11 @@ public:
      * タイトル画面に移動
      */
     void moveToTitle(cocos2d::Ref * sender);
+    
+    /**
+     * ネットワークランキング画面に移動
+     */
+    void moveToRanking(cocos2d::Ref * sender);
 };
 
 #endif /* defined(__care_of_road__RankingScene__) */

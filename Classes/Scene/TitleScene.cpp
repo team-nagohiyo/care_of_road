@@ -14,6 +14,7 @@
 
 #include "SimpleAudioEngine.h"
 #include "UnityAdsWrapper.h"
+#include "AppCCloudPlugin.h"
 
 USING_NS_CC;
 using namespace CocosDenshion;

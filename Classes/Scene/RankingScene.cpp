@@ -10,6 +10,8 @@
 #include "TitleScene.h"
 #include "GameData.h"
 
+#include "AppCCloudPlugin.h"
+
 USING_NS_CC;
 
 Scene* RankingScene::createScene()
@@ -53,7 +55,7 @@ bool RankingScene::init()
     this->addChild(label, 2);
     
     auto networkMenuItem = MenuItemImage::create("str/menu_network_ranking.png", "str/menu_network_ranking.png");
-    networkMenuItem->setCallback(CC_CALLBACK_1(RankingScene::moveToTitle, this));
+    networkMenuItem->setCallback(CC_CALLBACK_1(RankingScene::moveToRanking, this));
     networkMenuItem->setPosition(Vec2(visibleSize.width/2 + origin.x,
                                   visibleSize.width/2 + origin.y - 150.0f));
     
@@ -73,4 +75,12 @@ bool RankingScene::init()
 void RankingScene::moveToTitle(cocos2d::Ref * sender)
 {
     Director::getInstance()->replaceScene(TitleScene::createScene());
+}
+/**
+ * ネットワークランキング画面に移動
+ */
+void RankingScene::moveToRanking(cocos2d::Ref * sender)
+{
+    // Gamersを開く
+    AppCCloudPlugin::Gamers::showGamersView();
 }
