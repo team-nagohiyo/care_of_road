@@ -62,8 +62,10 @@ static AppDelegate s_sharedApplication;
     _viewController.view = eaglView;
 
     //Unity Ads
+#if COCOS2D_DEBUG
     [[UnityAds sharedInstance] setTestMode:YES];
     [[UnityAds sharedInstance] setDebugMode:YES];
+#endif
     [[UnityAds sharedInstance] startWithGameId:@"1008933" andViewController:_viewController];
     [[UnityAds sharedInstance] setDelegate:self];
     

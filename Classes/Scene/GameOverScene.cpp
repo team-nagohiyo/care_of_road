@@ -156,7 +156,9 @@ bool GameOverScene::init()
  */
 void GameOverScene::moveToGame(Ref * sender)
 {
-    SimpleAudioEngine::getInstance()->playEffect("sound/cow_jingle_start.mp3");
+    // ネイティブ(バナー)消去
+    AppCCloudPlugin::Ad::hideMatchAppView();
+    
     Director::getInstance()->replaceScene(GameScene::createScene());
 }
 /**

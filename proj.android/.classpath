@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
 	<classpathentry exported="true" kind="lib" path="/unity-ads/bin/unity-ads.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/google-play-services_lib"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

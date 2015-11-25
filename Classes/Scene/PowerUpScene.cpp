@@ -398,7 +398,7 @@ void PowerUpScene::updateValue()
     else
     {
         sprintf(buff,"Complete");
-        this->m_MenuChargeTime->setEnabled(false);
+        this->m_MenuPlayerLife->setEnabled(false);
     }
     this->m_ValuePlayerLifeCost->setString(buff);
 }

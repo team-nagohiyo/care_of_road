@@ -19,6 +19,7 @@ using namespace CocosDenshion;
 GameScene::GameScene()
 :m_State(GameState::StartWait)
 ,m_TapStartSprite(nullptr)
+,m_GameOverWaitTime(0)
 {
     //仲介クラスに登録する
     GameMediator::getInstance()->setMediateGameScene(this);
@@ -102,6 +103,7 @@ bool GameScene::init()
     
     GameData::getInstance()->setGameScore(0);
     
+    EnemyGenerator::getInstance()->reset();
     EnemyGenerator::getInstance()->setGeneratePosition(Vec2(this->getContentSize().width * 0.5f,1500.0f));
     EnemyGenerator::getInstance()->setGenerateWidth(this->getContentSize().width);
     
@@ -176,60 +178,73 @@ void GameScene::hitCheck()
  */
 void GameScene::updateAction(float dt)
 {
-    if(this->getState() == GameScene::GameState::GamePlay)
+    switch (this->getState())
     {
-        //敵の行動
-        for(auto work : this->m_EnemyList)
+        case GameScene::GameState::Starting:            //スタート用の処理
         {
-            work->setPositionY(work->getPositionY() - this->m_roll->getSpeed() * dt);
-            work->updateAction(dt);
-            
-            //スコアの回収
-            if(!work->isAlive())
+            Vec2 moveVec = ((this->m_StartingPos - this->m_StartPos) / 1.5f) * dt;
+            this->m_PlayerObject->setPosition(this->m_PlayerObject->getPosition() + moveVec);
+            if(this->m_PlayerObject->getPosition().y > this->m_StartingPos.y)
             {
-                if(work->getScore() != 0)
+                this->m_PlayerObject->setPositionY(this->m_StartingPos.y);
+                this->setState(GameState::GamePlay);
+            }
+            break;
+        }
+        case GameScene::GameState::GamePlay:
+        {
+            //敵の行動
+            for(auto work : this->m_EnemyList)
+            {
+                work->setPositionY(work->getPositionY() - this->m_roll->getSpeed() * dt);
+                work->updateAction(dt);
+                
+                //スコアの回収
+                if(!work->isAlive())
                 {
-                    GameData * ins = GameData::getInstance();
-                    ins->setGameScore((ins->getGameScore() + work->getScore()));
-                    work->setScore(0);
+                    if(work->getScore() != 0)
+                    {
+                        GameData * ins = GameData::getInstance();
+                        ins->setGameScore((ins->getGameScore() + work->getScore()));
+                        work->setScore(0);
+                    }
                 }
             }
+            //弾の行動
+            for(auto work : this->m_BulletList)
+            {
+                work->updateAction(dt);
+            }
+            
+            //プレイヤーの行動
+            this->m_PlayerObject->updateAction(dt);
+            
+            //敵生成の更新
+            EnemyGenerator::getInstance()->updateSchedule(dt);
+            
+            //プレイヤーが死んだらゲームオーバーに移行
+            if(!this->m_PlayerObject->isAlive())
+            {
+                this->setState(GameState::GameOverWait);
+            }
+            break;
         }
-        //弾の行動
-        for(auto work : this->m_BulletList)
+        case GameScene::GameState::GameOverWait:            //ゲームオーバーまでの待ち時間
         {
-            work->updateAction(dt);
+            this->m_GameOverWaitTime += dt;
+            if(this->m_GameOverWaitTime > 0.5f)
+            {
+                this->setState(GameState::GameOver);
+            }
+            break;
         }
-        
-        //プレイヤーの行動
-        this->m_PlayerObject->updateAction(dt);
-
-        //敵生成の更新
-        EnemyGenerator::getInstance()->updateSchedule(dt);
-        
-
-    }
-    //スタート用の処理
-    if(this->getState() == GameScene::GameState::Starting)
-    {
-        Vec2 moveVec = ((this->m_StartingPos - this->m_StartPos) / 1.5f) * dt;
-        this->m_PlayerObject->setPosition(this->m_PlayerObject->getPosition() + moveVec);
-        if(this->m_PlayerObject->getPosition().y > this->m_StartingPos.y)
+        case GameScene::GameState::GameOver:            //ゲームオーバー
         {
-            this->m_PlayerObject->setPositionY(this->m_StartingPos.y);
-            this->setState(GameState::GamePlay);
+            this->moveToGameOver();
+            break;
         }
-    }
-
-    //プレイヤーが死んだらゲームオーバーに移行
-    if(!this->m_PlayerObject->isAlive())
-    {
-        this->setState(GameState::GameOver);
-    }
-    
-    if(this->getState() == GameState::GameOver)
-    {
-        this->moveToGameOver();
+        default:
+            break;
     }
 }
 

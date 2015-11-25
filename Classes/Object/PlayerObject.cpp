@@ -8,6 +8,7 @@
 
 #include "PlayerObject.h"
 #include "GameMediator.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -65,13 +66,18 @@ bool PlayerObject::init()
 void PlayerObject::updateAction(float dt)
 {
     //ダメージ反映処理
-    if(!this->getHitObjectList().empty())
+    if(this->getState() != PlayerState::Hit)
     {
-        this->setState(PlayerState::Hit);
-        this->m_ChargeTime = 0;
-        this->getHitObjectList().clear();
-        
-        this->setLife(this->getLife() - 1);
+        if(!this->getHitObjectList().empty())
+        {
+            this->setState(PlayerState::Hit);
+            this->m_ChargeTime = 0;
+            this->getHitObjectList().clear();
+            
+            CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("sound/se_enemy_hit.mp3");
+            this->setLife(this->getLife() - 1);
+            this->m_mainSprite->setColor(Color3B::RED);
+        }
     }
 
     //待ち時間状態に入ったなら
@@ -147,8 +153,14 @@ void PlayerObject::updateAction(float dt)
     
     if(this->getState() == PlayerState::Hit)
     {
-        this->m_ChargeTime = 0;
-        this->setState(PlayerState::Delay);
+        this->m_HitTime += dt;
+        if(this->m_HitTime > 0.5f)
+        {
+            this->m_HitTime = 0;
+            this->m_ChargeTime = 0;
+            this->m_mainSprite->setColor(Color3B::WHITE);
+            this->setState(PlayerState::Delay);
+        }
     }
     
 }

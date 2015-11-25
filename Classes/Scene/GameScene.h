@@ -26,6 +26,7 @@ public:
         StartWait = 0,
         Starting,
         GamePlay,
+        GameOverWait,
         GameOver,
     };
 
@@ -46,10 +47,14 @@ protected:
     
     cocos2d::Label * m_ScoreLabel;
     
+    //プレイヤーの初期ポジション
     cocos2d::Vec2 m_StartingPos;
     cocos2d::Vec2 m_StartPos;
     
     cocos2d::Sprite * m_TapStartSprite;
+    
+    //ゲームオーバー待ち時間
+    float m_GameOverWaitTime;
     
 public:
     static cocos2d::Scene* createScene();

@@ -53,9 +53,36 @@ bool EnemyObject::init(int charaId)
     }
     this->m_mainSprite = nullptr;
     switch (charaId) {
+        case 1:
+            //ゴミ袋
+            this->m_mainSprite = Sprite::create("game/enemy_gomibukuro.png");
+            break;
+        case 2:
+            //ゴミ箱
+            this->m_mainSprite = Sprite::create("game/enemy_gomibako.png");
+            break;
+        case 3:
+            //空き缶
+            this->m_mainSprite = Sprite::create("game/enemy_akikan.png");
+            break;
+        case 4:
+            //冷蔵庫
+            this->m_mainSprite = Sprite::create("game/enemy_reizouko.png");
+            break;
+        case 5:
+            //岩
+            this->m_mainSprite = Sprite::create("game/enemy_stone.png");
+            break;
+        case 6:
+            //樹
+            this->m_mainSprite = Sprite::create("game/enemy_wood.png");
+            break;
+        case 7:
+            //テレビ
+            this->m_mainSprite = Sprite::create("game/enemy_tv.png");
+            break;
         default:
-        case 0:
-            m_mainSprite = Sprite::create("game/enemy.png");
+            this->m_mainSprite = Sprite::create("game/enemy.png");
             break;
     }
 

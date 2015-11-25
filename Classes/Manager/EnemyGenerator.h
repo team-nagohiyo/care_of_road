@@ -13,6 +13,7 @@
 
 /**
  * 敵の生成
+ * 
  */
 class EnemyGenerator
 {
@@ -24,6 +25,29 @@ protected:
     CC_SYNTHESIZE(cocos2d::Vec2, m_GeneratePosition, GeneratePosition);
     
     float m_createDelay;
+    float m_nextLevel;
+    
+    /**
+     * 敵data
+     */
+    class EnemyData
+    {
+        CC_SYNTHESIZE(int,m_Id,Id);
+        CC_SYNTHESIZE(std::string,m_Name,Name);
+        CC_SYNTHESIZE(int,m_BaseLife,BaseLife);
+        CC_SYNTHESIZE(int,m_BaseWeight,BaseWeight);
+    public:
+        EnemyData();
+        virtual ~EnemyData();
+    };
+    
+    //敵の情報一覧
+    std::vector<EnemyData> m_EnemyLibrary;
+    
+    /**
+     * ランダムで敵を選択する
+     */
+    EnemyData* choiceRandomEnemyData(float weight);
 public:
     EnemyGenerator();
     /**

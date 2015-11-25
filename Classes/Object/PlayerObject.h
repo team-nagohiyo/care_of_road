@@ -52,6 +52,7 @@ protected:
     
     float m_ChargeTime;
     float m_Delay;
+    float m_HitTime;
     ShotMode m_Mode;
     
     BulletObject * m_CatchBullet;
