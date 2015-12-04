@@ -1,0 +1,5 @@
+#!/bin/bash
+export CCACHE_CPP2=yes
+export CCACHE_SLOPPINESS=pch_defines,time_macros
+export CCACHE_COMPILERCHECK=content
+exec /usr/local/bin/ccache /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -Qunused-arguments "$@"
