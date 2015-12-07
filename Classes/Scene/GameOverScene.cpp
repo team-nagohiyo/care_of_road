@@ -18,7 +18,7 @@
 #include "UnityAdsWrapper.h"
 #include "AppCCloudPlugin.h"
 
-#define DEF_BONUS_RATE (20.0f)
+#define DEF_BONUS_RATE (10.0f)
 
 USING_NS_CC;
 using namespace CocosDenshion;
@@ -73,7 +73,7 @@ bool GameOverScene::init()
     sprintf(strScore,"%012d",GameData::getInstance()->getGameScore());
     
     //ハイスコアへの登録
-    if(GameData::getInstance()->getHighScore() > GameData::getInstance()->getGameScore())
+    if(GameData::getInstance()->getHighScore() < GameData::getInstance()->getGameScore())
     {
         GameData::getInstance()->setHighScore(GameData::getInstance()->getGameScore());
     }

@@ -38,8 +38,8 @@ implements IUnityAdsListener
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UnityAds.setDebugMode(true);
-        UnityAds.setTestMode(true);
+//        UnityAds.setDebugMode(true);
+//        UnityAds.setTestMode(true);
         UnityAds.init(this, "1008934", this);
 	}
 	
