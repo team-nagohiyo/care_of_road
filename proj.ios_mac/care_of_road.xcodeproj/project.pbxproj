@@ -99,6 +99,8 @@
 		57955E5A1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		57955E5B1BA6E10600C765BB /* RollBackgroundLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */; };
 		579615831BF866D000664B24 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 579615821BF866D000664B24 /* Images.xcassets */; };
+		57AEC6C91C5DDF7B0021AEBD /* GroupLogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AEC6C71C5DDF7B0021AEBD /* GroupLogoScene.cpp */; };
+		57AEC6CA1C5DDF7B0021AEBD /* GroupLogoScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 57AEC6C71C5DDF7B0021AEBD /* GroupLogoScene.cpp */; };
 		57AF355A1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
 		57AF355B1BA5E5CF005F65A4 /* sound in Resources */ = {isa = PBXBuildFile; fileRef = 57AF35591BA5E5CF005F65A4 /* sound */; };
 		57AF355D1BA5E5D9005F65A4 /* game in Resources */ = {isa = PBXBuildFile; fileRef = 57AF355C1BA5E5D9005F65A4 /* game */; };
@@ -247,6 +249,8 @@
 		57955E581BA6E10600C765BB /* RollBackgroundLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RollBackgroundLayer.cpp; sourceTree = "<group>"; };
 		57955E591BA6E10600C765BB /* RollBackgroundLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RollBackgroundLayer.h; sourceTree = "<group>"; };
 		579615821BF866D000664B24 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "care_of_road iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
+		57AEC6C71C5DDF7B0021AEBD /* GroupLogoScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroupLogoScene.cpp; sourceTree = "<group>"; };
+		57AEC6C81C5DDF7B0021AEBD /* GroupLogoScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupLogoScene.h; sourceTree = "<group>"; };
 		57AF35591BA5E5CF005F65A4 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sound; sourceTree = "<group>"; };
 		57AF355C1BA5E5D9005F65A4 /* game */ = {isa = PBXFileReference; lastKnownFileType = folder; path = game; sourceTree = "<group>"; };
 		57AF355F1BA5E5E2005F65A4 /* str */ = {isa = PBXFileReference; lastKnownFileType = folder; path = str; sourceTree = "<group>"; };
@@ -487,6 +491,8 @@
 				5710F0A81BA9010D0036D30A /* TitleScene.h */,
 				5765F6171BB0632B00B6ED18 /* GameOverScene.cpp */,
 				5765F6181BB0632B00B6ED18 /* GameOverScene.h */,
+				57AEC6C71C5DDF7B0021AEBD /* GroupLogoScene.cpp */,
+				57AEC6C81C5DDF7B0021AEBD /* GroupLogoScene.h */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -753,6 +759,7 @@
 				5710F0AF1BA9010D0036D30A /* RankingScene.cpp in Sources */,
 				5710F0A91BA9010D0036D30A /* GameScene.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				57AEC6C91C5DDF7B0021AEBD /* GroupLogoScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -771,6 +778,7 @@
 				46880B8919C43A87006E1F66 /* AppDelegate.cpp in Sources */,
 				5710F0BE1BA9AD620036D30A /* HitObject.cpp in Sources */,
 				5765F6161BADB2A500B6ED18 /* EnemyGenerator.cpp in Sources */,
+				57AEC6CA1C5DDF7B0021AEBD /* GroupLogoScene.cpp in Sources */,
 				57AF454C1BB395FF00665086 /* GameMediator.cpp in Sources */,
 				573FEA651BF6D94F00D787DB /* AppCCloudPlugin.mm in Sources */,
 				5710F0AC1BA9010D0036D30A /* HelloWorldScene.cpp in Sources */,

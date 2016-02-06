@@ -1,6 +1,8 @@
 #include "AppDelegate.h"
 #include "TitleScene.h"
 
+#include "GroupLogoScene.h"
+
 #include "AppCCloudPlugin.h"
 #define MEDIA_KEY "7f6de7b004dc223856907051e3727d67e1b947be"
 
@@ -103,7 +105,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     auto scene = TitleScene::createScene();
+#else
+    auto scene = GroupLogoScene::createScene();
+#endif
 
     // run
     director->runWithScene(scene);
